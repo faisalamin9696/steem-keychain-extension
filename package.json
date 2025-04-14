@@ -1,6 +1,6 @@
 {
   "name": "steem-keychain",
-  "version": "3.0.0",
+  "version": "3.0.2",
   "description": "Steem keychain",
   "main": "index.js",
   "directories": {
