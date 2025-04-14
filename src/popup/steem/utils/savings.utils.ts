@@ -1,13 +1,15 @@
+import { ActiveAccount } from '@interfaces/active-account.interface';
+import { Key, TransactionOptions } from '@interfaces/keys.interface';
+import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import {
   Asset,
   CancelTransferFromSavingsOperation,
   TransferFromSavingsOperation,
   TransferToSavingsOperation,
-} from '@hiveio/dhive';
-import { ActiveAccount } from '@interfaces/active-account.interface';
-import { Key, TransactionOptions } from '@interfaces/keys.interface';
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+} from '@steempro/dsteem';
 import Logger from 'src/utils/logger.utils';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
+
 
 /* istanbul ignore next */
 const deposit = async (
@@ -118,7 +120,7 @@ const cancelCurrentWithdrawSaving = async (
 /* istanbul ignore next */
 const hasBalance = (balance: string | Asset, greaterOrEqualTo: number) => {
   return typeof balance === 'string'
-    ? Asset.fromString(balance as string).amount >= greaterOrEqualTo
+    ? CommonAsset.fromString(balance as string).amount >= greaterOrEqualTo
     : balance.amount >= greaterOrEqualTo;
 };
 

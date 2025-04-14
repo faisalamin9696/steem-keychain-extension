@@ -1,6 +1,5 @@
 import { createMessage } from '@background/requests/operations/operations.utils';
 import { RequestsHandler } from '@background/requests/request-handler';
-import { Operation } from '@hiveio/dhive';
 import { encode } from '@hiveio/hive-js/lib/auth/memo';
 import {
   KeychainKeyTypesLC,
@@ -11,6 +10,7 @@ import { TransactionOptions } from '@interfaces/keys.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { Operation } from '@steempro/dsteem';
 import { KeychainError } from 'src/keychain-error';
 import Logger from 'src/utils/logger.utils';
 
@@ -24,12 +24,13 @@ export const broadcastOperations = async (
   let result, err, err_message;
   const key = requestHandler.data.key;
 
-  // check if operations contains any transfer wich requires memo encryption
+  // check if operations contains any transfer which requires memo encryption
   try {
     let operations: Operation[] =
       typeof data.operations === 'string'
         ? JSON.parse(data.operations)
         : data.operations;
+
     for (const op of operations) {
       if (op[0] === 'transfer') {
         const memo = op[1].memo;

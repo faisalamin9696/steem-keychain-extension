@@ -1,6 +1,6 @@
-import { ExtendedAccount } from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
-import { KeychainKeyTypes } from 'hive-keychain-commons';
+import { ExtendedAccount } from '@steempro/dsteem';
+import { KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 
 export interface MultisigAccountKeyConfig {
   isEnabled: boolean;

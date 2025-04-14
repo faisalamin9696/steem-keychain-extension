@@ -20,7 +20,7 @@ const getActiveConfig = async (): Promise<SteemEngineConfig> => {
   );
 };
 
-export const BgdHiveEngineConfigModule = {
+export const BgdSteemEngineConfigModule = {
   getActiveConfig,
   getActiveMainnet,
   getActiveRpc,

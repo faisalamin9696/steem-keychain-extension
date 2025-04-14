@@ -71,7 +71,7 @@ const Home = ({
       return;
     }
 
-    const versionLog = await VersionLogUtils.getLastVersion();
+    // const versionLog = await VersionLogUtils.getLastVersion();
     const extensionVersion = chrome.runtime
       .getManifest()
       .version.split('.')
@@ -79,10 +79,10 @@ const Home = ({
       .join('.');
 
     if (
-      extensionVersion !== lastVersionSeen &&
-      versionLog?.version === extensionVersion
+      extensionVersion !== lastVersionSeen 
+      // && versionLog?.version === extensionVersion
     ) {
-      setWhatsNewContent(versionLog);
+      // setWhatsNewContent(versionLog);
       setDisplayWhatsNew(true);
     }
   };

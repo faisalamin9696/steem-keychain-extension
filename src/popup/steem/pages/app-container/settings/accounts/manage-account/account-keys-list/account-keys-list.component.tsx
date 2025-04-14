@@ -15,7 +15,7 @@ import AccountUtils from '@popup/steem/utils/account.utils';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
 import { Screen } from '@reference-data/screen.enum';
-import { KeychainKeyTypesLC } from 'hive-keychain-commons';
+import { KeychainKeyTypesLC } from '@steempro/steem-keychain-commons';
 import React, { useEffect, useRef, useState } from 'react';
 import QRCode from 'react-qr-code';
 import { ConnectedProps, connect } from 'react-redux';

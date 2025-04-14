@@ -48,6 +48,7 @@ const chromeMessageHandler = async (
   sendResp: (response?: any) => void,
 ) => {
   Logger.log('Background message', backgroundMessage);
+
   switch (backgroundMessage.command) {
     case BackgroundCommand.GET_MK:
       MkModule.sendBackMk();

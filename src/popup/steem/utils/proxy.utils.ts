@@ -1,8 +1,11 @@
-import { AccountWitnessProxyOperation, ExtendedAccount } from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { GovernanceUtils } from '@popup/steem/utils/governance.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import {
+  AccountWitnessProxyOperation,
+  ExtendedAccount,
+} from '@steempro/dsteem';
 
 const findUserProxy = async (user: ExtendedAccount): Promise<string | null> => {
   const previousChecked: string[] = [user.name!];

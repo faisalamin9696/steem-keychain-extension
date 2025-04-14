@@ -28,8 +28,11 @@ import FlatList from 'flatlist-react';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
+import { FALSE } from 'sass';
 import { BackToTopButton } from 'src/common-ui/back-to-top-button/back-to-top-button.component';
-import ButtonComponent from 'src/common-ui/button/button.component';
+import ButtonComponent, {
+  ButtonType,
+} from 'src/common-ui/button/button.component';
 import { SVGIcons } from 'src/common-ui/icons.enum';
 import { InputType } from 'src/common-ui/input/input-type.enum';
 import InputComponent from 'src/common-ui/input/input.component';
@@ -392,13 +395,15 @@ const WalletHistory = ({
     <div
       className="wallet-history-page"
       data-testid={`${Screen.WALLET_HISTORY_PAGE}-page`}>
-      <div
-        data-testid="wallet-history-filter-panel"
-        className={
-          'filter-panel ' + (isFilterOpened ? 'filter-opened' : 'filter-closed')
-        }>
-        <div className="filters">
-          <div className="search-panel">
+      {isFilterOpened && (
+        <div
+          data-testid="wallet-history-filter-panel"
+          className={
+            'filter-panel ' +
+            (isFilterOpened ? 'filter-opened' : 'filter-closed')
+          }>
+          <div className="filters">
+            {/* <div className="search-panel">
             <InputComponent
               dataTestId="input-filter-box"
               type={InputType.TEXT}
@@ -408,59 +413,70 @@ const WalletHistory = ({
               logo={SVGIcons.INPUT_SEARCH}
               logoPosition="right"
             />
-          </div>
-          <div className="filter-selectors">
-            <div className="types">
-              {filter.selectedTransactionTypes &&
-                Object.keys(filter.selectedTransactionTypes).map(
-                  (filterOperationType) => (
-                    <div
-                      data-testid={`filter-selector-${filterOperationType}`}
-                      key={filterOperationType}
-                      className={
-                        'filter-button ' +
-                        (filter.selectedTransactionTypes[filterOperationType]
-                          ? 'selected'
-                          : 'not-selected')
-                      }
-                      onClick={() => toggleFilterType(filterOperationType)}>
-                      {chrome.i18n.getMessage(
-                        `popup_html_filter_type_${filterOperationType}`,
-                      )}{' '}
-                    </div>
-                  ),
-                )}
-            </div>
-            <Separator type="horizontal" fullSize />
-            <div className="in-out-panel">
-              <div
-                data-testid="filter-by-incoming"
-                className={
-                  'filter-button ' +
-                  (filter.inSelected ? 'selected' : 'not-selected')
-                }
-                onClick={() => toggleFilterIn()}>
-                {chrome.i18n.getMessage(`popup_html_filter_in`)}
+          </div> */}
+            <div className="filter-selectors">
+              <div className="types">
+                {filter.selectedTransactionTypes &&
+                  Object.keys(filter.selectedTransactionTypes).map(
+                    (filterOperationType) => (
+                      <div
+                        data-testid={`filter-selector-${filterOperationType}`}
+                        key={filterOperationType}
+                        className={
+                          'filter-button ' +
+                          (filter.selectedTransactionTypes[filterOperationType]
+                            ? 'selected'
+                            : 'not-selected')
+                        }
+                        onClick={() => toggleFilterType(filterOperationType)}>
+                        {chrome.i18n.getMessage(
+                          `popup_html_filter_type_${filterOperationType}`,
+                        )}{' '}
+                      </div>
+                    ),
+                  )}
               </div>
-              <div
-                data-testid="filter-by-outgoing"
-                className={
-                  'filter-button ' +
-                  (filter.outSelected ? 'selected' : 'not-selected')
-                }
-                onClick={() => toggleFilterOut()}>
-                {chrome.i18n.getMessage(`popup_html_filter_out`)}
+              <Separator type="horizontal" fullSize />
+              <div className="in-out-panel">
+                <div
+                  data-testid="filter-by-incoming"
+                  className={
+                    'filter-button ' +
+                    (filter.inSelected ? 'selected' : 'not-selected')
+                  }
+                  onClick={() => toggleFilterIn()}>
+                  {chrome.i18n.getMessage(`popup_html_filter_in`)}
+                </div>
+                <div
+                  data-testid="filter-by-outgoing"
+                  className={
+                    'filter-button ' +
+                    (filter.outSelected ? 'selected' : 'not-selected')
+                  }
+                  onClick={() => toggleFilterOut()}>
+                  {chrome.i18n.getMessage(`popup_html_filter_out`)}
+                </div>
               </div>
             </div>
+
+            <div className="filter-bottom-container">
+              <ButtonComponent
+                data-testid="clear-filters"
+                onClick={() => setIsFilterPanelOpened(false)}
+                label="message_container_close_button"
+                height="small"
+                type={ButtonType.ALTERNATIVE}
+              />
+              <ButtonComponent
+                data-testid="clear-filters"
+                onClick={() => clearFilters()}
+                label="popup_html_clear_filters"
+                height="small"
+              />
+            </div>
           </div>
-          <ButtonComponent
-            data-testid="clear-filters"
-            onClick={() => clearFilters()}
-            label="popup_html_clear_filters"
-            height="small"
-          />
         </div>
-      </div>
+      )}
 
       <div
         data-testid="wallet-item-list"

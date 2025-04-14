@@ -1,6 +1,6 @@
 import { ActiveAccountModule } from '@background/active-account.module';
 import BgdAccountsUtils from '@background/utils/accounts.utils';
-import { Asset } from '@hiveio/dhive';
+import { Asset } from '@steempro/dsteem';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import { LocalStorageClaimItem } from '@interfaces/local-storage-claim-item.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';

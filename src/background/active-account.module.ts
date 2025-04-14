@@ -1,4 +1,4 @@
-import { ExtendedAccount } from '@hiveio/dhive';
+import { ExtendedAccount } from '@steempro/dsteem';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';

@@ -19,7 +19,10 @@ import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import ProposalUtils from '@popup/steem/utils/proposal.utils';
 import ProxyUtils from '@popup/steem/utils/proxy.utils';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';

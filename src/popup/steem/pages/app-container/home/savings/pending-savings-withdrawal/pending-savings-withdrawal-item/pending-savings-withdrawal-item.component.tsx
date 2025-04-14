@@ -14,7 +14,7 @@ import {
 } from '@popup/multichain/actions/navigation.actions';
 import { RootState } from '@popup/multichain/store';
 import { SavingsUtils } from '@popup/steem/utils/savings.utils';
-import { KeychainKeyTypes } from 'hive-keychain-commons';
+import { KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 import moment from 'moment';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';

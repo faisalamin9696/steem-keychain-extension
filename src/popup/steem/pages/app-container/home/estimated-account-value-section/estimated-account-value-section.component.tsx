@@ -49,7 +49,7 @@ const EstimatedAccountValueSection = ({
     );
   };
 
-  const loadHiveInternalMarketOrders = async (username: string) => {
+  const loadSteemInternalMarketOrders = async (username: string) => {
     setHiveMarketLockedOpenOrdersValues(
       await HiveInternalMarketUtils.getHiveInternalMarketOrders(username),
     );
@@ -57,7 +57,7 @@ const EstimatedAccountValueSection = ({
 
   useEffect(() => {
     if (activeAccount.name) {
-      loadHiveInternalMarketOrders(activeAccount.name);
+      loadSteemInternalMarketOrders(activeAccount.name);
     }
   }, [activeAccount]);
 

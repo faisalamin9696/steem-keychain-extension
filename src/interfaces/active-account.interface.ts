@@ -1,7 +1,7 @@
-import { ExtendedAccount } from '@hiveio/dhive';
-import { Manabar } from '@hiveio/dhive/lib/chain/rc';
 import { Keys } from '@interfaces/keys.interface';
 import { RcDelegationsInfo } from '@interfaces/rc-delegation.interface';
+import { ExtendedAccount } from '@steempro/dsteem';
+import { Manabar } from '@steempro/dsteem/lib/chain/rc';
 export type RC = Manabar & RcDelegationsInfo;
 
 export interface ActiveAccount {

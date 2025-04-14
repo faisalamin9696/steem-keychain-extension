@@ -1,6 +1,6 @@
-import { CustomJsonOperation } from '@hiveio/dhive';
 import { Key, KeyType, TransactionOptions } from '@interfaces/keys.interface';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { CustomJsonOperation } from '@steempro/dsteem';
 import Config from 'src/config';
 
 const send = async (

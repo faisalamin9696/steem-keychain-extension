@@ -441,9 +441,9 @@ Requests to sign a transaction with a given authority
 
 ```javascript
 // This example would be done much easier with requestBroadcast
-import dhive from '@hiveio/dhive';
+import dsteem from '@steempro/dsteem';
 
-const client = new dhive.Client(['https://api.steemit.com', 'https://api.justyy.co', 'https://api.steemitdev.com']);
+const client = new dsteem.Client(['https://api.steemit.com', 'https://api.justyy.co', 'https://api.steemitdev.com']);
 const keychain = window.steem_keychain;
 
 const props = await client.database.getDynamicGlobalProperties();

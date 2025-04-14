@@ -1,4 +1,3 @@
-import { Asset } from '@hiveio/dhive';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import { setErrorMessage } from '@popup/multichain/actions/message.actions';
 import { navigateToWithParams } from '@popup/multichain/actions/navigation.actions';
@@ -12,6 +11,7 @@ import AccountUtils from '@popup/steem/utils/account.utils';
 import CurrencyUtils from '@popup/steem/utils/currency.utils';
 import SteemUtils from '@popup/steem/utils/steem.utils';
 import { Screen } from '@reference-data/screen.enum';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import ButtonComponent from 'src/common-ui/button/button.component';
@@ -128,7 +128,7 @@ const CreateAccountStepOne = ({
       const account = await AccountUtils.getExtendedAccount(
         selectedAccount?.value!,
       );
-      const balance = Asset.fromString(account.balance.toString());
+      const balance = CommonAsset.fromString(account.balance.toString());
       if (
         creationType === AccountCreationType.USING_TICKET ||
         (creationType === AccountCreationType.BUYING && balance.amount >= 3)

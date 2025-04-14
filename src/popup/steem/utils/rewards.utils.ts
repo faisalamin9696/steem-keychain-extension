@@ -1,8 +1,8 @@
-import { Asset, ClaimRewardBalanceOperation } from '@hiveio/dhive';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import { TransactionOptions } from '@interfaces/keys.interface';
 import { TransactionResult } from '@interfaces/steem-tx.interface';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { Asset, ClaimRewardBalanceOperation } from '@steempro/dsteem';
 import FormatUtils from 'src/utils/format.utils';
 
 const claimRewards = async (
@@ -13,7 +13,6 @@ const claimRewards = async (
   postingKey: string,
   options?: TransactionOptions,
 ): Promise<TransactionResult | null> => {
-
   return await SteemTxUtils.sendOperation(
     [
       [

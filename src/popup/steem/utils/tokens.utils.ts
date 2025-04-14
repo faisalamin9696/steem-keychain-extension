@@ -307,18 +307,10 @@ const getHiveEngineTokenPrice = (
 
 const getSteemEngineTokenValue = (
   balance: TokenBalance,
-  market: TokenMarket[],
   steem: Currency = { usd: 1 },
   tokens?: Token[],
 ) => {
-  const tokenMarket = market.find((t) => t.symbol === balance.symbol);
   const token = tokens?.find((t) => t.symbol === balance.symbol);
-  if (Number(tokenMarket?.volume) <= 0) return 0;
-  const price = tokenMarket
-    ? parseFloat(tokenMarket.lastPrice)
-    : balance.symbol === 'SWAP.STEEM'
-    ? 1
-    : 0;
 
   const totalToken =
     parseFloat(balance.balance) +
@@ -326,7 +318,7 @@ const getSteemEngineTokenValue = (
     parseFloat(balance.pendingUnstake) / (token?.numberTransactions || 1) +
     parseFloat(balance.delegationsOut) +
     parseFloat(balance.stake);
-  return totalToken * price * steem?.usd!;
+  return totalToken * steem?.usd!;
 };
 /* istanbul ignore next */
 const getUserBalance = (account: string) => {

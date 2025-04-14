@@ -121,7 +121,7 @@ const HiveApp = ({
   };
 
   const initApplication = async () => {
-    ColorsUtils.downloadColors();
+    // ColorsUtils.downloadColors();
     loadCurrencyPrices();
 
     const storedAccounts = await AccountUtils.hasStoredAccounts();

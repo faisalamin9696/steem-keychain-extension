@@ -14,14 +14,14 @@ interface Props {
 
 const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
   const [totals, setTotals] = useState<PortfolioBalance[]>([]);
-  const [totalHive, setTotalHive] = useState(0);
+  const [totalSteem, setTotalSteem] = useState(0);
   const [totalUSD, setTotalUSD] = useState(0);
 
   useEffect(() => {
     const tempTotals = PortfolioUtils.getTotals(tableColumnsHeaders, data);
     setTotals(tempTotals);
     setTotalUSD(tempTotals.reduce((acc, curr) => acc + curr.usdValue, 0));
-    setTotalHive(data.reduce((acc, curr) => acc + curr.totalSteem, 0));
+    setTotalSteem(data.reduce((acc, curr) => acc + curr.totalSteem, 0));
   }, [data]);
 
   return (
@@ -55,45 +55,41 @@ const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
             </tr>
           </thead>
           <tbody>
-            {data.map(
-              ({ account, totalSteem: totalHive, totalUSD, balances }) => {
-                return (
-                  <tr key={`${account}-tr-row`}>
-                    <td className="account-column avatar-username-container">
-                      <PreloadedImage
-                        className="user-picture"
-                        src={`https://steemitimages.com/u/${account}/avatar`}
-                        alt={'/assets/images/accounts.png'}
-                        placeholder={'/assets/images/accounts.png'}
-                      />
-                      <div className="account-name">{account}</div>
-                    </td>
-                    {tableColumnsHeaders.map((symbol) => {
-                      const tokenFound = balances.find(
-                        (tokenBalance) => tokenBalance.symbol === symbol,
-                      );
-                      return (
-                        <td
-                          key={`${account}-${symbol}-user-token-cell`}
-                          className="value">
-                          {!tokenFound || tokenFound.balance === 0
-                            ? '-'
-                            : FormatUtils.formatCurrencyValue(
-                                tokenFound.balance,
-                              )}
-                        </td>
-                      );
-                    })}
-                    <td className="total-column">
-                      {FormatUtils.formatCurrencyValue(totalHive)}
-                    </td>
-                    <td className="total-column">
-                      {FormatUtils.formatCurrencyValue(totalUSD)}
-                    </td>
-                  </tr>
-                );
-              },
-            )}
+            {data.map(({ account, totalSteem, totalUSD, balances }) => {
+              return (
+                <tr key={`${account}-tr-row`}>
+                  <td className="account-column avatar-username-container">
+                    <PreloadedImage
+                      className="user-picture"
+                      src={`https://steemitimages.com/u/${account}/avatar`}
+                      alt={'/assets/images/accounts.png'}
+                      placeholder={'/assets/images/accounts.png'}
+                    />
+                    <div className="account-name">{account}</div>
+                  </td>
+                  {tableColumnsHeaders.map((symbol) => {
+                    const tokenFound = balances.find(
+                      (tokenBalance) => tokenBalance.symbol === symbol,
+                    );
+                    return (
+                      <td
+                        key={`${account}-${symbol}-user-token-cell`}
+                        className="value">
+                        {!tokenFound || tokenFound.balance === 0
+                          ? '-'
+                          : FormatUtils.formatCurrencyValue(tokenFound.balance)}
+                      </td>
+                    );
+                  })}
+                  <td className="total-column">
+                    {FormatUtils.formatCurrencyValue(totalSteem)}
+                  </td>
+                  <td className="total-column">
+                    {FormatUtils.formatCurrencyValue(totalUSD)}
+                  </td>
+                </tr>
+              );
+            })}
             <tr>
               <td className="header-total">
                 {chrome.i18n.getMessage('portfolio_table_column_sticky_totals')}
@@ -106,7 +102,7 @@ const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
                 );
               })}
               <td className="total-column" key={`total-value-hive`}>
-                {FormatUtils.formatCurrencyValue(totalHive)}
+                {FormatUtils.formatCurrencyValue(totalSteem)}
               </td>
               <td className="total-column" key={`total-usd`}>
                 -

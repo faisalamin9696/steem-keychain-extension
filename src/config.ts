@@ -54,7 +54,7 @@ const Config = {
   multisig: {
     baseURL:
       process.env.MULTISIG_BACKEND_SERVER ||
-      'https://api-multisig.steem-keychain.com',
+      'https://steem-keychain-backend-d591a645ff68.herokuapp.com',
   },
   tutorial: {
     baseUrl: process.env.DEV_TUTORIAL || 'https://keychain.steempro.com/',

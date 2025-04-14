@@ -1,4 +1,3 @@
-import { Asset } from '@hiveio/dhive';
 import { Token, TokenBalance, TokenMarket } from '@interfaces/tokens.interface';
 import { navigateToWithParams } from '@popup/multichain/actions/navigation.actions';
 import { RootState } from '@popup/multichain/store';
@@ -10,6 +9,7 @@ import {
 import { WalletInfoSectionItemButton } from '@popup/steem/pages/app-container/home/wallet-info-section/wallet-info-section-item/wallet-info-section-item-button/wallet-info-section-item-button.component';
 import TokensUtils from '@popup/steem/utils/tokens.utils';
 import { Screen } from '@reference-data/screen.enum';
+import { Asset } from '@steempro/dsteem';
 import React, { BaseSyntheticEvent, useEffect, useRef, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { SVGIcons } from 'src/common-ui/icons.enum';
@@ -220,7 +220,7 @@ const walletInfoSectionItem = ({
                   $
                   {TokensUtils.getHiveEngineTokenValue(
                     tokenBalance,
-                    tokenMarket,
+                    // tokenMarket,
                     steem,
                     [tokenInfo],
                   ).toFixed(2)}{' '}

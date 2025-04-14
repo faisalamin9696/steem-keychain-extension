@@ -324,7 +324,7 @@
     "description": "on import / export settings"
   },
   "popup_html_about_text": {
-    "message": "<ul><li><span class='text'>Ce Steem Keychain est une version dérivée de Hive Keychain par <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a>, configuré et maintenu par <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a>, un témoin Steem.</span></li><div class='separator horizontal'></div><li><span class='text'>En plus de cette extension, nous proposons une interface Steem riche en fonctionnalités <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> et divers outils Steem.</span></li><div class='separator horizontal'></div><li><span class='text'>Pour plus d'informations sur nos produits (extensions de navigateur), visitez notre <a href='https://steempro.com' target='__blank'>page d'accueil</a>.</span></li></ul>",
+    "message": "<ul><li><span class='text'>Steem Keychain est configuré et maintenu par <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a>, un témoin Steem. Ce Steem Keychain est une version dérivée de Hive Keychain par <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a>.</span></li><div class='separator horizontal'></div><li><span class='text'>En plus de cette extension, nous proposons une interface Steem riche en fonctionnalités <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> et divers outils Steem.</span></li><div class='separator horizontal'></div><li><span class='text'>Pour plus d'informations sur nos produits (extensions de navigateur), visitez notre <a href='https://steempro.com' target='__blank'>page d'accueil</a>.</span></li></ul>",
     "description": "on about keychain"
   },
   "popup_html_delete_account": {
@@ -1914,6 +1914,10 @@
   "popup_html_wallet_info_claim_account": {
     "message": "Un ticket de création de compte a été récupéré",
     "description": "Wallet information claim account"
+  },
+  "popup_html_wallet_info_producer_reward": {
+    "message": "Récompense du producteur $1",
+    "description": "Wallet information producer reward"
   },
   "popup_html_wallet_info_deposit_savings": {
     "message": "Dépôt de $1 dans l'épargne",

@@ -1,9 +1,9 @@
-import { Transaction, TransferOperation } from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { exchanges } from '@popup/steem/pages/app-container/home/buy-coins/buy-coins-list-item.list';
 import { SavingOperationType } from '@popup/steem/pages/app-container/home/savings/savings-operation-type.enum';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
-import { getPrivateKeysMemoValidationWarning } from 'hive-keychain-commons';
+import { Transaction, TransferOperation } from '@steempro/dsteem';
+import { getPrivateKeysMemoValidationWarning } from '@steempro/steem-keychain-commons';
 
 const getTransferWarning = (
   account: string,

@@ -10,6 +10,25 @@ interface WalletHistoryItemProps {
 }
 
 const WalletHistoryItem = ({ transaction, ariaLabel }: PropsFromRedux) => {
+  if (
+    ![
+      'transfer',
+      'claim_reward_balance',
+      'delegate_vesting_shares',
+      'transfer_to_vesting',
+      'withdraw_vesting',
+      'interest',
+      'transfer_to_savings',
+      'transfer_from_savings',
+      'fill_transfer_from_savings',
+      'claim_account',
+      'convert',
+      'fill_convert_request',
+      'create_claimed_account',
+      'account_create',
+    ].includes(transaction.type)
+  )
+    return null;
   return (
     <div
       data-testid={ariaLabel}

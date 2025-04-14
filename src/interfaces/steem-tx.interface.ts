@@ -7,18 +7,18 @@ export interface TransactionResult {
   isUsingMultisig?: boolean;
 }
 
-export interface HiveTxBroadcastResult {
+export interface SteemTxBroadcastResult {
   status: string;
   tx_id: string;
   isUsingMultisig?: boolean;
 }
 
-export interface HiveTxBroadcastSuccessResponse {
+export interface SteemTxBroadcastSuccessResponse {
   id: number;
   jsonrpc: string;
-  result: HiveTxBroadcastResult;
+  result: SteemTxBroadcastResult;
 }
 
-export interface HiveTxBroadcastErrorResponse {
+export interface SteemTxBroadcastErrorResponse {
   error: object;
 }

@@ -1,11 +1,11 @@
 import { fetchSds } from '@api/sds';
-import { DelegateVestingSharesOperation } from '@hiveio/dhive';
 import {
   Delegator,
   PendingOutgoingUndelegation,
 } from '@interfaces/delegations.interface';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { DelegateVestingSharesOperation } from '@steempro/dsteem';
 import moment from 'moment';
 
 const getDelegators = async (name: string) => {

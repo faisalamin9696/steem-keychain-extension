@@ -20,6 +20,16 @@ enum SteemEngineErrorType {
 
 const parse = (error: any) => {
   Logger.log(error);
+
+  const formatValue = (value: any) => {
+    switch (typeof value) {
+      case 'object':
+        return JSON.stringify(value);
+      default:
+        return String(value);
+    }
+  };
+
   const stack = error?.data?.stack[0];
   if (stack?.context?.method) {
     switch (stack.context.method) {
@@ -116,7 +126,26 @@ const parse = (error: any) => {
     return new KeychainError('not_enough_rc', [], error);
   }
   if (stack && stack.format && !stack.format.includes('${what}')) {
-    return new KeychainError('error_while_broadcasting', [stack.format], error);
+    let message = '';
+    if (stack.data) {
+      message = stack.format.replace(
+        /\$\{([a-z_]+)\}/gi,
+        (match: string, key: string) => {
+          let rv = match;
+          if (stack.data[key]) {
+            rv = formatValue(stack.data[key]);
+            delete stack.data[key];
+          }
+          return rv;
+        },
+      );
+    }
+
+    return new KeychainError(
+      'error_while_broadcasting',
+      [message || stack.format],
+      error,
+    );
   }
   return new KeychainError('html_popup_error_while_broadcasting', [], error);
 };

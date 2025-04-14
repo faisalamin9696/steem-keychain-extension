@@ -1,7 +1,6 @@
-import { KeychainApi } from '@api/keychain';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
-import { config as HiveTxConfig } from 'hive-tx';
+import { config as HiveTxConfig } from '@steempro/steem-tx-js';
 import { Rpc } from 'src/interfaces/rpc.interface';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 

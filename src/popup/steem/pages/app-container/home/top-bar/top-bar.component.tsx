@@ -1,4 +1,3 @@
-import { sleep } from '@hiveio/dhive/lib/utils';
 import {
   TransactionOptions,
   TransactionOptionsMetadata,
@@ -22,7 +21,8 @@ import { NotificationsComponent } from '@popup/steem/pages/app-container/home/no
 import ActiveAccountUtils from '@popup/steem/utils/active-account.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { RewardsUtils } from '@popup/steem/utils/rewards.utils';
-import { KeychainKeyTypes } from 'hive-keychain-commons';
+import { sleep } from '@steempro/dsteem/lib/utils';
+import { KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { SVGIcons } from 'src/common-ui/icons.enum';

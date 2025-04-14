@@ -1,4 +1,3 @@
-import { ExtendedAccount } from '@hiveio/dhive';
 import {
   setErrorMessage,
   setSuccessMessage,
@@ -10,6 +9,7 @@ import { addKey } from '@popup/steem/actions/account.actions';
 import { refreshActiveAccount } from '@popup/steem/actions/active-account.actions';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { Screen } from '@reference-data/screen.enum';
+import { ExtendedAccount } from '@steempro/dsteem';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import ButtonComponent from 'src/common-ui/button/button.component';

@@ -1,9 +1,13 @@
-import { Account, ExtendedAccount, PrivateKey } from '@hiveio/dhive';
+import { Account, ExtendedAccount } from '@steempro/dsteem';
 import { WrongKeysOnUser } from '@popup/steem/pages/app-container/wrong-key-popup/wrong-key-popup.component';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import { Key, Keys, PrivateKeyType } from 'src/interfaces/keys.interface';
+import { PrivateKey } from '@steempro/steem-tx-js';
 
 const getPublicKeyFromPrivateKeyString = (privateKeyS: string) => {
   try {

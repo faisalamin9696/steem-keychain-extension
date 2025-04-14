@@ -25,7 +25,10 @@ import { ResourceItemComponent } from '@popup/steem/pages/app-container/home/res
 import CurrencyUtils from '@popup/steem/utils/currency.utils';
 import { DelegationUtils } from '@popup/steem/utils/delegation.utils';
 import { FavoriteUserUtils } from '@popup/steem/utils/favorite-user.utils';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import Joi from 'joi';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -243,7 +246,7 @@ const Delegations = ({
           let success = await DelegationUtils.delegateVestingShares(
             activeAccount.name!,
             form.username,
-            FormatUtils.fromHP(
+            FormatUtils.fromSP(
               form.amount.toString(),
               globalProperties!,
             ).toFixed(6) + ' VESTS',

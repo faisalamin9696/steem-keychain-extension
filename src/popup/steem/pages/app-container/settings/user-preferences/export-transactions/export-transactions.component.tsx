@@ -85,7 +85,7 @@ const ExportTransactions = ({
             onChange={setStartDate}
             value={startDate}
             dataTestId="input-startDate"
-            type={InputType.DATETIME}
+            type={InputType.DATE}
             placeholder="popup_html_start_date"
             label="popup_html_start_date"
           />
@@ -93,7 +93,7 @@ const ExportTransactions = ({
             onChange={setEndDate}
             value={endDate}
             dataTestId="input-endDate"
-            type={InputType.DATETIME}
+            type={InputType.DATE}
             placeholder="popup_html_end_date"
             label="popup_html_end_date"
           />

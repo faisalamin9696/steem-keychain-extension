@@ -1,17 +1,18 @@
-import {
-  Asset,
-  CreateProposalOperation,
-  DynamicGlobalProperties,
-  RemoveProposalOperation,
-  UpdateProposalVotesOperation,
-} from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { FundedOption, Proposal } from '@interfaces/proposal.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import {
+  CreateProposalOperation,
+  DynamicGlobalProperties,
+  RemoveProposalOperation,
+  UpdateProposalVotesOperation,
+} from '@steempro/dsteem';
 import moment from 'moment';
 import Config from 'src/config';
 import FormatUtils from 'src/utils/format.utils';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
+
 
 const hasVotedForProposal = async (
   username: string,
@@ -178,7 +179,7 @@ const getProposalList = async (
 
   const proposals: Proposal[] = [];
   for (const p of listProposals) {
-    const dailyPay = Asset.fromString(p.daily_pay);
+    const dailyPay = CommonAsset.fromString(p.daily_pay);
     const fundedOption = ProposalUtils.getFundedOption(
       dailyPay.amount,
       dailyBudget,
@@ -224,7 +225,7 @@ const isRequestingProposalVotes = async (globals: DynamicGlobalProperties) => {
       'all',
     ])
   ).map((proposal: any) => {
-    const dailyPay = Asset.fromString(proposal.daily_pay);
+    const dailyPay = CommonAsset.fromString(proposal.daily_pay);
     let fundedOption = FundedOption.NOT_FUNDED;
     if (dailyBudget > 0) {
       dailyBudget -= dailyPay.amount;

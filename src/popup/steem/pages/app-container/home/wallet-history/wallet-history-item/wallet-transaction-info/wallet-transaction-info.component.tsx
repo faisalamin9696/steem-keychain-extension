@@ -9,6 +9,7 @@ import {
   FillConvert,
   PowerDown,
   PowerUp,
+  ProducerReward,
   ReceivedInterests,
   StartWithdrawSavings,
   Transaction,
@@ -24,9 +25,10 @@ import { CreateClaimedAccountTransactionComponent } from '@popup/steem/pages/app
 import { DelegationTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/delegation-transaction/delegation-transaction.component';
 import { DepositSavingsTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/deposit-savings-transaction/deposit-savings-transaction.component';
 import { FillConvertTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/fill-convert-transaction/fill-convert-transaction.component';
-import { FillWithdrawSavingsTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/fill-withdraw-savings-transaction copy/fill-withdraw-savings-transaction.component';
+import { FillWithdrawSavingsTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/fill-withdraw-savings-transaction/fill-withdraw-savings-transaction.component';
 import { PowerDownTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/power-down-transaction/power-down-transaction.component';
 import { PowerUpTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/power-up-transaction/power-up-transaction.component';
+import { ProducerRewardTransactionTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/producer-reward-transaction/producer-reward-transaction.component';
 import { ReceivedInterestsTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/received-interests-transaction/received-interests-transaction.component';
 import { TransferTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/transfer-transaction/transfer-transaction.component';
 import { WithdrawSavingsTransactionComponent } from '@popup/steem/pages/app-container/home/wallet-history/wallet-history-item/wallet-transaction-info/wallet-transaction-types/withdraw-savings-transaction/withdraw-savings-transaction.component';
@@ -133,6 +135,14 @@ const WalletTransactionInfo = ({
           <CreateAccountTransactionComponent
             transaction={transaction as CreateAccount}
           />
+        );
+
+      case 'producer_reward':
+        return (
+          // <ProducerRewardTransactionTransactionComponent
+          //   transaction={transaction as ProducerReward}
+          // />
+          <></>
         );
       case 'create_claimed_account':
         return (

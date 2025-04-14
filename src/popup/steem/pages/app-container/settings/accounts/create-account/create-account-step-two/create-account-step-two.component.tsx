@@ -1,4 +1,3 @@
-import { PrivateKey } from '@hiveio/dhive';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import {
   addToLoadingList,
@@ -18,6 +17,7 @@ import {
   GeneratedKeys,
 } from '@popup/steem/utils/account-creation.utils';
 import { Screen } from '@reference-data/screen.enum';
+import { PrivateKey } from '@steempro/dsteem';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import ButtonComponent, {

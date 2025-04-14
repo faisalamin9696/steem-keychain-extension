@@ -11,6 +11,11 @@ if (process.env.IS_FIREFOX) {
   }
 }
 
+import { Key } from '@interfaces/keys.interface';
+import { MultisigAccountConfig } from '@interfaces/multisig.interface';
+import AccountUtils from '@popup/steem/utils/account.utils';
+import { KeysUtils } from '@popup/steem/utils/keys.utils';
+import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
 import {
   AccountCreateOperation,
   AccountCreateWithDelegationOperation,
@@ -61,13 +66,8 @@ import {
   WithdrawVestingOperation,
   WitnessSetPropertiesOperation,
   WitnessUpdateOperation,
-} from '@hiveio/dhive';
-import { Key } from '@interfaces/keys.interface';
-import { MultisigAccountConfig } from '@interfaces/multisig.interface';
-import AccountUtils from '@popup/steem/utils/account.utils';
-import { KeysUtils } from '@popup/steem/utils/keys.utils';
-import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
-import { KeychainKeyTypes } from 'hive-keychain-commons';
+} from '@steempro/dsteem';
+import { KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
 

@@ -1,5 +1,5 @@
-import { DynamicGlobalProperties } from '@hiveio/dhive';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { DynamicGlobalProperties } from '@steempro/dsteem';
 
 const getDynamicGlobalProperties =
   async (): Promise<DynamicGlobalProperties> => {

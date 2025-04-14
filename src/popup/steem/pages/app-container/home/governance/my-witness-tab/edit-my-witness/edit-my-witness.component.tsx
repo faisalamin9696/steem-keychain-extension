@@ -1,4 +1,3 @@
-import { PriceType } from '@hiveio/dhive';
 import { KeychainKeyTypesLC } from '@interfaces/keychain.interface';
 import {
   WitnessFormField,
@@ -18,6 +17,7 @@ import { refreshActiveAccount } from '@popup/steem/actions/active-account.action
 import BlockchainTransactionUtils from '@popup/steem/utils/blockchain.utils';
 import { BaseCurrencies } from '@popup/steem/utils/currency.utils';
 import WitnessUtils from '@popup/steem/utils/witness.utils';
+import { PriceType } from '@steempro/dsteem';
 import React, { useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import 'react-tabs/style/react-tabs.scss';

@@ -1,6 +1,5 @@
 import { KeychainKeyTypesLC } from '@interfaces/keychain.interface';
 import { TransactionOptions } from '@interfaces/keys.interface';
-import { SwapConfig } from '@interfaces/swap-token.interface';
 import {
   addToLoadingList,
   removeFromLoadingList,
@@ -18,12 +17,11 @@ import {
 import { setTitleContainerProperties } from '@popup/multichain/actions/title-container.actions';
 import { RootState } from '@popup/multichain/store';
 import { loadTokensMarket } from '@popup/steem/actions/token.actions';
-import { BuyCoinType } from '@popup/steem/pages/app-container/home/buy-coins/buy-coin-type.enum';
 import { BaseCurrencies } from '@popup/steem/utils/currency.utils';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import TokensUtils from '@popup/steem/utils/tokens.utils';
 import { Screen } from '@reference-data/screen.enum';
-import { IStep, KeychainKeyTypes } from 'hive-keychain-commons';
+import { IStep, KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 import { ThrottleSettings, throttle } from 'lodash';
 import React, { useEffect, useMemo, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';

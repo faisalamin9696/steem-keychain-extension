@@ -1,4 +1,3 @@
-import { DynamicGlobalProperties } from '@hiveio/dhive';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import { GlobalProperties } from '@interfaces/global-properties.interface';
 import { Notification } from '@interfaces/notifications.interface';
@@ -10,6 +9,7 @@ import { RootState } from '@popup/multichain/store';
 import { NotificationPanelComponent } from '@popup/steem/pages/app-container/home/notifications/notification-panel.component';
 import { NotificationsUtils } from '@popup/steem/utils/notifications/notifications.utils';
 import { PeakDNotificationsUtils } from '@popup/steem/utils/notifications/peakd-notifications.utils';
+import { DynamicGlobalProperties } from '@steempro/dsteem';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { SVGIcons } from 'src/common-ui/icons.enum';

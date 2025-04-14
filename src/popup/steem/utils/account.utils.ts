@@ -5,7 +5,7 @@ import {
   cryptoUtils,
   DynamicGlobalProperties,
   ExtendedAccount,
-} from '@hiveio/dhive/lib/index-browser';
+} from '@steempro/dsteem/lib/index-browser';
 import { CurrencyPrices } from '@interfaces/bittrex.interface';
 import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
 import EncryptUtils from '@popup/steem/utils/encrypt.utils';

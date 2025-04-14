@@ -1,9 +1,9 @@
+import { Key, TransactionOptions } from '@interfaces/keys.interface';
+import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import {
   TransferToVestingOperation,
   WithdrawVestingOperation,
-} from '@hiveio/dhive';
-import { Key, TransactionOptions } from '@interfaces/keys.interface';
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+} from '@steempro/dsteem';
 
 const powerUp = async (
   from: string,

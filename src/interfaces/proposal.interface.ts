@@ -1,4 +1,4 @@
-import { Asset } from '@hiveio/dhive';
+import { Asset } from '@steempro/dsteem';
 
 export enum FundedOption {
   TOTALLY_FUNDED = 'totally_funded',

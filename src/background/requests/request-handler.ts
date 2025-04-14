@@ -1,5 +1,5 @@
 import { AnalyticsModule } from '@background/analytics.module';
-import { BgdHiveEngineConfigModule } from '@background/hive-engine-config.module';
+import { BgdSteemEngineConfigModule } from '@background/hive-engine-config.module';
 import { removeWindow } from '@background/requests/dialog-lifecycle';
 import init from '@background/requests/init';
 import { Key } from '@interfaces/keys.interface';
@@ -8,13 +8,14 @@ import { NoConfirm } from '@interfaces/no-confirm.interface';
 import { Rpc } from '@interfaces/rpc.interface';
 import { SteemEngineConfig } from '@interfaces/steem-engine-rpc.interface';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
-import { config } from 'hive-tx';
-import Config from 'src/config';
 import {
   KeychainKeyTypesLC,
   KeychainRequest,
   KeychainRequestWrapper,
-} from 'src/interfaces/keychain.interface';
+} from '@steempro/steem-keychain-commons';
+import { config } from '@steempro/steem-tx-js';
+import Config from 'src/config';
+
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 
 if (!process.env.IS_FIREFOX && !global.window) {
@@ -52,7 +53,7 @@ export class RequestsHandler {
   }
 
   async setupHiveEngine() {
-    this.hiveEngineConfig = await BgdHiveEngineConfigModule.getActiveConfig();
+    this.hiveEngineConfig = await BgdSteemEngineConfigModule.getActiveConfig();
   }
 
   async setIsMultisig(isMultisig: boolean) {

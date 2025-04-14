@@ -23,7 +23,7 @@ const getBackgroundColor = (src: string) => {
 };
 
 const downloadColors = async () => {
-  imgColors = await KeychainApi.get('hive/tokensBackgroundColors');
+  imgColors = await KeychainApi.get('steem/tokensBackgroundColors');
 };
 
 const getBackgroundColorFromBackend = (symbol: string, theme: Theme) => {

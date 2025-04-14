@@ -1,8 +1,8 @@
-import { ExtendedAccount } from '@hiveio/dhive';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { Theme } from '@popup/theme.context';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
+import { ExtendedAccount } from '@steempro/dsteem';
 import React, { useEffect, useState } from 'react';
 import { SVGIcons } from 'src/common-ui/icons.enum';
 import RotatingLogoComponent from 'src/common-ui/rotating-logo/rotating-logo.component';
@@ -75,6 +75,7 @@ const Portfolio = () => {
         extendedAccounts,
         onCreatingPortfolioProgress,
       );
+
       setTableColumnsHeaders(orderedTokenList as string[]);
       setPortfolioData(portfolio as UserPortfolio[]);
 

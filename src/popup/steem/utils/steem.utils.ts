@@ -1,6 +1,8 @@
-import { Asset, ExtendedAccount, Price } from '@hiveio/dhive';
 import * as steem from '@hiveio/hive-js';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { ExtendedAccount, Price } from '@steempro/dsteem';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
+
 import {
   GlobalProperties,
   RewardFund,
@@ -16,7 +18,7 @@ const getAccountPrice = async () => {
     'condenser_api.get_chain_properties',
     [],
   );
-  return Asset.fromString(price.account_creation_fee.toString()).amount;
+  return CommonAsset.fromString(price.account_creation_fee.toString()).amount;
 };
 
 const getVP = (account: ExtendedAccount) => {

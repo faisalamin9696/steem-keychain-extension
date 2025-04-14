@@ -1,4 +1,3 @@
-import { AuthorityType } from '@hiveio/dhive';
 import { TransactionOptions } from '@interfaces/keys.interface';
 import {
   addToLoadingList,
@@ -17,6 +16,7 @@ import { setAccounts } from '@popup/steem/actions/account.actions';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import ActiveAccountUtils from '@popup/steem/utils/active-account.utils';
 import { Screen } from '@reference-data/screen.enum';
+import { AuthorityType } from '@steempro/dsteem';
 import React from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { ConfirmationPageParams } from 'src/common-ui/confirmation-page/confirmation-page.component';

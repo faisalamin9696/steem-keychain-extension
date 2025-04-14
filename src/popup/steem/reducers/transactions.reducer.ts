@@ -16,7 +16,7 @@ const TransactionReducer = (
       return {
         ...state,
         list: ArrayUtils.mergeWithoutDuplicate(state.list, payload![0], 'key'),
-        lastUsedStart: payload![1],
+        lastUsedStart: payload![0][payload![0].length - 1].txId,
       };
     default:
       return state;

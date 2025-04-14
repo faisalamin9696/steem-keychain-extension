@@ -37,41 +37,43 @@ const TutorialPopup = () => {
     setShow(false);
   };
 
-  if (!show) return null;
-  else
-    return (
-      <PopupContainer data-testid="tutorial-popup" className="tutorial">
-        <div className="popup-title">
-          {chrome.i18n.getMessage('popup_html_tutorial_popup_title')}
-        </div>
+  // if (!show) return null;
 
-        <SVGIcon className="image" icon={SVGIcons.KEYCHAIN_LOGO_SPLASHSCREEN} />
+  return null;
 
-        <div
-          className="sub-title"
-          dangerouslySetInnerHTML={{
-            __html: chrome.i18n.getMessage(
-              'popup_html_tutorial_popup_description',
-            ),
-          }}></div>
-        <div className="popup-footer">
-          <div className="buttons-container">
-            <ButtonComponent
-              label="popup_html_tutorial_popup_skip_label"
-              type={ButtonType.ALTERNATIVE}
-              onClick={() => handleClick('skip')}
-              additionalClass="button"
-            />
-            <ButtonComponent
-              label="popup_html_tutorial_popup_show_label"
-              type={ButtonType.IMPORTANT}
-              onClick={() => handleClick('show')}
-              additionalClass="button"
-            />
-          </div>
+  return (
+    <PopupContainer data-testid="tutorial-popup" className="tutorial">
+      <div className="popup-title">
+        {chrome.i18n.getMessage('popup_html_tutorial_popup_title')}
+      </div>
+
+      <SVGIcon className="image" icon={SVGIcons.KEYCHAIN_LOGO_SPLASHSCREEN} />
+
+      <div
+        className="sub-title"
+        dangerouslySetInnerHTML={{
+          __html: chrome.i18n.getMessage(
+            'popup_html_tutorial_popup_description',
+          ),
+        }}></div>
+      <div className="popup-footer">
+        <div className="buttons-container">
+          <ButtonComponent
+            label="popup_html_tutorial_popup_skip_label"
+            type={ButtonType.ALTERNATIVE}
+            onClick={() => handleClick('skip')}
+            additionalClass="button"
+          />
+          <ButtonComponent
+            label="popup_html_tutorial_popup_show_label"
+            type={ButtonType.IMPORTANT}
+            onClick={() => handleClick('show')}
+            additionalClass="button"
+          />
         </div>
-      </PopupContainer>
-    );
+      </div>
+    </PopupContainer>
+  );
 };
 
 export const TutorialPopupComponent = TutorialPopup;

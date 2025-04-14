@@ -452,7 +452,7 @@
     "description": "on import / export settings"
   },
   "popup_html_about_text": {
-    "message": "<ul><li><span class='text'>This Steem Keychain is a forked version of Hive Keychain by <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a>, configured and maintained by <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a>, a Steem witness.</span></li><div class='separator horizontal'></div><li><span class='text'>Besides this extension, we provide a feature rich steem interface <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> and various Steem tools.</span></li><div class='separator horizontal'></div><li><span class='text'>For more information on our products (browser extensions), visit our <a href='https://steempro.com' target='__blank'>landing page</a>.</span></li></ul>",
+    "message": "<ul><li><span class='text'>Steem Keychain is configured and maintained by <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a>, a Steem witness. This Steem Keychain is a forked version of Hive Keychain by <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a>.</span></li><div class='separator horizontal'></div><li><span class='text'>Besides this extension, we provide a feature rich steem interface <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> and various Steem tools.</span></li><div class='separator horizontal'></div><li><span class='text'>For more information on our products (browser extensions), visit our <a href='https://steempro.com' target='__blank'>landing page</a>.</span></li></ul>",
     "description": "on about keychain"
   },
   "popup_html_delete_account": {
@@ -2415,6 +2415,10 @@
     "message": "Claimed account",
     "description": "Wallet information claim account"
   },
+  "popup_html_wallet_info_producer_reward": {
+    "message": "Producer reward $1",
+    "description": "Wallet information producer reward"
+  },
   "popup_html_wallet_info_deposit_savings": {
     "message": "Deposit of $1 into savings",
     "description": "Wallet information deposit savings"
@@ -2650,7 +2654,7 @@
     "description": "delegate token title"
   },
   "popup_html_load_more": {
-    "message": "Click to load more",
+    "message": "Load more",
     "description": "on wallet history"
   },
   "popup_html_transaction_list_is_empty": {

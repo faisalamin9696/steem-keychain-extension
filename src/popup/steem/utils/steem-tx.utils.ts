@@ -1,14 +1,12 @@
 import { BackgroundMessage } from '@background/background-message.interface';
 import { MultisigModule } from '@background/multisig.module';
-import { ExtendedAccount, Operation, Transaction } from '@hiveio/dhive';
-import { sleep } from '@hiveio/dhive/lib/utils';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { MultisigRequestSignatures } from '@interfaces/multisig.interface';
 import { Rpc } from '@interfaces/rpc.interface';
 import {
-  HiveTxBroadcastErrorResponse,
-  HiveTxBroadcastResult,
-  HiveTxBroadcastSuccessResponse,
+  SteemTxBroadcastErrorResponse,
+  SteemTxBroadcastResult,
+  SteemTxBroadcastSuccessResponse,
   TransactionResult,
 } from '@interfaces/steem-tx.interface';
 import AccountUtils from '@popup/steem/utils/account.utils';
@@ -18,13 +16,18 @@ import MkUtils from '@popup/steem/utils/mk.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import { ExtendedAccount, Operation, Transaction } from '@steempro/dsteem';
+import { sleep } from '@steempro/dsteem/lib/utils';
 import {
-  Transaction as HiveTransaction,
-  config as HiveTxConfig,
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
+import {
   PrivateKey,
+  Transaction as SteemTransaction,
+  config as SteemTxConfig,
   call,
-} from 'hive-tx';
+} from '@steempro/steem-tx-js';
 import Config from 'src/config';
 import { KeychainError } from 'src/keychain-error';
 import Logger from 'src/utils/logger.utils';
@@ -34,9 +37,9 @@ const MINUTE = 60;
 // default values that are already defined in config.js
 
 const setRpc = async (rpc: Rpc) => {
-  HiveTxConfig.node = rpc.uri === 'DEFAULT' ? DefaultRpcs[0].uri : rpc.uri;
+  SteemTxConfig.node = rpc.uri === 'DEFAULT' ? DefaultRpcs[0].uri : rpc.uri;
   if (rpc.chainId) {
-    HiveTxConfig.chain_id = rpc.chainId;
+    SteemTxConfig.chain_id = rpc.chainId;
   }
 };
 const sendOperation = async (
@@ -45,6 +48,15 @@ const sendOperation = async (
   confirmation?: boolean,
   options?: TransactionOptions,
 ): Promise<TransactionResult | null> => {
+  operations.forEach((operation) => {
+    const expiration = operation[1]?.expiration;
+    if (expiration && typeof expiration === 'number') {
+      operation[1].expiration = new Date(expiration * 1000)
+        .toISOString()
+        .split('.')[0];
+    }
+  });
+
   const transactionResult =
     await SteemTxUtils.createSignAndBroadcastTransaction(
       operations,
@@ -74,8 +86,8 @@ const sendOperation = async (
 };
 
 const createTransaction = async (operations: Operation[]) => {
-  let hiveTransaction = new HiveTransaction();
-  const tx = await hiveTransaction.create(
+  let steemTransaction = new SteemTransaction();
+  const tx = await steemTransaction.create(
     operations,
     Config.transactions.expirationTimeInMinutes * MINUTE,
   );
@@ -87,9 +99,9 @@ const createSignAndBroadcastTransaction = async (
   operations: Operation[],
   key: Key,
   options?: TransactionOptions,
-): Promise<HiveTxBroadcastResult | undefined> => {
-  let hiveTransaction = new HiveTransaction();
-  let transaction = await hiveTransaction.create(
+): Promise<SteemTxBroadcastResult | undefined> => {
+  let steemTransaction = new SteemTransaction();
+  let transaction = await steemTransaction.create(
     operations,
     Config.transactions.expirationTimeInMinutes * MINUTE,
   );
@@ -121,7 +133,7 @@ const createSignAndBroadcastTransaction = async (
   );
 
   if (isUsingMultisig) {
-    transaction = await hiveTransaction.create(
+    transaction = await steemTransaction.create(
       operations,
       Config.transactions.multisigExpirationTimeInMinutes * MINUTE,
     );
@@ -145,7 +157,7 @@ const createSignAndBroadcastTransaction = async (
           status: response as string,
           tx_id: '',
           isUsingMultisig: true,
-        } as HiveTxBroadcastResult;
+        } as SteemTxBroadcastResult;
       }
     } catch (err) {
       response = await useMultisigThroughBackgroundOnly(
@@ -164,14 +176,14 @@ const createSignAndBroadcastTransaction = async (
           status: 'ok' as string,
           tx_id: response,
           isUsingMultisig: true,
-        } as HiveTxBroadcastResult;
+        } as SteemTxBroadcastResult;
       }
     }
   } else {
     try {
       const privateKey = PrivateKey.fromString(key!.toString());
 
-      hiveTransaction.sign(privateKey);
+      steemTransaction.sign(privateKey);
     } catch (err) {
       Logger.error(err);
       throw new Error('html_popup_error_while_signing_transaction');
@@ -179,19 +191,19 @@ const createSignAndBroadcastTransaction = async (
   }
   let response;
   try {
-    response = await hiveTransaction.broadcast();
+    response = await steemTransaction.broadcast();
 
-    if ((response as HiveTxBroadcastSuccessResponse).result) {
-      const result = (response as HiveTxBroadcastSuccessResponse).result;
+    if ((response as SteemTxBroadcastSuccessResponse).result) {
+      const result = (response as SteemTxBroadcastSuccessResponse).result;
       return {
-        ...result,
+        ...result, 
       };
     }
   } catch (err) {
     Logger.error(err);
     throw new Error('html_popup_error_while_broadcasting');
   }
-  response = response as HiveTxBroadcastErrorResponse;
+  response = response as SteemTxBroadcastErrorResponse;
   if (response.error) {
     Logger.error('Error during broadcast', response.error);
     throw ErrorUtils.parse(response.error);
@@ -209,7 +221,7 @@ const confirmTransaction = async (transactionId: string) => {
 };
 
 const signTransaction = async (tx: Transaction, key: Key) => {
-  const hiveTransaction = new HiveTransaction(tx);
+  const hiveTransaction = new SteemTransaction(tx);
   try {
     const privateKey = PrivateKey.fromString(key!.toString());
     return hiveTransaction.sign(privateKey);
@@ -224,7 +236,7 @@ const broadcastAndConfirmTransactionWithSignature = async (
   signature: string | string[],
   confirmation?: boolean,
 ): Promise<TransactionResult | undefined> => {
-  let hiveTransaction = new HiveTransaction(transaction);
+  let hiveTransaction = new SteemTransaction(transaction);
   if (typeof signature === 'string') {
     hiveTransaction.addSignature(signature);
   } else {
@@ -236,9 +248,9 @@ const broadcastAndConfirmTransactionWithSignature = async (
   try {
     Logger.log(hiveTransaction);
     response = await hiveTransaction.broadcast();
-    if ((response as HiveTxBroadcastSuccessResponse).result) {
-      const transactionResult: HiveTxBroadcastResult = (
-        response as HiveTxBroadcastSuccessResponse
+    if ((response as SteemTxBroadcastSuccessResponse).result) {
+      const transactionResult: SteemTxBroadcastResult = (
+        response as SteemTxBroadcastSuccessResponse
       ).result;
       return {
         id: transactionResult.tx_id,
@@ -252,7 +264,7 @@ const broadcastAndConfirmTransactionWithSignature = async (
     Logger.error(err);
     throw new Error('html_popup_error_while_broadcasting');
   }
-  response = response as HiveTxBroadcastErrorResponse;
+  response = response as SteemTxBroadcastErrorResponse;
   if (response.error) {
     Logger.error('Error during broadcast', response.error);
     throw ErrorUtils.parse(response.error);

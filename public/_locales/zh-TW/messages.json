@@ -320,7 +320,7 @@
     "description": "on import / export settings"
   },
   "popup_html_about_text": {
-    "message": "<ul><li><span class='text'>此 Steem Keychain 是基於 Hive Keychain 的分叉版本，由 <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a> 開發，並由 <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a> 負責配置和維護，他是 Steem 見證人。</span></li><div class='separator horizontal'></div><li><span class='text'>除了這個擴展，我們還提供功能豐富的 Steem 介面 <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> 以及各種 Steem 工具。</span></li><div class='separator horizontal'></div><li><span class='text'>有關我們的產品（瀏覽器擴展）的更多資訊，請訪問我們的 <a href='https://steempro.com' target='__blank'>首頁</a>。</span></li></ul>",
+    "message": "<ul><li><span class='text'>Steem Keychain 由 <a href=\"https://steempro.com/@faisalamin\" target=\"_blank\">@faisalamin</a> 配置和維護，他是 Steem 見證人。此 Steem Keychain 是 <a href=\"https://hive.blog/@stoodkev\" target=\"_blank\">@stoodkev</a> 開發的 Hive Keychain 的分支版本。</span></li><div class='separator horizontal'></div><li><span class='text'>除了此擴展程式，我們還提供功能豐富的 Steem 介面 <a href=\"https://steempro.com\" target=\"_blank\">SteemPro</a> 以及各種 Steem 工具。</span></li><div class='separator horizontal'></div><li><span class='text'>要了解更多關於我們的產品（瀏覽器擴展），請訪問我們的 <a href='https://steempro.com' target='__blank'>官網</a>。</span></li></ul>",
     "description": "on about keychain"
   },
   "popup_html_delete_account": {
@@ -1902,6 +1902,10 @@
   "popup_html_wallet_info_claim_account": {
     "message": "領取帳號",
     "description": "Wallet information claim account"
+  },
+  "popup_html_wallet_info_producer_reward": {
+    "message": "生產者獎勵 $1",
+    "description": "Wallet information producer reward"
   },
   "popup_html_wallet_info_deposit_savings": {
     "message": "將 $1存入儲蓄",

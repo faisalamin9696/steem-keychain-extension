@@ -23,8 +23,11 @@ import { replaceOldDomains } from '@popup/steem/utils/link';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import ProxyUtils from '@popup/steem/utils/proxy.utils';
 import WitnessUtils from '@popup/steem/utils/witness.utils';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import FlatList from 'flatlist-react';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import 'react-tabs/style/react-tabs.scss';
@@ -316,7 +319,9 @@ const WitnessTab = ({
       <div
         data-testid="link-to-arcange"
         onClick={() =>
-          chrome.tabs.create({ url: 'https://steempro.com/witnesses#faisalamin' })
+          chrome.tabs.create({
+            url: 'https://steempro.com/witnesses#faisalamin',
+          })
         }
         className="link-to-arcange">
         <div>

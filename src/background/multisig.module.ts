@@ -5,8 +5,6 @@ import {
 import MkModule from '@background/mk.module';
 import BgdAccountsUtils from '@background/utils/accounts.utils';
 import { waitUntilDialogIsReady } from '@background/utils/window.utils';
-import { SignedTransaction } from '@hiveio/dhive';
-import { sleep } from '@hiveio/dhive/lib/utils';
 import { TransactionOptionsMetadata } from '@interfaces/keys.interface';
 import {
   ConnectDisconnectMessage,
@@ -38,7 +36,12 @@ import {
   MultisigDialogCommand,
 } from '@reference-data/dialog-message-key.enum';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import { SignedTransaction } from '@steempro/dsteem';
+import { sleep } from '@steempro/dsteem/lib/utils';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import { Socket, io } from 'socket.io-client';
 import Config from 'src/config';
 import LocalStorageUtils from 'src/utils/localStorage.utils';

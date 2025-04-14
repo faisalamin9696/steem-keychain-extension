@@ -6,8 +6,8 @@ const path = require('path');
 
 const config = {
   entry: {
-    hiveTx: 'hive-tx',
-    popup: { import: './src/popup/index.tsx', dependOn: 'hiveTx' },
+    steemTx: '@steempro/steem-tx-js',
+    popup: { import: './src/popup/index.tsx', dependOn: 'steemTx' },
     dialog: './src/dialog/index.tsx',
     background: './src/background/index.ts',
     importAccounts: './src/import/import-accounts.tsx',

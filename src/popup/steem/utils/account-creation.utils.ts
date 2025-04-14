@@ -1,14 +1,14 @@
+import { Key, TransactionOptions } from '@interfaces/keys.interface';
+import { LocalAccount } from '@interfaces/local-account.interface';
+import AccountUtils from '@popup/steem/utils/account.utils';
+import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import {
   AccountCreateOperation,
   AuthorityType,
   ChangeRecoveryAccountOperation,
   CreateClaimedAccountOperation,
   PrivateKey,
-} from '@hiveio/dhive';
-import { Key, TransactionOptions } from '@interfaces/keys.interface';
-import { LocalAccount } from '@interfaces/local-account.interface';
-import AccountUtils from '@popup/steem/utils/account.utils';
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+} from '@steempro/dsteem';
 
 export enum AccountCreationType {
   USING_TICKET = 'USING_TICKET',

@@ -1,4 +1,3 @@
-import { Asset } from '@hiveio/dhive';
 import { Conversion } from '@interfaces/conversion.interface';
 import { navigateTo } from '@popup/multichain/actions/navigation.actions';
 import { RootState } from '@popup/multichain/store';
@@ -12,6 +11,7 @@ import {
 import { WalletInfoSectionItemComponent } from '@popup/steem/pages/app-container/home/wallet-info-section/wallet-info-section-item/wallet-info-section-item.component';
 import ActiveAccountUtils from '@popup/steem/utils/active-account.utils';
 import CurrencyUtils from '@popup/steem/utils/currency.utils';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { SVGIcons } from 'src/common-ui/icons.enum';
@@ -109,7 +109,7 @@ PropsFromRedux) => {
 
   useEffect(() => {
     const pendingSbdConversions = conversions.filter((conv: Conversion) => {
-      return Asset.fromString(conv.amount).symbol === 'SBD';
+      return CommonAsset.fromString(conv.amount).symbol === 'SBD';
     });
     if (pendingSbdConversions.length > 0) {
       // setHbdRowInfoContent(
@@ -121,7 +121,7 @@ PropsFromRedux) => {
     }
 
     const pendingHiveConversions = conversions.filter((conv: Conversion) => {
-      return Asset.fromString(conv.amount).symbol === 'STEEM';
+      return CommonAsset.fromString(conv.amount).symbol === 'STEEM';
     });
 
     if (pendingHiveConversions.length > 0) {

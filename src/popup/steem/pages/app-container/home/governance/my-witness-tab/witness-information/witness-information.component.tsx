@@ -25,7 +25,10 @@ import WitnessUtils, {
   WITNESS_DISABLED_KEY,
 } from '@popup/steem/utils/witness.utils';
 import { Screen } from '@reference-data/screen.enum';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import 'react-tabs/style/react-tabs.scss';

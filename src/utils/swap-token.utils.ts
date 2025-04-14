@@ -1,5 +1,4 @@
 import { KeychainSwapApi } from '@api/keychain-swap';
-import { Asset, ExtendedAccount } from '@hiveio/dhive';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import { TransactionOptions } from '@interfaces/keys.interface';
 import { SwapConfig, SwapServerStatus } from '@interfaces/swap-token.interface';
@@ -9,7 +8,14 @@ import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import TokensUtils from '@popup/steem/utils/tokens.utils';
 import TransferUtils from '@popup/steem/utils/transfer.utils';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
-import { IStep, ISwap, SwapStatus } from 'hive-keychain-commons';
+import { ExtendedAccount } from '@steempro/dsteem';
+import {
+  Asset as CommonAsset,
+  IStep,
+  ISwap,
+  SwapStatus,
+} from '@steempro/steem-keychain-commons';
+
 import FormatUtils from 'src/utils/format.utils';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
@@ -27,17 +33,17 @@ const getSwapTokenStartList = async (account: ExtendedAccount) => {
   //   b.symbol.toLowerCase() > a.symbol.toLowerCase() ? -1 : 1,
   // );
 
-  if (Asset.fromString(account.balance.toString()).amount > 0) {
+  if (CommonAsset.fromString(account.balance.toString()).amount > 0) {
     userTokenList.unshift({
       account: account.name,
-      balance: Asset.fromString(account.balance.toString()).amount.toString(),
+      balance: CommonAsset.fromString(account.balance.toString()).amount.toString(),
       symbol: BaseCurrencies.STEEM.toUpperCase(),
     } as TokenBalance);
   }
-  if (Asset.fromString(account.sbd_balance.toString()).amount > 0) {
+  if (CommonAsset.fromString(account.sbd_balance.toString()).amount > 0) {
     userTokenList.unshift({
       account: account.name,
-      balance: Asset.fromString(
+      balance: CommonAsset.fromString(
         account.sbd_balance.toString(),
       ).amount.toString(),
       symbol: BaseCurrencies.SBD.toUpperCase(),

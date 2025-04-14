@@ -33,7 +33,8 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      margin: 16px 0px;
+      // margin: 16px 0px;
+      padding: 8px;
 
       .submit-button {
         width: 120px !important;
@@ -105,6 +106,13 @@
           column-gap: 8px;
         }
       }
+      .filter-bottom-container {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+        width: 100%;
+        align-items: center;
+      }
     }
 
     &.filter-opened {
@@ -152,10 +160,10 @@
       @include small-card;
       height: 62px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       justify-content: center;
-      row-gap: 4px;
+      column-gap: 8px;
       font-size: 16px;
       cursor: pointer;
       .label {

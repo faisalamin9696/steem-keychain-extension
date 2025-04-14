@@ -343,6 +343,9 @@ const TransferFunds = ({
                   : SVGIcons.INPUT_DECRYPT
               }
             />
+            <div className="memo-status">
+              {watch('encrypted') ? 'Note: Memo encryption enabled' : ''}
+            </div>
           </div>
           <OperationButtonComponent
             dataTestId="send-transfer"

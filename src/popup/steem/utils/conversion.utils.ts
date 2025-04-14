@@ -1,8 +1,8 @@
-import { ConvertOperation } from '@hiveio/dhive';
 import { Conversion } from '@interfaces/conversion.interface';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { ConversionType } from '@popup/steem/pages/app-container/home/conversion/conversion-type.enum';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { ConvertOperation } from '@steempro/dsteem';
 
 const getConversionRequests = async (name: string): Promise<Conversion[]> => {
   const [sbdConversions] = await Promise.all([

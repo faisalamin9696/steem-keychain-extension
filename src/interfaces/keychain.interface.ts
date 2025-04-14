@@ -1,1 +1,1 @@
-export * from 'hive-keychain-commons/lib/interfaces/keychain';
+export * from '@steempro/steem-keychain-commons/lib/interfaces/keychain';

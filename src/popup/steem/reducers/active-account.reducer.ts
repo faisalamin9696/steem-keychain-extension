@@ -1,7 +1,7 @@
-import { ExtendedAccount } from '@hiveio/dhive';
 import { Keys } from '@interfaces/keys.interface';
 import { ActionPayload } from '@popup/multichain/actions/interfaces';
 import { SteemActionType } from '@popup/steem/actions/action-type.enum';
+import { ExtendedAccount } from '@steempro/dsteem';
 import { ActiveAccount, RC } from 'src/interfaces/active-account.interface';
 
 export const ActiveAccountReducer = (

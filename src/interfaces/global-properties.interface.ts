@@ -1,4 +1,4 @@
-import { DynamicGlobalProperties, Price } from '@hiveio/dhive';
+import { DynamicGlobalProperties, Price } from '@steempro/dsteem';
 
 export interface RewardFund {
   author_reward_curve: string;

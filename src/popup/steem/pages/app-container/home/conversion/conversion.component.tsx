@@ -1,4 +1,3 @@
-import { Asset } from '@hiveio/dhive';
 import { joiResolver } from '@hookform/resolvers/joi';
 import {
   KeychainKeyTypes,
@@ -23,6 +22,7 @@ import { fetchConversionRequests } from '@popup/steem/actions/conversion.actions
 import { ConversionType } from '@popup/steem/pages/app-container/home/conversion/conversion-type.enum';
 import { ConversionUtils } from '@popup/steem/utils/conversion.utils';
 import CurrencyUtils from '@popup/steem/utils/currency.utils';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
 import Joi from 'joi';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -107,7 +107,7 @@ const Conversion = ({
 
     setPendingConversions(conv);
     const total = conv.reduce((previous, current) => {
-      return previous + Asset.fromString(current.amount).amount;
+      return previous + CommonAsset.fromString(current.amount).amount;
     }, 0);
     setTotalPending(total);
   }, [conversions]);

@@ -1,4 +1,4 @@
-import { OperationName, VirtualOperationName } from '@hiveio/dhive';
+import { OperationName, VirtualOperationName } from '@steempro/dsteem';
 import moment from 'moment';
 
 export type NotificationOperationName = OperationName | VirtualOperationName;

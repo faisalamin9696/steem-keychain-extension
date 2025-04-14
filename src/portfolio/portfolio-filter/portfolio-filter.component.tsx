@@ -1,5 +1,5 @@
-import { ExtendedAccount } from '@hiveio/dhive';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
+import { ExtendedAccount } from '@steempro/dsteem';
 import React, { useEffect, useState } from 'react';
 import ButtonComponent from 'src/common-ui/button/button.component';
 import { SVGIcons } from 'src/common-ui/icons.enum';

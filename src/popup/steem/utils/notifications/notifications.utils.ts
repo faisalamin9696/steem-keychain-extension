@@ -1,10 +1,10 @@
-import { DynamicGlobalProperties } from '@hiveio/dhive';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import {
   Notification,
   NotificationType,
 } from '@interfaces/notifications.interface';
 import { PeakDNotificationsUtils } from '@popup/steem/utils/notifications/peakd-notifications.utils';
+import { DynamicGlobalProperties } from '@steempro/dsteem';
 
 const getNotifications = async (
   username: string,

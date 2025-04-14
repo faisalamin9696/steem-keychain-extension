@@ -17,7 +17,7 @@ import { DelegationType } from '@popup/steem/pages/app-container/home/delegation
 import { FavoriteUserUtils } from '@popup/steem/utils/favorite-user.utils';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import TokensUtils from '@popup/steem/utils/tokens.utils';
-import { KeychainKeyTypes } from 'hive-keychain-commons';
+import { KeychainKeyTypes } from '@steempro/steem-keychain-commons';
 import React, { useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import { ConfirmationPageParams } from 'src/common-ui/confirmation-page/confirmation-page.component';

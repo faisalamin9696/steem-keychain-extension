@@ -1,7 +1,3 @@
-import {
-  AccountWitnessVoteOperation,
-  WitnessUpdateOperation,
-} from '@hiveio/dhive';
 import { CurrencyPrices } from '@interfaces/bittrex.interface';
 import { GlobalProperties } from '@interfaces/global-properties.interface';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
@@ -14,6 +10,10 @@ import {
 import { GovernanceUtils } from '@popup/steem/utils/governance.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
+import {
+  AccountWitnessVoteOperation,
+  WitnessUpdateOperation,
+} from '@steempro/dsteem';
 import moment from 'moment';
 import Config from 'src/config';
 import FormatUtils from 'src/utils/format.utils';
@@ -204,7 +204,7 @@ const getWitnessInfo = async (
     ),
     blockMissed: resultFromBlockchain.total_missed,
     lastBlock: resultFromBlockchain.last_confirmed_block_num?.toString(),
-    lastBlockUrl: `https://steemdb.com/b/${resultFromBlockchain.last_confirmed_block_num}`,
+    lastBlockUrl: `https://steemdb.io/block/${resultFromBlockchain.last_confirmed_block_num}`,
     priceFeed: FormatUtils.fromNaiAndSymbol(
       resultFromBlockchain.sbd_exchange_rate.base,
     ),

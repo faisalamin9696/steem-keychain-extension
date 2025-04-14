@@ -226,7 +226,7 @@ const PowerUpDown = ({
               addToLoadingList('html_popup_power_down_operation');
               success = await PowerUtils.powerDown(
                 activeAccount.name!,
-                `${FormatUtils.fromHP(
+                `${FormatUtils.fromSP(
                   Number(form.amount).toFixed(3),
                   globalProperties.globals!,
                 ).toFixed(6)} VESTS`,
@@ -282,7 +282,7 @@ const PowerUpDown = ({
         try {
           let success = await PowerUtils.powerDown(
             activeAccount.name!,
-            `${FormatUtils.fromHP('0', globalProperties.globals!).toFixed(
+            `${FormatUtils.fromSP('0', globalProperties.globals!).toFixed(
               6,
             )} VESTS`,
             activeAccount.keys.active!,

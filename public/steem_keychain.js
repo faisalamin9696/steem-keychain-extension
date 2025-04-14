@@ -301,9 +301,9 @@ var steem_keychain = {
    * Requests to sign a transaction with a given authority
    * @example
    * // This example would be done much easier with requestBroadcast
-   * import dhive from '@hiveio/dhive';
+   * import dsteem from '@steempro/dsteem';
    *
-   * const client = new dhive.Client(['https://api.steemit.com', 'https://anyx.io', 'https://api.openhive.network']);
+   * const client = new dsteem.Client(['https://api.steemit.com', 'https://anyx.io', 'https://api.openhive.network']);
    * const keychain = window.steem_keychain;
    *
    * const props = await client.database.getDynamicGlobalProperties();

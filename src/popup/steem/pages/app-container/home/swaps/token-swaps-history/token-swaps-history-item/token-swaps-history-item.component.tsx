@@ -1,6 +1,6 @@
 import { setInfoMessage } from '@popup/multichain/actions/message.actions';
 import { RootState } from '@popup/multichain/store';
-import { ISwap, SwapStatus } from 'hive-keychain-commons';
+import { ISwap, SwapStatus } from '@steempro/steem-keychain-commons';
 import moment from 'moment';
 import { default as React, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';

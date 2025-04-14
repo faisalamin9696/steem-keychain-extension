@@ -1,6 +1,7 @@
-import { Asset, DynamicGlobalProperties } from '@hiveio/dhive';
 import { CurrencyPrices } from '@interfaces/bittrex.interface';
 import { GlobalProperties } from '@interfaces/global-properties.interface';
+import {  Asset, DynamicGlobalProperties } from '@steempro/dsteem';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
 
 const withCommas = (nb: string, decimals = 3, removeTrailingZeros = false) => {
   const currency = nb.split(' ')[1];
@@ -30,11 +31,11 @@ const toSP = (vests: string, props?: DynamicGlobalProperties) =>
       parseFloat(props.total_vesting_shares + '')
     : 0;
 
-const toFormattedHP = (vests: number, props?: DynamicGlobalProperties) => {
+const toFormattedSP = (vests: number, props?: DynamicGlobalProperties) => {
   return `${toSP(vests.toString(), props).toFixed(3)} SP`;
 };
 
-const fromHP = (sp: string, props: DynamicGlobalProperties) =>
+const fromSP = (sp: string, props: DynamicGlobalProperties) =>
   (parseFloat(sp) / parseFloat(props.total_vesting_fund_steem + '')) *
   parseFloat(props.total_vesting_shares + '');
 
@@ -117,7 +118,7 @@ const fromNaiAndSymbol = (obj: any) => {
 
 const getAmountFromNai = (obj: any) => {
   const res = fromNaiAndSymbol(obj);
-  return Asset.fromString(res).amount;
+  return CommonAsset.fromString(res).amount;
 };
 
 const removeHtmlTags = (str: string) => {
@@ -164,8 +165,8 @@ const getOrdinalLabelTranslation = (active_rank: string) => {
 const FormatUtils = {
   withCommas,
   toSP,
-  toFormattedHP,
-  fromHP,
+  toFormattedSP,
+  fromSP,
   formatCurrencyValue,
   nFormatter,
   hasMoreThanXDecimal,

@@ -1,10 +1,10 @@
+import { Key, TransactionOptions } from '@interfaces/keys.interface';
+import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import {
   CommentOperation,
   CommentOptionsOperation,
   VoteOperation,
-} from '@hiveio/dhive';
-import { Key, TransactionOptions } from '@interfaces/keys.interface';
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+} from '@steempro/dsteem';
 
 const vote = (
   voter: string,

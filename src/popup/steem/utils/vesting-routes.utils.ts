@@ -1,4 +1,3 @@
-import { SetWithdrawVestingRouteOperation } from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import {
@@ -9,6 +8,7 @@ import {
 } from '@interfaces/vesting-routes.interface';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
+import { SetWithdrawVestingRouteOperation } from '@steempro/dsteem';
 import _ from 'lodash';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';

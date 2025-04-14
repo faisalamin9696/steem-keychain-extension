@@ -1,4 +1,3 @@
-import { CustomJsonOperation } from '@hiveio/dhive';
 import { Key, TransactionOptions } from '@interfaces/keys.interface';
 import { TokenTransaction } from '@interfaces/tokens.interface';
 import { SteemEngineTransactionStatus } from '@interfaces/transaction-status.interface';
@@ -6,6 +5,7 @@ import { ErrorUtils } from '@popup/steem/utils/error.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import { SteemEngineConfigUtils } from '@popup/steem/utils/steemengine-config.utils';
 import { TokenRequestParams } from '@popup/steem/utils/token-request-params.interface';
+import { CustomJsonOperation } from '@steempro/dsteem';
 import { KeychainError } from 'src/keychain-error';
 
 const sendOperation = async (

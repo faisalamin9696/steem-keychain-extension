@@ -1,4 +1,4 @@
-import { KeychainRequest } from 'hive-keychain-commons';
+import { KeychainRequest } from '@steempro/steem-keychain-commons';
 import React from 'react';
 import ButtonComponent from 'src/common-ui/button/button.component';
 import { SVGIcons } from 'src/common-ui/icons.enum';

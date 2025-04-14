@@ -6,7 +6,10 @@ import { RootState } from '@popup/multichain/store';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { Screen } from '@reference-data/screen.enum';
-import { KeychainKeyTypes, KeychainKeyTypesLC } from 'hive-keychain-commons';
+import {
+  KeychainKeyTypes,
+  KeychainKeyTypesLC,
+} from '@steempro/steem-keychain-commons';
 import React, { BaseSyntheticEvent, useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import ButtonComponent, {

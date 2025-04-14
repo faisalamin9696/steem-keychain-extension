@@ -2,7 +2,7 @@ import { setInfoMessage } from '@popup/multichain/actions/message.actions';
 import { setTitleContainerProperties } from '@popup/multichain/actions/title-container.actions';
 import { RootState } from '@popup/multichain/store';
 import { TokenSwapsHistoryItemComponent } from '@popup/steem/pages/app-container/home/swaps/token-swaps-history/token-swaps-history-item/token-swaps-history-item.component';
-import { ISwap } from 'hive-keychain-commons';
+import { ISwap } from '@steempro/steem-keychain-commons';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
 import 'react-tabs/style/react-tabs.scss';

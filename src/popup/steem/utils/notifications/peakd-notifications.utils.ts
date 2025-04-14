@@ -1,5 +1,4 @@
 import { PeakDNotificationsApi } from '@api/peakd-notifications';
-import { Asset, DynamicGlobalProperties } from '@hiveio/dhive';
 import { ActiveAccount } from '@interfaces/active-account.interface';
 import { KeyType } from '@interfaces/keys.interface';
 import { LocalAccount } from '@interfaces/local-account.interface';
@@ -13,6 +12,9 @@ import {
   NotificationType,
 } from '@interfaces/notifications.interface';
 import { CustomJsonUtils } from '@popup/steem/utils/custom-json.utils';
+import { DynamicGlobalProperties } from '@steempro/dsteem';
+import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
+
 import moment from 'moment';
 import FormatUtils from 'src/utils/format.utils';
 
@@ -695,11 +697,11 @@ const getNotifications = async (
         break;
       }
       case 'delegate_vesting_shares': {
-        if (Asset.fromString(payload.vesting_shares).amount > 0) {
+        if (CommonAsset.fromString(payload.vesting_shares).amount > 0) {
           message = 'notification_delegation';
           messageParams = [
             payload.delegator,
-            FormatUtils.toFormattedHP(
+            FormatUtils.toFormattedSP(
               payload.vesting_shares.toString().replace('VESTS', ''),
               globalProperties,
             ),
@@ -762,7 +764,7 @@ const getNotifications = async (
       case 'withdraw_vesting': {
         message = 'bgd_ops_pd';
         messageParams = [
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.vesting_shares.toString().replace('VESTS', ''),
             globalProperties,
           ),
@@ -797,7 +799,7 @@ const getNotifications = async (
           payload.author,
           FormatUtils.withCommas(payload.sbd_payout, 3),
           FormatUtils.withCommas(payload.steem_payout, 3),
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.vesting_payout.toString().replace('VESTS', ''),
             globalProperties,
           ),
@@ -811,7 +813,7 @@ const getNotifications = async (
         message = 'notification_curation_reward';
         messageParams = [
           payload.curator,
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.reward.toString().replace('VESTS', ''),
             globalProperties,
           ),
@@ -844,7 +846,7 @@ const getNotifications = async (
           message = 'notification_fill_power_down';
           messageParams = [
             payload.to_account,
-            FormatUtils.toFormattedHP(
+            FormatUtils.toFormattedSP(
               payload.withdrawn.toString().replace('VESTS', ''),
               globalProperties,
             ),
@@ -853,7 +855,7 @@ const getNotifications = async (
           message = 'notification_fill_power_down_other_account';
           messageParams = [
             payload.to_account,
-            FormatUtils.toFormattedHP(
+            FormatUtils.toFormattedSP(
               payload.withdrawn.toString().replace('VESTS', ''),
               globalProperties,
             ),
@@ -888,7 +890,7 @@ const getNotifications = async (
         message = 'notification_returned_vesting_delegation';
         messageParams = [
           payload.account,
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.vesting_shares.toString().replace('VESTS', ''),
             globalProperties,
           ),
@@ -901,7 +903,7 @@ const getNotifications = async (
           payload.benefactor,
           FormatUtils.withCommas(payload.sbd_payout, 3),
           FormatUtils.withCommas(payload.steem_payout, 3),
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.vesting_payout.toString().replace('VESTS', ''),
             globalProperties,
           ),
@@ -915,7 +917,7 @@ const getNotifications = async (
         message = 'notification_producer_reward';
         messageParams = [
           payload.producer,
-          FormatUtils.toFormattedHP(
+          FormatUtils.toFormattedSP(
             payload.vesting_shares.toString().replace('VESTS', ''),
             globalProperties,
           ),

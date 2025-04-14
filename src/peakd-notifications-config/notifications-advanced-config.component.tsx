@@ -1,4 +1,3 @@
-import { OperationName, VirtualOperationName } from '@hiveio/dhive';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import { Message } from '@interfaces/message.interface';
 import {
@@ -16,6 +15,7 @@ import { Theme } from '@popup/theme.context';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
 import { MessageType } from '@reference-data/message-type.enum';
 import { Screen } from '@reference-data/screen.enum';
+import { OperationName, VirtualOperationName } from '@steempro/dsteem';
 import React, { useEffect, useRef, useState } from 'react';
 import { BackToTopButton } from 'src/common-ui/back-to-top-button/back-to-top-button.component';
 import ButtonComponent, {
