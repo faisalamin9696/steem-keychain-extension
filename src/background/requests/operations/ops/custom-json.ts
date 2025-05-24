@@ -18,7 +18,7 @@ export const broadcastCustomJson = async (
 ) => {
   let key = requestHandler.data.key;
   if (!key) {
-    [key] = requestHandler.getUserKeyPair(
+    [key] = await requestHandler.getUserKeyPair(
       data.username!,
       data.method.toLowerCase() as KeychainKeyTypesLC,
     ) as [string, string];

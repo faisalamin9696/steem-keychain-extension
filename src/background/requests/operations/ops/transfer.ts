@@ -1,6 +1,6 @@
 import { createMessage } from '@background/requests/operations/operations.utils';
 import { RequestsHandler } from '@background/requests/request-handler';
-import { encode } from '@hiveio/hive-js/lib/auth/memo';
+import { encode } from '@steemit/steem-js/lib/auth/memo';
 import {
   KeychainKeyTypesLC,
   RequestId,
@@ -22,9 +22,8 @@ export const broadcastTransfer = async (
     err_message = null;
   try {
     const { username, to } = data;
-    const memoKey: string = requestHandler.getUserKeyPair(
-      username!,
-      KeychainKeyTypesLC.memo,
+    const memoKey: string = (
+      await requestHandler.getUserKeyPair(username!, KeychainKeyTypesLC.memo)
     )[0];
     let memo = data.memo || '';
 

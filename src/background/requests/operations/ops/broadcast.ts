@@ -1,6 +1,6 @@
 import { createMessage } from '@background/requests/operations/operations.utils';
 import { RequestsHandler } from '@background/requests/request-handler';
-import { encode } from '@hiveio/hive-js/lib/auth/memo';
+import { encode } from '@steemit/steem-js/lib/auth/memo';
 import {
   KeychainKeyTypesLC,
   RequestBroadcast,
@@ -39,9 +39,11 @@ export const broadcastOperations = async (
           if (!receiver) {
             throw new KeychainError('bgd_ops_transfer_get_account', [op[1].to]);
           }
-          const memoKey: string = requestHandler.getUserKeyPair(
-            data.username!,
-            KeychainKeyTypesLC.memo,
+          const memoKey: string = (
+            await requestHandler.getUserKeyPair(
+              data.username!,
+              KeychainKeyTypesLC.memo,
+            )
           )[0];
           if (!memoKey) {
             throw new KeychainError('popup_html_memo_key_missing', []);

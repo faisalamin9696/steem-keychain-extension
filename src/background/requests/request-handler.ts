@@ -1,4 +1,3 @@
-import { AnalyticsModule } from '@background/analytics.module';
 import { BgdSteemEngineConfigModule } from '@background/hive-engine-config.module';
 import { removeWindow } from '@background/requests/dialog-lifecycle';
 import init from '@background/requests/init';
@@ -17,6 +16,7 @@ import { config } from '@steempro/steem-tx-js';
 import Config from 'src/config';
 
 import LocalStorageUtils from 'src/utils/localStorage.utils';
+import Logger from 'src/utils/logger.utils';
 
 if (!process.env.IS_FIREFOX && !global.window) {
   //@ts-ignore
@@ -66,6 +66,14 @@ export class RequestsHandler {
     preferences: NoConfirm,
   ) {
     this.data.accounts = accounts;
+
+    // set account to session storage : fixes private_key required
+    // @ts-ignore
+    LocalStorageUtils.saveValueInSessionStorage(
+      LocalStorageKeyEnum.ACCOUNTS,
+      accounts,
+    );
+
     this.data.rpc = rpc;
     await this.setupHiveEngine();
     this.data.preferences = preferences;
@@ -115,12 +123,21 @@ export class RequestsHandler {
     if (msg.request.rpc)
       this.data.rpc = { uri: msg.request.rpc, testnet: false };
     init(msg.request, this.data.tab, msg.domain, this);
-
-    AnalyticsModule.sendData(msg.request.type, msg.domain);
   }
 
-  getUserKeyPair(username: string, keyType: KeychainKeyTypesLC) {
+  async getUserKeyPair(username: string, keyType: KeychainKeyTypesLC) {
     const pubKey: string = `${keyType}Pubkey`;
+    if (!this.data.accounts)
+      try {
+        // check if accounts in session storage
+        this.data.accounts = await LocalStorageUtils.getValueFromSessionStorage(
+          LocalStorageKeyEnum.ACCOUNTS,
+        );
+      } catch (error) {}
+
+    // remove the accounts from session storage
+    LocalStorageUtils.removeFromSessionStorage(LocalStorageKeyEnum.ACCOUNTS);
+
     return [
       this.data.accounts?.find((e) => e.name === username)?.keys[keyType],
       //@ts-ignore

@@ -23,7 +23,7 @@ export const broadcastWitnessVote = async (
   try {
     let key = requestHandler.data.key;
     if (!key) {
-      [key] = requestHandler.getUserKeyPair(
+      [key] = await requestHandler.getUserKeyPair(
         data.username!,
         KeychainKeyTypesLC.active,
       ) as [string, string];

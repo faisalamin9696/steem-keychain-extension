@@ -21,10 +21,10 @@ export const broadcastProxy = async (
   try {
     let key = requestHandler.data.key;
     if (!key) {
-      [key] = requestHandler.getUserKeyPair(
+      [key] = (await requestHandler.getUserKeyPair(
         data.username!,
         KeychainKeyTypesLC.active,
-      ) as [string, string];
+      )) as [string, string];
     }
 
     switch (KeysUtils.getKeyType(key!)) {

@@ -1,4 +1,4 @@
-import * as steem from '@hiveio/hive-js';
+import * as steem from '@steemit/steem-js';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import { ExtendedAccount, Price } from '@steempro/dsteem';
 import { Asset as CommonAsset } from '@steempro/steem-keychain-commons';
@@ -7,7 +7,7 @@ import {
   GlobalProperties,
   RewardFund,
 } from 'src/interfaces/global-properties.interface';
-const signature = require('@hiveio/hive-js/lib/auth/ecc');
+const signature = require('@steemit/steem-js/lib/auth/ecc');
 
 const DEFAULT_RPC = 'https://api.steemit.com';
 const STEEM_VOTING_MANA_REGENERATION_SECONDS = 432000;

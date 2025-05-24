@@ -7,7 +7,7 @@ import {
 } from '@interfaces/keychain.interface';
 import { KeychainError } from 'src/keychain-error';
 import Logger from 'src/utils/logger.utils';
-const signature = require('@hiveio/hive-js/lib/auth/ecc');
+const signature = require('@steemit/steem-js/lib/auth/ecc');
 
 export type SignedBuffer = string;
 
@@ -23,10 +23,10 @@ export const signBuffer = async (
   try {
     let key = requestHandler.data.key;
     if (!key) {
-      [key, publicKey] = requestHandler.getUserKeyPair(
+      [key, publicKey] = (await requestHandler.getUserKeyPair(
         data.username!,
         data.method.toLowerCase() as KeychainKeyTypesLC,
-      ) as [string, string];
+      )) as [string, string];
     }
 
     signed = await signMessage(data.message, key!);
@@ -73,5 +73,6 @@ const signMessage = (message: string, privateKey: string): SignedBuffer => {
   } catch (e) {
     buf = message;
   }
+
   return signature.Signature.signBuffer(buf, privateKey).toHex();
 };

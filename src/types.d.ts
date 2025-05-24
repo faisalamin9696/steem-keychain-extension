@@ -1,8 +1,8 @@
 declare module 'sscjs';
-declare module '@hiveio/hive-js';
+declare module '@steemit/steem-js';
 declare module 'valid-url';
-declare module '@hiveio/hive-js/lib/auth/memo';
-declare module '@hiveio/hive-js/lib/auth';
+declare module '@steemit/steem-js/lib/auth/memo';
+declare module '@steemit/steem-js/lib/auth';
 interface Window {
   dataLayer: Array<any>;
   gtag: (a: string, b: any, c?: any) => void;

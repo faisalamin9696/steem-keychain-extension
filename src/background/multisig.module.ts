@@ -46,7 +46,7 @@ import { Socket, io } from 'socket.io-client';
 import Config from 'src/config';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
-const signature = require('@hiveio/hive-js/lib/auth/ecc');
+const signature = require('@steemit/steem-js/lib/auth/ecc');
 
 let socket: Socket;
 let shouldReconnectSocket: boolean = false;

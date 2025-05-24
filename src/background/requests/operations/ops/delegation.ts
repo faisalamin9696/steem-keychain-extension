@@ -19,10 +19,10 @@ export const broadcastDelegation = async (
 ) => {
   let key = requestHandler.data.key;
   if (!key) {
-    [key] = requestHandler.getUserKeyPair(
+    [key] = (await requestHandler.getUserKeyPair(
       data.username!,
       KeychainKeyTypesLC.active,
-    ) as [string, string];
+    )) as [string, string];
   }
   let result, err, err_message;
 
