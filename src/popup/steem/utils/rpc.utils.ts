@@ -88,36 +88,32 @@ const findRpc = async (uri: string) => {
   );
 };
 
-const checkRpcStatus = async (uri: string) => {
-  axios.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      throw new Error('RPC NOK ' + uri + ' ' + error);
-    },
-  );
+const checkRpcStatus = async (uri: string): Promise<boolean> => {
   try {
-    const result = await SteemTxUtils.getData('condenser_api.get_config', []);
-    if (result?.STEEM_ADDRESS_PREFIX) {
+    const url = ['DEFAULT', 'https://api.steemit.com'].includes(uri)
+      ? 'https://api.steemit.com'
+      : uri;
+
+    const response = await axios.post(
+      url,
+      {
+        jsonrpc: '2.0',
+        method: 'condenser_api.get_config',
+        params: [],
+        id: 1,
+      },
+      {
+        timeout: 10000,
+      },
+    );
+
+    if (response?.data?.result?.STEEM_ADDRESS_PREFIX) {
       return true;
     }
-    return false;
 
-    // const result = await axios.get(
-    //   ['DEFAULT', 'https://api.steemit.com'].includes(uri)
-    //     ? 'https://api.steemit.com'
-    //     : `${uri}/health`,
-    //   {
-    //     timeout: 10000,
-    //   },
-    // );
-    // if (result?.data?.error) {
-    //   return false;
-    // }
-    // return true;
+    return false;
   } catch (err) {
-    Logger.error('error', err);
+    console.error('RPC NOK', uri, err);
     return false;
   }
 };
