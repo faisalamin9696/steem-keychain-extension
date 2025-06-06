@@ -1,3 +1,4 @@
+import RPCModule from '@background/rpc.module';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import {
   addToLoadingList,
@@ -48,6 +49,12 @@ const CreateAccountStepTwo = ({
   const [masterKey, setMasterKey] = useState('');
   const [generatedKeys, setGeneratedKeys] = useState(emptyKeys);
   const [keysTextVersion, setKeysTextVersion] = useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [isConfirmed, setIsConfirmed] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [addressPrefix, setAddressPrefix] = useState('STM');
 
   const accountName = navParams?.newUsername;
   const price = navParams?.price;
@@ -61,9 +68,16 @@ const CreateAccountStepTwo = ({
 
   useEffect(() => {
     setTitleContainerProperties({
-      title: 'popup_html_create_account',
+      title: 'popup_accounts_create_new_account',
       isBackButtonEnabled: true,
     });
+    
+    // Initialize address prefix from storage
+    const initAddressPrefix = async () => {
+      const prefix = await RPCModule.getCurrentAddressPrefixFromStorage();
+      setAddressPrefix(prefix);
+    };
+    initAddressPrefix();
     generateMasterKey();
   }, []);
 
@@ -80,22 +94,22 @@ const CreateAccountStepTwo = ({
     setGeneratedKeys({
       owner: {
         private: owner.toString(),
-        public: owner.createPublic().toString(),
+        public: owner.createPublic(addressPrefix).toString(),
       },
       active: {
         private: active.toString(),
-        public: active.createPublic().toString(),
+        public: active.createPublic(addressPrefix).toString(),
       },
       posting: {
         private: posting.toString(),
-        public: posting.createPublic().toString(),
+        public: posting.createPublic(addressPrefix).toString(),
       },
       memo: {
         private: memo.toString(),
-        public: memo.createPublic().toString(),
+        public: memo.createPublic(addressPrefix).toString(),
       },
     });
-  }, [masterKey]);
+  }, [masterKey, addressPrefix]);
 
   useEffect(() => {
     if (masterKey.length) {
