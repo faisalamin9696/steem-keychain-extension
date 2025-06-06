@@ -1,10 +1,8 @@
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import axios from 'axios';
 import { Rpc } from 'src/interfaces/rpc.interface';
 import { DefaultRpcs } from 'src/reference-data/default-rpc.list';
 import { LocalStorageKeyEnum } from 'src/reference-data/local-storage-key.enum';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
-import Logger from 'src/utils/logger.utils';
 
 const getFullList = (): Rpc[] => {
   return DefaultRpcs.map((rpc: Rpc) => {
@@ -113,7 +111,7 @@ const checkRpcStatus = async (uri: string): Promise<boolean> => {
 
     return false;
   } catch (err) {
-    console.error('RPC NOK', uri, err);
+    //console.error('RPC NOK', uri, err);
     return false;
   }
 };
@@ -150,7 +148,7 @@ const RpcUtils = {
   saveCustomRpc,
   deleteCustomRpc,
   findRpc,
-  checkRpcStatus,
+  checkRpcStatus
 };
 
 export default RpcUtils;

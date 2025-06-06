@@ -41,6 +41,9 @@ const setRpc = async (rpc: Rpc) => {
   if (rpc.chainId) {
     SteemTxConfig.chain_id = rpc.chainId;
   }
+  if (rpc.addressPrefix) {
+    SteemTxConfig.address_prefix = rpc.addressPrefix;
+  }
 };
 const sendOperation = async (
   operations: Operation[],
