@@ -151,7 +151,7 @@ const createSignAndBroadcastTransaction = async (
                   operations,
                   extensions: []
               },
-              { active: key },
+              { [method.toLowerCase()]: key },
               (err: any, res: any) => {
                   if (err) {
                       reject(err);
@@ -164,7 +164,7 @@ const createSignAndBroadcastTransaction = async (
       return {
         status: 'ok' as string,
         tx_id: (result && (result as any).id) ? (result as any).id : '',
-        isUsingMultisig: false,
+        isUsingMultisig: false
       } as SteemTxBroadcastResult;
     } catch (error) {
       Logger.error(error);
@@ -196,6 +196,7 @@ const createSignAndBroadcastTransaction = async (
           status: response as string,
           tx_id: '',
           isUsingMultisig: true,
+          keyType: method,
         } as SteemTxBroadcastResult;
       }
     } catch (err) {
@@ -215,6 +216,7 @@ const createSignAndBroadcastTransaction = async (
           status: 'ok' as string,
           tx_id: response,
           isUsingMultisig: true,
+          keyType: method,
         } as SteemTxBroadcastResult;
       }
     }
