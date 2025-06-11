@@ -16,7 +16,7 @@ import MkUtils from '@popup/steem/utils/mk.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
-import { Client, PrivateKey as DsteemPrivateKey } from 'dsteem';
+import * as steem from '@steemit/steem-js';
 
 import { ExtendedAccount, Operation, Transaction } from '@steempro/dsteem';
 import { sleep } from '@steempro/dsteem/lib/utils';
@@ -139,14 +139,31 @@ const createSignAndBroadcastTransaction = async (
 
   if(SteemTxConfig.address_prefix !== 'STM') {
     try {
-      const client = new Client(SteemTxConfig.node.toString(), {chainId:SteemTxConfig.chain_id,addressPrefix:SteemTxConfig.address_prefix});
-      const result = await client.broadcast.sendOperations(
-        operations as any,
-        DsteemPrivateKey.fromString(key!.toString())
-    );
+        steem.api.setOptions({
+          url: SteemTxConfig.node.toString(),
+          address_prefix: SteemTxConfig.address_prefix,
+          chain_id: SteemTxConfig.chain_id,
+          useAppbaseApi: true
+        });
+        const result = await new Promise((resolve, reject) => {
+        steem.broadcast.send(
+              {
+                  operations,
+                  extensions: []
+              },
+              { active: key },
+              (err: any, res: any) => {
+                  if (err) {
+                      reject(err);
+                  } else {
+                      resolve(res);
+                  }
+              }
+          );
+      });
       return {
         status: 'ok' as string,
-        tx_id: result.id,
+        tx_id: (result && (result as any).id) ? (result as any).id : '',
         isUsingMultisig: false,
       } as SteemTxBroadcastResult;
     } catch (error) {
