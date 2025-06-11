@@ -29,7 +29,6 @@ import { ConnectedProps, connect } from 'react-redux';
 import { LocalAccount } from 'src/interfaces/local-account.interface';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
-import { VersionLogUtils } from 'src/utils/version-log.utils';
 import { WhatsNewUtils } from 'src/utils/whats-new.utils';
 
 const Home = ({
@@ -57,9 +56,16 @@ const Home = ({
       refreshActiveAccount();
     }
     initWhatsNew();
-    initCheckKeysOnAccounts(accounts);
     initCheckVestingRoutes();
   }, []);
+
+  useEffect(() => {
+    if (activeRpc && activeRpc.uri !== 'NULL' && accounts.length > 0) {
+      setTimeout(() => {
+        initCheckKeysOnAccounts(accounts);
+      }, 1000);
+    }
+  }, [activeRpc, accounts]);
 
   const initWhatsNew = async () => {
     const lastVersionSeen = await LocalStorageUtils.getValueFromLocalStorage(

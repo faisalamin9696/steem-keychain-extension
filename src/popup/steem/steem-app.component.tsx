@@ -23,6 +23,7 @@ import { AddAccountRouterComponent } from '@popup/steem/pages/add-account/add-ac
 import { AppRouterComponent } from '@popup/steem/pages/app-container/app-router.component';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import ActiveAccountUtils from '@popup/steem/utils/active-account.utils';
+import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import RpcUtils from '@popup/steem/utils/rpc.utils';
 import React, { useEffect, useState } from 'react';
 import { ConnectedProps, connect } from 'react-redux';
@@ -32,7 +33,6 @@ import { SplashscreenComponent } from 'src/common-ui/splashscreen/splashscreen.c
 import Config from 'src/config';
 import { LocalAccount } from 'src/interfaces/local-account.interface';
 import { Screen } from 'src/reference-data/screen.enum';
-import { ColorsUtils } from 'src/utils/colors.utils';
 import { useWorkingRPC } from 'src/utils/rpc-switcher.utils';
 let rpc: string | undefined = '';
 const HiveApp = ({
@@ -123,6 +123,8 @@ const HiveApp = ({
   const initApplication = async () => {
     // ColorsUtils.downloadColors();
     loadCurrencyPrices();
+
+    await KeysUtils.initializePopupAddressPrefix();
 
     const storedAccounts = await AccountUtils.hasStoredAccounts();
 

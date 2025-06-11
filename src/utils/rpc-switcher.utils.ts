@@ -19,7 +19,7 @@ export const useWorkingRPC = async (activeRpc?: Rpc) => {
   )) {
     if (await RpcUtils.checkRpcStatus(rpc.uri)) {
       if (switchAuto) {
-        store.dispatch(setActiveRpc(rpc));
+        (store.dispatch as any)(setActiveRpc(rpc));
       } else {
         store.dispatch(setSwitchToRpc(rpc));
         store.dispatch(setDisplayChangeRpcPopup(true));

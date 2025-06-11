@@ -16,6 +16,8 @@ import MkUtils from '@popup/steem/utils/mk.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
+import * as steem from '@steemit/steem-js';
+
 import { ExtendedAccount, Operation, Transaction } from '@steempro/dsteem';
 import { sleep } from '@steempro/dsteem/lib/utils';
 import {
@@ -40,6 +42,9 @@ const setRpc = async (rpc: Rpc) => {
   SteemTxConfig.node = rpc.uri === 'DEFAULT' ? DefaultRpcs[0].uri : rpc.uri;
   if (rpc.chainId) {
     SteemTxConfig.chain_id = rpc.chainId;
+  }
+  if (rpc.addressPrefix) {
+    SteemTxConfig.address_prefix = rpc.addressPrefix;
   }
 };
 const sendOperation = async (
@@ -132,7 +137,41 @@ const createSignAndBroadcastTransaction = async (
     method.toLowerCase() as KeychainKeyTypesLC,
   );
 
-  if (isUsingMultisig) {
+  if(SteemTxConfig.address_prefix !== 'STM') {
+    try {
+        steem.api.setOptions({
+          url: SteemTxConfig.node.toString(),
+          address_prefix: SteemTxConfig.address_prefix,
+          chain_id: SteemTxConfig.chain_id,
+          useAppbaseApi: true
+        });
+        const result = await new Promise((resolve, reject) => {
+        steem.broadcast.send(
+              {
+                  operations,
+                  extensions: []
+              },
+              { [method.toLowerCase()]: key },
+              (err: any, res: any) => {
+                  if (err) {
+                      reject(err);
+                  } else {
+                      resolve(res);
+                  }
+              }
+          );
+      });
+      return {
+        status: 'ok' as string,
+        tx_id: (result && (result as any).id) ? (result as any).id : '',
+        isUsingMultisig: false
+      } as SteemTxBroadcastResult;
+    } catch (error) {
+      Logger.error(error);
+      throw new Error('html_popup_error_while_broadcasting');
+    }
+  }
+  else if (isUsingMultisig) {
     transaction = await steemTransaction.create(
       operations,
       Config.transactions.multisigExpirationTimeInMinutes * MINUTE,
@@ -157,6 +196,7 @@ const createSignAndBroadcastTransaction = async (
           status: response as string,
           tx_id: '',
           isUsingMultisig: true,
+          keyType: method,
         } as SteemTxBroadcastResult;
       }
     } catch (err) {
@@ -176,10 +216,12 @@ const createSignAndBroadcastTransaction = async (
           status: 'ok' as string,
           tx_id: response,
           isUsingMultisig: true,
+          keyType: method,
         } as SteemTxBroadcastResult;
       }
     }
-  } else {
+  } 
+  else {
     try {
       const privateKey = PrivateKey.fromString(key!.toString());
 
@@ -205,7 +247,7 @@ const createSignAndBroadcastTransaction = async (
   }
   response = response as SteemTxBroadcastErrorResponse;
   if (response.error) {
-    Logger.error('Error during broadcast', response.error);
+    Logger.error('Error during createSignAndBroadcastTransaction', response.error);
     throw ErrorUtils.parse(response.error);
   }
 };
