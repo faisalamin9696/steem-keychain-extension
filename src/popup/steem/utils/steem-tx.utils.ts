@@ -16,6 +16,8 @@ import MkUtils from '@popup/steem/utils/mk.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
+import { Client, PrivateKey as DsteemPrivateKey } from 'dsteem';
+
 import { ExtendedAccount, Operation, Transaction } from '@steempro/dsteem';
 import { sleep } from '@steempro/dsteem/lib/utils';
 import {
@@ -135,7 +137,24 @@ const createSignAndBroadcastTransaction = async (
     method.toLowerCase() as KeychainKeyTypesLC,
   );
 
-  if (isUsingMultisig) {
+  if(SteemTxConfig.address_prefix !== 'STM') {
+    try {
+      const client = new Client(SteemTxConfig.node.toString(), {chainId:SteemTxConfig.chain_id,addressPrefix:SteemTxConfig.address_prefix});
+      const result = await client.broadcast.sendOperations(
+        operations as any,
+        DsteemPrivateKey.fromString(key!.toString())
+    );
+      return {
+        status: 'ok' as string,
+        tx_id: result.id,
+        isUsingMultisig: false,
+      } as SteemTxBroadcastResult;
+    } catch (error) {
+      Logger.error(error);
+      throw new Error('html_popup_error_while_broadcasting');
+    }
+  }
+  else if (isUsingMultisig) {
     transaction = await steemTransaction.create(
       operations,
       Config.transactions.multisigExpirationTimeInMinutes * MINUTE,
@@ -182,7 +201,8 @@ const createSignAndBroadcastTransaction = async (
         } as SteemTxBroadcastResult;
       }
     }
-  } else {
+  } 
+  else {
     try {
       const privateKey = PrivateKey.fromString(key!.toString());
 
@@ -208,7 +228,7 @@ const createSignAndBroadcastTransaction = async (
   }
   response = response as SteemTxBroadcastErrorResponse;
   if (response.error) {
-    Logger.error('Error during broadcast', response.error);
+    Logger.error('Error during createSignAndBroadcastTransaction', response.error);
     throw ErrorUtils.parse(response.error);
   }
 };
