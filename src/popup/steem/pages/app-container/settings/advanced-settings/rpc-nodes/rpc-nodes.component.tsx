@@ -1,3 +1,4 @@
+import RPCModule from '@background/rpc.module';
 import {
   DefaultAccountHistoryApis,
   DefaultSteemEngineRpcs,
@@ -61,8 +62,10 @@ const RpcNodes = ({
   const [switchAuto, setSwitchAuto] = useState(true);
   const [addRpcNodeUri, setAddRpcNodeUri] = useState('');
   const [addRpcNodeChainId, setAddRpcNodeChainId] = useState('');
+  const [addRpcNodeAddressPrefix, setAddRpcNodeAddressPrefix] = useState('');
   const [addRpcNodeTestnet, setAddRpcNodeTestnet] = useState(false);
   const [setNewRpcAsActive, setSetNewRpcAsActive] = useState(false);
+  const [currentAddressPrefix, setCurrentAddressPrefix] = useState('STM');
 
   const [steemRpcOptions, setSteemRpcOptions] = useState(
     allRpc.map((rpc) => {
@@ -168,6 +171,7 @@ const RpcNodes = ({
     });
     initCustomRpcList();
     initSwitchAuto();
+    initAddressPrefix();
   }, []);
 
   useEffect(() => {
@@ -221,6 +225,9 @@ const RpcNodes = ({
       uri: addRpcNodeUri,
       testnet: addRpcNodeTestnet,
       chainId: addRpcNodeChainId.length ? addRpcNodeChainId : undefined,
+      addressPrefix: addRpcNodeAddressPrefix.length
+        ? addRpcNodeAddressPrefix
+        : undefined,
     };
     setIsAddRpcPanelDisplayed(false);
     RpcUtils.addCustomRpc(newCustomRpc);
@@ -263,6 +270,11 @@ const RpcNodes = ({
     } else {
       setErrorMessage('html_popup_url_not_valid');
     }
+  };
+
+  const initAddressPrefix = async () => {
+    const addressPrefix = await RPCModule.getCurrentAddressPrefixFromStorage();
+    setCurrentAddressPrefix(addressPrefix);
   };
 
   return (
@@ -348,7 +360,17 @@ const RpcNodes = ({
                   onEnterPress={saveNewSteemRpc}
                 />
               )}
-
+              {addRpcNodeTestnet && (
+                <InputComponent
+                  dataTestId="input-node-address-prefix"
+                  type={InputType.TEXT}
+                  value={addRpcNodeAddressPrefix}
+                  onChange={setAddRpcNodeAddressPrefix}
+                  placeholder="Address Prefix"
+                  skipPlaceholderTranslation={true}
+                  onEnterPress={saveNewSteemRpc}
+                />
+              )}
               <CheckboxComponent
                 dataTestId="checkbox-set-new-rpc-as-active"
                 title="popup_html_set_new_rpc_as_active"

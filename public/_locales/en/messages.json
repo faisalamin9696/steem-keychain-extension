@@ -1249,6 +1249,38 @@
     "message": "Delegation",
     "description": "Website request title"
   },
+  "dialog_change_network_rpc_title": {
+    "message": "Change Network RPC",
+    "description": "Change network RPC title"
+  },
+  "dialog_change_network_rpc_description": {
+    "message": "The website is requesting to change your network RPC settings. Please verify the details below before confirming.",
+    "description": "Change network RPC description"
+  },
+  "dialog_rpc_url": {
+    "message": "RPC URL",
+    "description": "RPC URL label"
+  },
+  "dialog_address_prefix": {
+    "message": "Address Prefix",
+    "description": "Address prefix label"
+  },
+  "dialog_chain_id": {
+    "message": "Chain ID",
+    "description": "Chain ID label"
+  },
+  "dialog_testnet": {
+    "message": "Testnet",
+    "description": "Testnet label"
+  },
+  "dialog_full_rpc_details": {
+    "message": "Full RPC Details",
+    "description": "Full RPC details label"
+  },
+  "dialog_set_as_default_rpc": {
+    "message": "Set this as my default RPC/node",
+    "description": "Set as default RPC checkbox label"
+  },
   "dialog_title_wit": {
     "message": "Witness Vote",
     "description": "Website request title"
@@ -4074,6 +4106,18 @@
   "html_popup_settings_notifications_condition": {
     "message": "Condition",
     "description": "Condition"
+  },
+  "html_popup_settings_rpc_saved": {
+    "message": "Network RPC configuration changed successfully!",
+    "description": "Success message when RPC settings are updated"
+  },
+  "html_popup_settings_rpc_saved_keys_regenerated": {
+    "message": "Network RPC changed and public keys regenerated for new address prefix!",
+    "description": "Success message when RPC settings are updated and keys are regenerated due to prefix change"
+  },
+  "html_popup_settings_rpc_added": {
+    "message": "Network RPC added to your list successfully!",
+    "description": "Success message when RPC is added but not set as default"
   },
   "html_popup_reset_form": {
     "message": "Reset",

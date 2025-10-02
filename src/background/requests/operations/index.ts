@@ -8,6 +8,7 @@ import {
   broadcastRemoveKeyAuthority,
 } from '@background/requests/operations/ops/authority';
 import { broadcastOperations } from '@background/requests/operations/ops/broadcast';
+import { changeNetworkRpc } from '@background/requests/operations/ops/change-network-rpc';
 import { convert } from '@background/requests/operations/ops/convert';
 import { broadcastCreateClaimedAccount } from '@background/requests/operations/ops/create-claimed-account';
 import { broadcastCustomJson } from '@background/requests/operations/ops/custom-json';
@@ -155,6 +156,13 @@ export const performOperation = async (
         break;
       case KeychainRequestTypes.swap:
         message = await broadcastSwap(requestHandler, data, options);
+        break;
+      case 'changeNetworkRpc' as any:
+        message = await changeNetworkRpc(
+          requestHandler,
+          data as any,
+          options?.setAsDefault || false,
+        );
         break;
     }
     chrome.tabs.sendMessage(tab, message);

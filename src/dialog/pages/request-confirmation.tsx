@@ -12,6 +12,7 @@ import AddKeyAuthority from 'src/dialog/pages/requests/authority/add-key-authori
 import RemoveAccountAuthority from 'src/dialog/pages/requests/authority/remove-account-authority';
 import RemoveKeyAuthority from 'src/dialog/pages/requests/authority/remove-key-authority';
 import Broadcast from 'src/dialog/pages/requests/broadcast';
+import ChangeNetworkRpc from 'src/dialog/pages/requests/change-network-rpc';
 import Convert from 'src/dialog/pages/requests/convert';
 import CreateClaimedAccount from 'src/dialog/pages/requests/create-claimed-account';
 import CustomJson from 'src/dialog/pages/requests/custom-json';
@@ -26,7 +27,6 @@ import CreateProposal from 'src/dialog/pages/requests/proposals/create-proposal'
 import RemoveProposal from 'src/dialog/pages/requests/proposals/remove-proposal';
 import UpdateProposalVote from 'src/dialog/pages/requests/proposals/update-proposal-vote';
 import Proxy from 'src/dialog/pages/requests/proxy';
-import SendToken from 'src/dialog/pages/requests/send-token';
 import SignBuffer from 'src/dialog/pages/requests/sign-buffer';
 import SignTx from 'src/dialog/pages/requests/sign-tx';
 import Swap from 'src/dialog/pages/requests/swap';
@@ -94,8 +94,6 @@ const RequestConfirmation = ({ data }: Props) => {
       return <CreateProposal {...data} data={data.data} />;
     case KeychainRequestTypes.removeProposal:
       return <RemoveProposal {...data} data={data.data} />;
-    case KeychainRequestTypes.sendToken:
-      return <SendToken {...data} data={data.data} />;
     case KeychainRequestTypes.createClaimedAccount:
       return <CreateClaimedAccount {...data} data={data.data} />;
     case KeychainRequestTypes.post:
@@ -104,6 +102,9 @@ const RequestConfirmation = ({ data }: Props) => {
       return <Broadcast {...data} data={data.data} />;
     case KeychainRequestTypes.swap:
       return <Swap {...data} data={data.data} />;
+    // @ts-ignore - Custom extension type not in shared library
+    case 'changeNetworkRpc':
+      return <ChangeNetworkRpc {...data} data={data.data as any} />;
     default:
       return null;
   }

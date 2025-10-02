@@ -1,18 +1,75 @@
-import { Account, ExtendedAccount } from '@steempro/dsteem';
+import RPCModule from '@background/rpc.module';
 import { WrongKeysOnUser } from '@popup/steem/pages/app-container/wrong-key-popup/wrong-key-popup.component';
 import AccountUtils from '@popup/steem/utils/account.utils';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { Account, ExtendedAccount } from '@steempro/dsteem';
 import {
   KeychainKeyTypes,
   KeychainKeyTypesLC,
 } from '@steempro/steem-keychain-commons';
-import { Key, Keys, PrivateKeyType } from 'src/interfaces/keys.interface';
 import { PrivateKey } from '@steempro/steem-tx-js';
+import { Key, Keys, PrivateKeyType } from 'src/interfaces/keys.interface';
+import { LocalAccount } from 'src/interfaces/local-account.interface';
+
+let _popupAddressPrefix: string | null = null;
+
+const initializePopupAddressPrefix = async (): Promise<void> => {
+  if (_popupAddressPrefix === null) {
+    _popupAddressPrefix = await RPCModule.getCurrentAddressPrefixFromStorage();
+  }
+};
+
+const updatePopupAddressPrefix = (addressPrefix: string): void => {
+  _popupAddressPrefix = addressPrefix;
+};
+
+const regeneratePublicKeys = async (accounts: LocalAccount[], mk: string): Promise<LocalAccount[]> => {
+  const updatedAccounts = [...accounts];
+  const currentAddressPrefix = getPopupAddressPrefix();
+  
+  for (const account of updatedAccounts) {
+    const keys = account.keys;
+    
+    if (keys.active && !keys.active.startsWith('@')) {
+      try {
+        const activePrivateKey = PrivateKey.fromString(keys.active);
+        keys.activePubkey = activePrivateKey.createPublic(currentAddressPrefix).toString();
+      } catch (e) {
+        // If regeneration fails, keep existing key
+      }
+    }
+    
+    if (keys.posting && !keys.posting.startsWith('@')) {
+      try {
+        const postingPrivateKey = PrivateKey.fromString(keys.posting);
+        keys.postingPubkey = postingPrivateKey.createPublic(currentAddressPrefix).toString();
+      } catch (e) {
+        // If regeneration fails, keep existing key
+      }
+    }
+    
+    if (keys.memo && !keys.memo.startsWith('@')) {
+      try {
+        const memoPrivateKey = PrivateKey.fromString(keys.memo);
+        keys.memoPubkey = memoPrivateKey.createPublic(currentAddressPrefix).toString();
+      } catch (e) {
+        // If regeneration fails, keep existing key
+      }
+    }
+  }
+  
+  return updatedAccounts;
+};
+
+const getPopupAddressPrefix = (): string => {
+  return _popupAddressPrefix || 'STM';
+};
 
 const getPublicKeyFromPrivateKeyString = (privateKeyS: string) => {
   try {
+    
     const privateKey = PrivateKey.fromString(privateKeyS);
-    const publicKey = privateKey.createPublic();
+    const publicKey = privateKey.createPublic(getPopupAddressPrefix());
     return publicKey.toString();
   } catch (e) {
     return null;
@@ -39,13 +96,14 @@ const derivateFromMasterPassword = (
   const active = PrivateKey.fromLogin(username, password, 'active');
   const memo = PrivateKey.fromLogin(username, password, 'memo');
 
+  const addressPrefix = getPopupAddressPrefix();
   const keys = {
     posting: posting.toString(),
     active: active.toString(),
     memo: memo.toString(),
-    postingPubkey: posting.createPublic().toString(),
-    activePubkey: active.createPublic().toString(),
-    memoPubkey: memo.createPublic().toString(),
+    postingPubkey: posting.createPublic(addressPrefix).toString(),
+    activePubkey: active.createPublic(addressPrefix).toString(),
+    memoPubkey: memo.createPublic(addressPrefix).toString(),
   };
 
   const hasActive = getPubkeyWeight(keys.activePubkey, account.active);
@@ -230,6 +288,10 @@ const checkWrongKeyOnAccount = (
 };
 
 export const KeysUtils = {
+  initializePopupAddressPrefix,
+  updatePopupAddressPrefix,
+  getPopupAddressPrefix,
+  regeneratePublicKeys,
   isAuthorizedAccount,
   getPublicKeyFromPrivateKeyString,
   getPubkeyWeight,

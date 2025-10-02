@@ -1,9 +1,9 @@
 import MkModule from '@background/mk.module';
 import { RequestsHandler } from '@background/requests/request-handler';
 import {
-  KeychainRequest,
-  KeychainRequestTypes,
-  RequestTransfer,
+    KeychainRequest,
+    KeychainRequestTypes,
+    RequestTransfer,
 } from '@interfaces/keychain.interface';
 import { LocalAccount } from '@interfaces/local-account.interface';
 import { NoConfirm } from '@interfaces/no-confirm.interface';
@@ -16,8 +16,8 @@ import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
 import { isWhitelisted } from 'src/utils/preferences.utils';
 import {
-  anonymous_requests,
-  getRequiredWifType,
+    anonymous_requests,
+    getRequiredWifType,
 } from 'src/utils/requests.utils';
 import * as Logic from './logic';
 
@@ -70,6 +70,15 @@ export default async (
     let account = accounts.find((e) => e.name === username);
     if (type === KeychainRequestTypes.addAccount) {
       Logic.addAccountRequest(requestHandler, tab!, request, domain, account);
+    } else if (type === 'changeNetworkRpc' as any) {
+      // Change network RPC doesn't require an account
+      Logic.requestWithConfirmation(
+        requestHandler,
+        tab!,
+        request,
+        domain,
+        rpc,
+      );
     } else if (type === KeychainRequestTypes.transfer) {
       Logic.transferRequest(
         requestHandler,

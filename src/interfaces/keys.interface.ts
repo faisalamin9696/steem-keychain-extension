@@ -24,6 +24,7 @@ export enum PrivateKeyType {
 
 export interface TransactionOptions {
   metaData?: TransactionOptionsMetadata;
+  setAsDefault?: boolean;
 }
 
 export interface TransactionOptionsMetadata {

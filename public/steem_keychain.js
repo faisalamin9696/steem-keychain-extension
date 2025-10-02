@@ -1010,6 +1010,38 @@ var steem_keychain = {
     this.dispatchCustomEvent('swRequest', request, callback);
   },
 
+  /**
+   * This function allows a website to request changing the user's active network RPC settings
+   * @example
+   * const keychain = window.steem_keychain;
+   * const rpcConfig = {
+   *   uri: 'https://testapi.moecki.online',
+   *   addressPrefix: 'MTN',
+   *   chainId: '1aa939649afcc54c67e01a809967f75b8bee5d928aa6bdf237d0d5d6bfbc5c22',
+   *   testnet: true
+   * };
+   * keychain.requestChangeNetworkRpc(rpcConfig, (response) => {
+   *   if (response.success) {
+   *     console.log('RPC changed successfully');
+   *   }
+   * });
+   * 
+   * @param {Object} rpcConfig RPC configuration object
+   * @param {String} rpcConfig.uri RPC node URL
+   * @param {String} rpcConfig.addressPrefix Address prefix (e.g., 'STM', 'MTN')
+   * @param {String} [rpcConfig.chainId] Blockchain chain ID (optional)
+   * @param {Boolean} rpcConfig.testnet Whether this is a testnet
+   * @param {requestCallback} callback Function that handles Keychain's response to the request
+   */
+  requestChangeNetworkRpc: function (rpcConfig, callback) {
+    const request = {
+      type: 'changeNetworkRpc',
+      rpc: rpcConfig,
+    };
+
+    this.dispatchCustomEvent('swRequest', request, callback);
+  },
+
   // Send the customEvent
   dispatchCustomEvent: function (name, data, callback) {
     this.requests[this.current_id] = callback;
