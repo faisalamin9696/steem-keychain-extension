@@ -315,6 +315,15 @@ const encodeMultisig = Joi.object({
   username,
 });
 
+const changeNetworkRpc = Joi.object({
+  rpc: Joi.object({
+    uri: Joi.string().uri().required(),
+    addressPrefix: Joi.string().required(),
+    chainId: Joi.string().allow('').optional(),
+    testnet: Joi.boolean().required(),
+  }).required(),
+});
+
 const schemas = {
   encodeMultisig,
   decode,
@@ -345,6 +354,7 @@ const schemas = {
   addAccount,
   convert,
   swap,
+  changeNetworkRpc,
 };
 
 export const commonRequestParams = {
