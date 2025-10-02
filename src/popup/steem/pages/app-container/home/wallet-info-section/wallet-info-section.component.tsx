@@ -141,24 +141,24 @@ PropsFromRedux) => {
         <WalletInfoSectionItemComponent
           tokenSymbol="STEEM"
           icon={SVGIcons.WALLET_STEEM_LOGO}
-          mainValue={activeAccount.account.balance}
+          mainValue={activeAccount?.account?.balance ?? '0.000 STEEM'}
           mainValueLabel={currencyLabels.steem}
-          subValue={activeAccount.account.savings_balance}
+          subValue={activeAccount?.account?.savings_balance ?? '0.000 STEEM'}
           subValueLabel={chrome.i18n.getMessage('popup_html_wallet_savings')}
         />
         <WalletInfoSectionItemComponent
           tokenSymbol="SBD"
           icon={SVGIcons.WALLET_SBD_LOGO}
-          mainValue={activeAccount.account.sbd_balance}
+          mainValue={activeAccount?.account?.sbd_balance ?? '0.000 SBD'}
           mainValueLabel={currencyLabels.sbd}
-          subValue={activeAccount.account.savings_sbd_balance}
+          subValue={activeAccount?.account?.savings_sbd_balance ?? '0.000 SBD'}
           subValueLabel={chrome.i18n.getMessage('popup_html_wallet_savings')}
         />
         <WalletInfoSectionItemComponent
           tokenSymbol="SP"
           icon={SVGIcons.WALLET_SP_LOGO}
           mainValue={FormatUtils.toSP(
-            activeAccount.account.vesting_shares as string,
+            (activeAccount?.account?.vesting_shares as string) ?? '0 VESTS',
             globalProperties.globals,
           )}
           mainValueLabel={currencyLabels.sp}

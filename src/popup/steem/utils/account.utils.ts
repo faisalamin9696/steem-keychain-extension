@@ -1,3 +1,10 @@
+import { CurrencyPrices } from '@interfaces/bittrex.interface';
+import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
+import EncryptUtils from '@popup/steem/utils/encrypt.utils';
+import { KeysUtils } from '@popup/steem/utils/keys.utils';
+import MkUtils from '@popup/steem/utils/mk.utils';
+import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
+import { AccountValueType } from '@reference-data/account-value-type.enum';
 import {
   AccountUpdateOperation,
   Authority,
@@ -6,13 +13,6 @@ import {
   DynamicGlobalProperties,
   ExtendedAccount,
 } from '@steempro/dsteem/lib/index-browser';
-import { CurrencyPrices } from '@interfaces/bittrex.interface';
-import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
-import EncryptUtils from '@popup/steem/utils/encrypt.utils';
-import { KeysUtils } from '@popup/steem/utils/keys.utils';
-import MkUtils from '@popup/steem/utils/mk.utils';
-import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
-import { AccountValueType } from '@reference-data/account-value-type.enum';
 import Config from 'src/config';
 import { Accounts } from 'src/interfaces/accounts.interface';
 import { ActiveAccount, RC } from 'src/interfaces/active-account.interface';
@@ -28,7 +28,6 @@ import { LocalStorageKeyEnum } from 'src/reference-data/local-storage-key.enum';
 import FormatUtils from 'src/utils/format.utils';
 import LocalStorageUtils from 'src/utils/localStorage.utils';
 import Logger from 'src/utils/logger.utils';
-
 export enum AccountErrorMessages {
   INCORRECT_KEY = 'popup_accounts_incorrect_key',
   INCORRECT_USER = 'popup_accounts_incorrect_user',
@@ -356,14 +355,7 @@ const downloadAccounts = async (acc: LocalAccount[], mk: string) => {
 };
 
 const getAccountValue = (
-  {
-    sbd_balance,
-    balance,
-    vesting_shares,
-    savings_balance,
-    savings_sbd_balance,
-    name,
-  }: ExtendedAccount,
+  account: ExtendedAccount | undefined,
   prices: CurrencyPrices,
   props: DynamicGlobalProperties,
   // tokensBalance: TokenBalance[],
@@ -374,6 +366,18 @@ const getAccountValue = (
   // hiddenTokensList: string[],
 ) => {
   if (accountValueType === AccountValueType.HIDDEN) return '⁎ ⁎ ⁎';
+
+  // Guard against undefined account
+  if (!account) return 0;
+
+  const {
+    sbd_balance,
+    balance,
+    vesting_shares,
+    savings_balance,
+    savings_sbd_balance,
+    name,
+  } = account;
 
   if (!prices.steem_dollars?.usd || !prices.steem?.usd) return 0;
   // const userLayerTwoPortfolio = PortfolioUtils.generateUserLayerTwoPortolio(
