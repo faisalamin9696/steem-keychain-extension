@@ -1267,7 +1267,7 @@
     "message": "警告：此交易所禁止存款/取款。",
     "description": "When wallet is disabled on exchange."
   },
-  "popup_html_buy_hive": {
+  "popup_html_buy_steem": {
     "message": "购买 STEEM",
     "description": "When clicking on the Steem arrow menu"
   },
@@ -1287,11 +1287,11 @@
     "message": "根据 3.5 天的中间价格，您的 SBD 需要 3.5 天才能转换为价值约 1 USD的 STEEM 代币。",
     "description": "When clicking on the SBD arrow menu"
   },
-  "popup_html_convert_hive_intro": {
+  "popup_html_convert_steem_intro": {
     "message": "您存入抵押品(STEEM)，然後您将获得价值一半的抵押品金额的 SBD(减去 5% 的费用)。 您的正式最终付款将在 3.5 天内完成。 此时剩馀的抵押品(STEEM) 将被退回。",
     "description": "When clicking on the STEEM arrow menu"
   },
-  "popup_html_save_hive": {
+  "popup_html_save_steem": {
     "message": "STEEM存款",
     "description": "When clicking on the Steem arrow menu"
   },

@@ -83,7 +83,7 @@ export const convert = async (
 //         username,
 //         requestId,
 //         amountS,
-//         ConversionType.CONVERT_HIVE_TO_HBD,
+//         ConversionType.CONVERT_STEEM_TO_SBD,
 //         key!,
 //       );
 //     } catch (e) {
@@ -116,7 +116,7 @@ export const convert = async (
 //         username,
 //         requestId,
 //         amountS,
-//         ConversionType.CONVERT_HBD_TO_HIVE,
+//         ConversionType.CONVERT_SBD_TO_STEEM,
 //         key!,
 //       );
 //     } catch (e) {

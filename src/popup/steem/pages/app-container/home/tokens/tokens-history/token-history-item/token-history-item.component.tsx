@@ -4,7 +4,7 @@ import {
   CurationRewardTransaction,
   DelegateTokenTransaction,
   MiningLotteryTransaction,
-  OperationsHiveEngine,
+  OperationsSteemEngine,
   StakeTokenTransaction,
   TokenTransaction,
   TransferTokenTransaction,
@@ -35,19 +35,19 @@ const TokenHistoryItem = ({
 
   const getIcon = () => {
     switch (transaction.operation) {
-      case OperationsHiveEngine.COMMENT_AUTHOR_REWARD:
-      case OperationsHiveEngine.COMMENT_CURATION_REWARD:
-      case OperationsHiveEngine.MINING_LOTTERY:
+      case OperationsSteemEngine.COMMENT_AUTHOR_REWARD:
+      case OperationsSteemEngine.COMMENT_CURATION_REWARD:
+      case OperationsSteemEngine.MINING_LOTTERY:
         return SVGIcons.WALLET_HISTORY_CLAIM_REWARDS;
-      case OperationsHiveEngine.TOKENS_TRANSFER:
+      case OperationsSteemEngine.TOKENS_TRANSFER:
         return SVGIcons.WALLET_HISTORY_TRANSFER;
-      case OperationsHiveEngine.TOKEN_UNSTAKE_START:
-      case OperationsHiveEngine.TOKEN_UNSTAKE_DONE:
+      case OperationsSteemEngine.TOKEN_UNSTAKE_START:
+      case OperationsSteemEngine.TOKEN_UNSTAKE_DONE:
         return SVGIcons.WALLET_HISTORY_UNSTAKE;
-      case OperationsHiveEngine.TOKEN_STAKE:
+      case OperationsSteemEngine.TOKEN_STAKE:
         return SVGIcons.WALLET_HISTORY_STAKE;
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_START:
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_DONE:
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_START:
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_DONE:
         return SVGIcons.WALLET_HISTORY_TOKEN_DELEGATIONS;
       default:
         return SVGIcons.WALLET_HISTORY_TRANSFER;
@@ -56,28 +56,28 @@ const TokenHistoryItem = ({
 
   const getLabel = () => {
     switch (transaction.operation) {
-      case OperationsHiveEngine.COMMENT_AUTHOR_REWARD: {
+      case OperationsSteemEngine.COMMENT_AUTHOR_REWARD: {
         const t = transaction as AuthorCurationTransaction;
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_author_reward',
           [t.amount],
         );
       }
-      case OperationsHiveEngine.COMMENT_CURATION_REWARD: {
+      case OperationsSteemEngine.COMMENT_CURATION_REWARD: {
         const t = transaction as CommentCurationTransaction;
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_comment_curation_reward',
           [t.amount],
         );
       }
-      case OperationsHiveEngine.MINING_LOTTERY: {
+      case OperationsSteemEngine.MINING_LOTTERY: {
         const t = transaction as MiningLotteryTransaction;
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_mining_lottery',
           [t.amount, t.poolId],
         );
       }
-      case OperationsHiveEngine.TOKENS_TRANSFER: {
+      case OperationsSteemEngine.TOKENS_TRANSFER: {
         const t = transaction as TransferTokenTransaction;
         if (t.from === activeAccountName) {
           return chrome.i18n.getMessage(
@@ -91,7 +91,7 @@ const TokenHistoryItem = ({
           );
         }
       }
-      case OperationsHiveEngine.TOKENS_DELEGATE: {
+      case OperationsSteemEngine.TOKENS_DELEGATE: {
         const t = transaction as DelegateTokenTransaction;
         if (t.delegator === activeAccountName) {
           return chrome.i18n.getMessage(
@@ -105,7 +105,7 @@ const TokenHistoryItem = ({
           );
         }
       }
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_START: {
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_START: {
         const t = transaction as UndelegateTokenStartTransaction;
         if (t.delegator === activeAccountName) {
           return chrome.i18n.getMessage(
@@ -119,7 +119,7 @@ const TokenHistoryItem = ({
           );
         }
       }
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_DONE: {
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_DONE: {
         const t = transaction as UndelegateTokenDoneTransaction;
         if (t.delegator === activeAccountName) {
           return chrome.i18n.getMessage(
@@ -133,7 +133,7 @@ const TokenHistoryItem = ({
           );
         }
       }
-      case OperationsHiveEngine.TOKEN_STAKE: {
+      case OperationsSteemEngine.TOKEN_STAKE: {
         const t = transaction as StakeTokenTransaction;
         if (t.from !== activeAccountName) {
           return chrome.i18n.getMessage(
@@ -145,25 +145,25 @@ const TokenHistoryItem = ({
             t.amount,
           ]);
       }
-      case OperationsHiveEngine.TOKEN_UNSTAKE_START: {
+      case OperationsSteemEngine.TOKEN_UNSTAKE_START: {
         const t = transaction as UnStakeTokenStartTransaction;
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_start_unstake',
           [t.amount],
         );
       }
-      case OperationsHiveEngine.TOKEN_UNSTAKE_DONE: {
+      case OperationsSteemEngine.TOKEN_UNSTAKE_DONE: {
         const t = transaction as UnStakeTokenDoneTransaction;
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_unstake_done',
           [t.amount],
         );
       }
-      case OperationsHiveEngine.TOKEN_ISSUE:
+      case OperationsSteemEngine.TOKEN_ISSUE:
         return chrome.i18n.getMessage('popup_html_token_wallet_info_issue', [
           transaction.amount,
         ]);
-      case OperationsHiveEngine.HIVE_PEGGED_BUY:
+      case OperationsSteemEngine.STEEM_PEGGED_BUY:
         return chrome.i18n.getMessage(
           'popup_html_token_wallet_info_pegged_buy',
           [transaction.amount],
@@ -175,12 +175,12 @@ const TokenHistoryItem = ({
 
   const getMemo = () => {
     switch (transaction.operation) {
-      case OperationsHiveEngine.TOKENS_TRANSFER: {
+      case OperationsSteemEngine.TOKENS_TRANSFER: {
         const t = transaction as TransferTokenTransaction;
         return t.memo;
       }
-      case OperationsHiveEngine.COMMENT_AUTHOR_REWARD:
-      case OperationsHiveEngine.COMMENT_CURATION_REWARD: {
+      case OperationsSteemEngine.COMMENT_AUTHOR_REWARD:
+      case OperationsSteemEngine.COMMENT_CURATION_REWARD: {
         const t = transaction as CurationRewardTransaction;
         return t.authorPerm;
       }
@@ -189,7 +189,7 @@ const TokenHistoryItem = ({
     }
   };
 
-  const openTransactionOnHiveblocks = (event: BaseSyntheticEvent) => {
+  const openTransactionOnSteemblocks = (event: BaseSyntheticEvent) => {
     event.stopPropagation();
     window.open(`https://he.dtools.dev/tx/${transaction.transactionId}`);
   };
@@ -206,7 +206,7 @@ const TokenHistoryItem = ({
           <SVGIcon
             dataTestId="icon-open-new-window"
             icon={getIcon()}
-            onClick={openTransactionOnHiveblocks}
+            onClick={openTransactionOnSteemblocks}
             className="operation-icon"></SVGIcon>
           <div className="right-panel">
             <div className="detail">{label}</div>

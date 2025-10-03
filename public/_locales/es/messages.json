@@ -1543,7 +1543,7 @@
     "message": "ATENCIÓN: Los depósitos/retiros están desactivados en este exchange.",
     "description": "When wallet is disabled on exchange."
   },
-  "popup_html_buy_hive": {
+  "popup_html_buy_steem": {
     "message": "Comprar STEEM",
     "description": "When clicking on the Steem arrow menu"
   },
@@ -1567,11 +1567,11 @@
     "message": "Tu SBD tomará 3,5 días para ser convertido a aproximadamente 1 USD de tokens STEEM, con base en su precio medio de 3,5 días.",
     "description": "When clicking on the SBD arrow menu"
   },
-  "popup_html_convert_hive_intro": {
+  "popup_html_convert_steem_intro": {
     "message": "Depositas la garantía (STEEM), luego recibes SBD por adelantado con un valor de la mitad de la cantidad de esa garantía (menos una cuota del 5%). Tu pago final oficial es en 3,5 días. En ese punto te es devuelto el remanente de la garantía (STEEM).",
     "description": "When clicking on the STEEM arrow menu"
   },
-  "popup_html_proposal_funded_option_hive": {
+  "popup_html_proposal_funded_option_steem": {
     "message": "Convertir a SBD",
     "description": "When converting"
   },
@@ -1579,7 +1579,7 @@
     "message": "Convirtiendo a STEEM",
     "description": "When converting"
   },
-  "popup_html_save_hive": {
+  "popup_html_save_steem": {
     "message": "Ahorros STEEM",
     "description": "When clicking on the Steem arrow menu"
   },
@@ -3084,19 +3084,19 @@
     "message": "El testigo por el que intentaste votar no existe",
     "description": "Error if trying to vote a witness that doesn't exist"
   },
-  "bgd_ops_hive_engine_confirmation_error": {
+  "bgd_ops_steem_engine_confirmation_error": {
     "message": "La operación en Steem Engine regresó con el siguiente error:  <br/><br/> Error: $1",
     "description": "Error while confirming transaction on steem engine"
   },
-  "hive_engine_overdraw_balance_error": {
+  "steem_engine_overdraw_balance_error": {
     "message": "Su saldo $1 es insuficiente",
     "description": "Error if trying to send too much of a token"
   },
-  "hive_engine_not_existing_token_error": {
+  "steem_engine_not_existing_token_error": {
     "message": "El token $1 no existe",
     "description": "Error if trying to send a token that doesn't exist"
   },
-  "hive_engine_not_existing_user_error": {
+  "steem_engine_not_existing_user_error": {
     "message": "@$1 no existe",
     "description": "Error if trying to send a token that doesn't exist"
   },
@@ -3645,7 +3645,7 @@
     "description": "Message container success title"
   },
   "accept_terms_and_condition": {
-    "message": "He leído y estoy de acuerdo con los <a target='__blank' href='https://www.steempro.com/policy'>Términos de Servicio</a> y las <a target='__blank' href='https://www.steempro.com/policy'>Políticas de Privacidad</a> de Steem Keychain",
+    "message": "He leído y estoy de acuerdo con los <a target='__blank' href='https://www.steempro.com/privacy-policy'>Términos de Servicio</a> y las <a target='__blank' href='https://www.steempro.com/privacy-policy'>Políticas de Privacidad</a> de Steem Keychain",
     "description": "Accept terms and conditions text"
   },
   "delete_label": {

@@ -1,4 +1,4 @@
-import { BgdSteemEngineConfigModule } from '@background/hive-engine-config.module';
+import { BgdSteemEngineConfigModule } from '@background/steem-engine-config.module';
 import { removeWindow } from '@background/requests/dialog-lifecycle';
 import init from '@background/requests/init';
 import { Key } from '@interfaces/keys.interface';
@@ -16,7 +16,6 @@ import { config } from '@steempro/steem-tx-js';
 import Config from 'src/config';
 
 import LocalStorageUtils from 'src/utils/localStorage.utils';
-import Logger from 'src/utils/logger.utils';
 
 if (!process.env.IS_FIREFOX && !global.window) {
   //@ts-ignore
@@ -38,13 +37,13 @@ type RequestData = {
 };
 export class RequestsHandler {
   data: RequestData;
-  hiveEngineConfig: SteemEngineConfig;
+  steemEngineConfig: SteemEngineConfig;
 
   defaultRpcConfig: any;
 
   constructor() {
     this.data = { confirmed: false };
-    this.hiveEngineConfig = Config.steemEngine;
+    this.steemEngineConfig = Config.steemEngine;
     this.defaultRpcConfig = config;
   }
 
@@ -52,8 +51,8 @@ export class RequestsHandler {
     this.data = data;
   }
 
-  async setupHiveEngine() {
-    this.hiveEngineConfig = await BgdSteemEngineConfigModule.getActiveConfig();
+  async setupSteemEngine() {
+    this.steemEngineConfig = await BgdSteemEngineConfigModule.getActiveConfig();
   }
 
   async setIsMultisig(isMultisig: boolean) {
@@ -75,7 +74,7 @@ export class RequestsHandler {
     );
 
     this.data.rpc = rpc;
-    await this.setupHiveEngine();
+    await this.setupSteemEngine();
     this.data.preferences = preferences;
 
     config.node = rpc.uri;

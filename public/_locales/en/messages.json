@@ -684,11 +684,11 @@
     "message": "Block size",
     "description": "On My witness page"
   },
-  "popup_html_witness_information_hbd_interest_rate_label": {
+  "popup_html_witness_information_sbd_interest_rate_label": {
     "message": "Interest rate",
     "description": "On My witness page"
   },
-  "popup_html_witness_information_hbd_interest_rate_placeholder_text": {
+  "popup_html_witness_information_sbd_interest_rate_placeholder_text": {
     "message": "I.e: 2000",
     "description": "On My witness page"
   },
@@ -1137,7 +1137,7 @@
     "message": "Max Accepted Payout : ",
     "description": "When website request a post"
   },
-  "dialog_percentage_hbd": {
+  "dialog_percentage_sbd": {
     "message": "Percentage SBD : ",
     "description": "When website request a post"
   },
@@ -1601,11 +1601,11 @@
     "message": "WARNING: Deposits/Withdrawals are disabled on this exchange.",
     "description": "When wallet is disabled on exchange."
   },
-  "popup_html_buy_hive": {
+  "popup_html_buy_steem": {
     "message": "Buy STEEM",
     "description": "When clicking on the Steem arrow menu"
   },
-  "popup_html_buy_hbd": {
+  "popup_html_buy_sbd": {
     "message": "Buy SBD",
     "description": "When clicking on the Sbd arrow menu"
   },
@@ -1613,7 +1613,7 @@
     "message": "Convert",
     "description": "Convert"
   },
-  "popup_html_convert_hbd": {
+  "popup_html_convert_sbd": {
     "message": "Convert SBD",
     "description": "When clicking on the Sbd arrow menu"
   },
@@ -1621,28 +1621,28 @@
     "message": "Convert STEEM",
     "description": "When clicking on the Sbd arrow menu"
   },
-  "popup_html_convert_hbd_intro": {
+  "popup_html_convert_sbd_intro": {
     "message": "Your SBD will take 3.5 days to get converted to approximately 1 USD worth of STEEM tokens, based on its 3.5 days median price.",
     "description": "When clicking on the Sbd arrow menu"
   },
 
-  "popup_html_convert_hive_intro": {
+  "popup_html_convert_steem_intro": {
     "message": "You deposit collateral (STEEM), then you are given SBD up front worth half of the collateral amount (minus a 5% fee). Your official final payment is in 3.5 days. At that point remaining collateral (STEEM) is returned.",
     "description": "When clicking on the STEEM arrow menu"
   },
-  "popup_html_proposal_funded_option_hive": {
+  "popup_html_proposal_funded_option_steem": {
     "message": "Convert to SBD",
     "description": "When converting"
   },
-  "popup_html_proposal_funded_option_hbd": {
+  "popup_html_proposal_funded_option_sbd": {
     "message": "Convert to STEEM",
     "description": "When converting"
   },
-  "popup_html_save_hive": {
+  "popup_html_save_steem": {
     "message": "STEEM Savings",
     "description": "When clicking on the Steem arrow menu"
   },
-  "popup_html_save_hbd": {
+  "popup_html_save_sbd": {
     "message": "SBD Savings",
     "description": "When clicking on the SBD arrow menu"
   },
@@ -1694,7 +1694,7 @@
     "message": "Withdraw",
     "description": "On savings menu"
   },
-  "popup_html_deposit_hbd_text": {
+  "popup_html_deposit_sbd_text": {
     "message": "Depositing SBD to savings currently yields a $1% APR determined by the witnesses.",
     "description": "when withdrawing from savings"
   },
@@ -1730,7 +1730,7 @@
     "message": "Setup automated tasks that will run every hour if fitting your conditions.",
     "description": "When on automated tasks page"
   },
-  "popup_html_automated_hive_section_title": {
+  "popup_html_automated_steem_section_title": {
     "message": "Steem",
     "description": "When on automated tasks page"
   },
@@ -1754,7 +1754,7 @@
     "message": "Auto Staking",
     "description": "When on automated tasks page"
   },
-  "popup_html_automated_hive_section_default_option_message": {
+  "popup_html_automated_steem_section_default_option_message": {
     "message": "Add a token to auto-staking",
     "description": "When on automated tasks page > auto staking default option"
   },
@@ -1927,27 +1927,27 @@
     "message": "Receiver",
     "description": "General word"
   },
-  "popup_html_confirm_hive_to_hbd_conversion": {
+  "popup_html_confirm_steem_to_sbd_conversion": {
     "message": "Please confirm your conversion from STEEM to SBD",
     "description": "Conversion confirm page"
   },
-  "popup_html_confirm_hbd_to_hive_conversion": {
+  "popup_html_confirm_sbd_to_steem_conversion": {
     "message": "Please confirm your conversion from SBD to STEEM",
     "description": "Conversion confirm page"
   },
-  "popup_html_hive_to_hbd_conversion_success": {
+  "popup_html_steem_to_sbd_conversion_success": {
     "message": "Conversion from STEEM to SBD successful!",
     "description": "Conversion confirm page"
   },
-  "popup_html_hive_to_hbd_conversion_fail": {
+  "popup_html_steem_to_sbd_conversion_fail": {
     "message": "Conversion from STEEM to SBD failed!",
     "description": "Conversion confirm page"
   },
-  "popup_html_hbd_to_hive_conversion_success": {
+  "popup_html_sbd_to_steem_conversion_success": {
     "message": "Conversion from SBD to STEEM successful!",
     "description": "Conversion confirm page"
   },
-  "popup_html_hbd_to_hive_conversion_fail": {
+  "popup_html_sbd_to_steem_conversion_fail": {
     "message": "Conversion from SBD to STEEM failed!",
     "description": "Conversion confirm page"
   },
@@ -3246,19 +3246,19 @@
     "message": "The witness you tried to vote for doesn't exist",
     "description": "Error if trying to vote a witness that doesn't exist"
   },
-  "bgd_ops_hive_engine_confirmation_error": {
+  "bgd_ops_steem_engine_confirmation_error": {
     "message": "The Steem Engine operation returned with the following error:  <br/><br/> Error: $1",
     "description": "Error while confirming transaction on steem engine"
   },
-  "hive_engine_overdraw_balance_error": {
+  "steem_engine_overdraw_balance_error": {
     "message": "Your $1 balance is insufficient",
     "description": "Error if trying to send too much of a token"
   },
-  "hive_engine_not_existing_token_error": {
+  "steem_engine_not_existing_token_error": {
     "message": "$1 token does not exist",
     "description": "Error if trying to send a token that doesn't exist"
   },
-  "hive_engine_not_existing_user_error": {
+  "steem_engine_not_existing_user_error": {
     "message": "@$1 does not exist",
     "description": "Error if trying to send a token that doesn't exist"
   },
@@ -3591,7 +3591,7 @@
     "message": "Total",
     "description": "portfolio table columns"
   },
-  "portfolio_table_column_total_hive": {
+  "portfolio_table_column_total_steem": {
     "message": "Total Steem",
     "description": "portfolio table columns"
   },
@@ -3864,7 +3864,7 @@
     "description": "Message container success title"
   },
   "accept_terms_and_condition": {
-    "message": "I have read and agreed to the Steem Keychain <a target='__blank' href='https://www.steempro.com/policy'>Terms of Service</a>, and <a target='__blank' href='https://www.steempro.com/policy'>Privacy Policy</a>",
+    "message": "I have read and agreed to the Steem Keychain <a target='__blank' href='https://www.steempro.com/privacy-policy'>Terms of Service</a>, and <a target='__blank' href='https://www.steempro.com/privacy-policy'>Privacy Policy</a>",
     "description": "Accept terms and conditions text"
   },
   "delete_label": {
@@ -4167,7 +4167,7 @@
     "message": "@$1 has received $2 as an comment reward for <a classname='notification-link' target='__blank' href='https://steempro.com/@$1/$5'>$1/$5</a>",
     "description": "Notification comment reward"
   },
-  "notification_hbd_interest": {
+  "notification_sbd_interest": {
     "message": "@$1 received $2 as interest",
     "description": "Notification SBD interest received"
   },

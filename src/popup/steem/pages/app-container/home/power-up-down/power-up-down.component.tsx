@@ -117,7 +117,7 @@ const PowerUpDown = ({
   );
 
   useEffect(() => {
-    const hiveBalance = FormatUtils.toNumber(activeAccount.account.balance);
+    const steemBalance = FormatUtils.toNumber(activeAccount.account.balance);
 
     let totalOutgoingVestingShares = 0;
     for (const delegation of delegations.outgoing) {
@@ -141,10 +141,10 @@ const PowerUpDown = ({
 
     setAvailable(
       powerType === PowerType.POWER_UP
-        ? hiveBalance
+        ? steemBalance
         : Math.max(Number(hpBalance), 0),
     );
-    setCurrent(powerType === PowerType.POWER_UP ? hpBalance : hiveBalance);
+    setCurrent(powerType === PowerType.POWER_UP ? hpBalance : steemBalance);
   }, [activeAccount, delegations]);
 
   const title =

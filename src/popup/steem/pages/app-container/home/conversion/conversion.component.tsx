@@ -112,8 +112,8 @@ const Conversion = ({
     setTotalPending(total);
   }, [conversions]);
 
-  const title = 'popup_html_convert_hbd';
-  const text = 'popup_html_convert_hbd_intro';
+  const title = 'popup_html_convert_sbd';
+  const text = 'popup_html_convert_sbd_intro';
 
   const handleButtonClick = (form: ConversionForm) => {
     if (parseFloat(form.amount.toString()) > parseFloat(available.toString())) {
@@ -133,8 +133,8 @@ const Conversion = ({
       method: KeychainKeyTypes.active,
       message: chrome.i18n.getMessage(
         conversionType === ConversionType.CONVERT_SBD_TO_STEEM
-          ? 'popup_html_confirm_hbd_to_hive_conversion'
-          : 'popup_html_confirm_hive_to_hbd_conversion',
+          ? 'popup_html_confirm_sbd_to_steem_conversion'
+          : 'popup_html_confirm_steem_to_sbd_conversion',
       ),
       fields: [
         { label: 'popup_html_value', value: stringifiedAmount },
@@ -162,15 +162,15 @@ const Conversion = ({
             } else {
               setSuccessMessage(
                 conversionType === ConversionType.CONVERT_SBD_TO_STEEM
-                  ? 'popup_html_hbd_to_hive_conversion_success'
-                  : 'popup_html_hive_to_hbd_conversion_success',
+                  ? 'popup_html_sbd_to_steem_conversion_success'
+                  : 'popup_html_steem_to_sbd_conversion_success',
               );
             }
           } else {
             setErrorMessage(
               conversionType === ConversionType.CONVERT_SBD_TO_STEEM
-                ? 'popup_html_hbd_to_hive_conversion_fail'
-                : 'popup_html_hive_to_hbd_conversion_fail',
+                ? 'popup_html_sbd_to_steem_conversion_fail'
+                : 'popup_html_steem_to_sbd_conversion_fail',
             );
           }
         } catch (err: any) {

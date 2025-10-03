@@ -54,7 +54,7 @@ const GenericTransaction = ({
     }
   };
 
-  const openTransactionOnHiveblocks = (event: BaseSyntheticEvent) => {
+  const openTransactionOnSteemblocks = (event: BaseSyntheticEvent) => {
     event.stopPropagation();
     window.open(transaction.url);
   };
@@ -71,7 +71,7 @@ const GenericTransaction = ({
         <SVGIcon
           className="operation-icon"
           icon={getIcon()}
-          onClick={openTransactionOnHiveblocks}
+          onClick={openTransactionOnSteemblocks}
         />
         <div className="right-panel">
           <div className="detail">{detail}</div>

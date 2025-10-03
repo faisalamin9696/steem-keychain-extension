@@ -15,7 +15,7 @@
     "paths": {
       "@common-style/*": ["./src/common-style/*"],
       "@popup/*": ["./src/popup/*"],
-      "@hiveapp/*": ["src/popup/steem/*"],
+      "@steemapp/*": ["src/popup/steem/*"],
       "@background/*": ["./src/background/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@reference-data/*": ["./src/reference-data/*"],

@@ -24,15 +24,15 @@ const Convert = (props: Props) => {
     <Operation
       title={chrome.i18n.getMessage(
         data.collaterized
-          ? 'popup_html_proposal_funded_option_hive'
-          : 'popup_html_proposal_funded_option_hbd',
+          ? 'popup_html_proposal_funded_option_steem'
+          : 'popup_html_proposal_funded_option_sbd',
       )}
       header={
         data.collaterized
-          ? chrome.i18n.getMessage(`popup_html_convert_hive_intro`, [
+          ? chrome.i18n.getMessage(`popup_html_convert_steem_intro`, [
               data.amount,
             ])
-          : chrome.i18n.getMessage(`popup_html_convert_hbd_intro`)
+          : chrome.i18n.getMessage(`popup_html_convert_sbd_intro`)
       }
       {...props}>
       <RequestItem title="dialog_account" content={`@${data.username}`} />

@@ -11,7 +11,7 @@ import { SignInRouterComponent } from '@popup/multichain/pages/sign-in/sign-in-r
 import { SignUpComponent } from '@popup/multichain/pages/sign-up/sign-up.component';
 import { SignUpScreen } from '@popup/multichain/sign-up.context';
 import { RootState } from '@popup/multichain/store';
-import { HiveAppComponent } from '@popup/steem/steem-app.component';
+import { SteemAppComponent } from '@popup/steem/steem-app.component';
 import MkUtils from '@popup/steem/utils/mk.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
@@ -89,11 +89,11 @@ const ChainRouter = ({
     } else {
       switch (selectedChain) {
         case Chain.STEEM:
-          return <HiveAppComponent />;
+          return <SteemAppComponent />;
         case Chain.EVM:
           return <EvmAppComponent />;
         default:
-          return <HiveAppComponent />;
+          return <SteemAppComponent />;
       }
     }
   };

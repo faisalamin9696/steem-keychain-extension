@@ -5,7 +5,7 @@ import { SteemEngineUtils } from '@popup/steem/utils/steem-engine.utils';
 import TokensUtils from '@popup/steem/utils/tokens.utils';
 import { MessageType } from '@reference-data/message-type.enum';
 import {
-  OperationsHiveEngine,
+  OperationsSteemEngine,
   PendingUnstaking,
   Token,
   TokenBalance,
@@ -122,35 +122,35 @@ const getHistory = async (
   tokenHistory = tokenHistory.map((t: any) => {
     t.amount = `${t.quantity} ${t.symbol}`;
     switch (t.operation) {
-      case OperationsHiveEngine.COMMENT_CURATION_REWARD:
-      case OperationsHiveEngine.COMMENT_AUTHOR_REWARD:
+      case OperationsSteemEngine.COMMENT_CURATION_REWARD:
+      case OperationsSteemEngine.COMMENT_AUTHOR_REWARD:
         return {
           ...(t as TokenTransaction),
           authorPerm: t.authorperm,
         };
-      case OperationsHiveEngine.MINING_LOTTERY:
+      case OperationsSteemEngine.MINING_LOTTERY:
         return { ...(t as TokenTransaction), poolId: t.poolId };
-      case OperationsHiveEngine.TOKENS_TRANSFER:
+      case OperationsSteemEngine.TOKENS_TRANSFER:
         return {
           ...(t as TokenTransaction),
           from: t.from,
           to: t.to,
           memo: t.memo,
         };
-      case OperationsHiveEngine.TOKEN_STAKE:
+      case OperationsSteemEngine.TOKEN_STAKE:
         return {
           ...(t as TokenTransaction),
           from: t.from,
           to: t.to,
         };
-      case OperationsHiveEngine.TOKENS_DELEGATE:
+      case OperationsSteemEngine.TOKENS_DELEGATE:
         return {
           ...(t as TokenTransaction),
           delegator: t.from,
           delegatee: t.to,
         };
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_START:
-      case OperationsHiveEngine.TOKEN_UNDELEGATE_DONE:
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_START:
+      case OperationsSteemEngine.TOKEN_UNDELEGATE_DONE:
         return {
           ...(t as TokenTransaction),
           delegator: t.to,

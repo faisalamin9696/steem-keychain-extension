@@ -31,13 +31,13 @@ export const broadcastDelegation = async (
       await DynamicGlobalPropertiesUtils.getDynamicGlobalProperties();
     let delegatedVests = null;
     if (data.unit === 'SP') {
-      const totalHive = global.total_vesting_fund_steem
+      const totalSteem = global.total_vesting_fund_steem
         ? Number((global.total_vesting_fund_steem as string).split(' ')[0])
         : Number(global.total_vesting_fund_steem.split(' ')[0]);
       const totalVests = Number(
         (global.total_vesting_shares as string).split(' ')[0],
       );
-      delegatedVests = (parseFloat(data.amount) * totalVests) / totalHive;
+      delegatedVests = (parseFloat(data.amount) * totalVests) / totalSteem;
       delegatedVests = delegatedVests.toFixed(6);
       delegatedVests = delegatedVests.toString() + ' VESTS';
     } else {

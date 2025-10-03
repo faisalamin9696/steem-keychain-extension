@@ -249,7 +249,7 @@ const RpcNodes = ({
     }
   };
 
-  const saveHiveEngineRpc = async () => {
+  const saveSteemEngineRpc = async () => {
     if (steemEngineRpcOptions.find((e) => e.value === newHERpc)) {
       setErrorMessage('html_popup_rpc_already_exist');
       return;
@@ -274,7 +274,7 @@ const RpcNodes = ({
       </div>
 
       <div className="rpc-form-container">
-        <div className="rpc-section hive-rpc">
+        <div className="rpc-section steem-rpc">
           <div className="title">Steem RPC</div>
           <CheckboxPanelComponent
             dataTestId="checkbox-rpc-nodes-automatic-mode"
@@ -358,7 +358,7 @@ const RpcNodes = ({
           )}
         </div>
 
-        {/* <div className="rpc-section hive-engine-rpc">
+        {/* <div className="rpc-section steem-engine-rpc">
           <div className="title">Steem-Engine RPC</div>
           <div className="select-rpc-panel">
             <ComplexeCustomSelect
@@ -392,7 +392,7 @@ const RpcNodes = ({
                 <span>{chrome.i18n.getMessage('popup_html_add_rpc_text')}</span>
                 <SVGIcon
                   icon={SVGIcons.MENU_RPC_SAVE_BUTTON}
-                  onClick={() => saveHiveEngineRpc()}
+                  onClick={() => saveSteemEngineRpc()}
                 />
               </div>
               <Separator type="horizontal" />
@@ -402,7 +402,7 @@ const RpcNodes = ({
                 value={newHERpc}
                 onChange={setNewHERpc}
                 placeholder={'popup_html_rpc_node'}
-                onEnterPress={saveNewHiveRpc}
+                onEnterPress={saveNewSteemRpc}
               />
 
               <CheckboxComponent
@@ -413,7 +413,7 @@ const RpcNodes = ({
             </div>
           )}
         </div> */}
-        {/* <div className="rpc-section hive-engine-account-history">
+        {/* <div className="rpc-section steem-engine-account-history">
           <div className="title">Steem-Engine account history API</div>
           <div className="select-rpc-panel">
             <ComplexeCustomSelect

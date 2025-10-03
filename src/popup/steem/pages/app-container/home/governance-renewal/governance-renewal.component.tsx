@@ -69,7 +69,8 @@ const GovernanceRenewal = ({
 
   const navigateToArticle = () => {
     chrome.tabs.create({
-      url: 'https://peakd.com/hive/@hiveio/hive-hardfork-25-is-on-the-way-hive-to-reach-equilibrium-on-june-30th-2021#governance-expiration',
+      url: 'https://www.steempro.com',
+      // 'https://peakd.com/hive/@hiveio/hive-hardfork-25-is-on-the-way-hive-to-reach-equilibrium-on-june-30th-2021#governance-expiration',
     });
   };
 

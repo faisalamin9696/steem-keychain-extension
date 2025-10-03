@@ -961,7 +961,7 @@ const getNotifications = async (
       createdAt: moment(notif.created),
       txUrl:
         notif.trx_id && !notif.trx_id.startsWith('v')
-          ? `https://hivehub.dev/tx/${notif.trx_id}`
+          ? `https://hub.dev/tx/${notif.trx_id}`
           : undefined,
       externalUrl: externalUrl,
       message: message,

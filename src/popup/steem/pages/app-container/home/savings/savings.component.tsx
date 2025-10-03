@@ -166,7 +166,7 @@ const SavingsPage = ({
     let text = '';
     if (watch('type') === SavingOperationType.DEPOSIT) {
       if (watch('currency') === 'sbd') {
-        text = chrome.i18n.getMessage('popup_html_deposit_hbd_text', [
+        text = chrome.i18n.getMessage('popup_html_deposit_sbd_text', [
           Number(globalProperties.globals?.sbd_interest_rate) / 100 + '',
         ]);
       }

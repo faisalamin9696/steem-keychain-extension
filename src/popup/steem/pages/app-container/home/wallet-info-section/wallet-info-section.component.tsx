@@ -90,13 +90,13 @@ PropsFromRedux) => {
   //       .filter((token) => !hiddenTokens.includes(token.symbol))
   //       .sort(
   //         (a, b) =>
-  //           TokensUtils.getHiveEngineTokenValue(
+  //           TokensUtils.getSteemEngineTokenValue(
   //             b,
   //             market,
   //             undefined,
   //             allTokens,
   //           ) -
-  //           TokensUtils.getHiveEngineTokenValue(
+  //           TokensUtils.getSteemEngineTokenValue(
   //             a,
   //             market,
   //             undefined,
@@ -112,22 +112,22 @@ PropsFromRedux) => {
       return CommonAsset.fromString(conv.amount).symbol === 'SBD';
     });
     if (pendingSbdConversions.length > 0) {
-      // setHbdRowInfoContent(
+      // setSbdRowInfoContent(
       //   chrome.i18n.getMessage('popup_html_pending_conversions', [
-      //     pendingHbdConversions.length.toString(),
+      //     pendingSbdConversions.length.toString(),
       //     'STEEM',
       //   ]),
       // );
     }
 
-    const pendingHiveConversions = conversions.filter((conv: Conversion) => {
+    const pendingSteemConversions = conversions.filter((conv: Conversion) => {
       return CommonAsset.fromString(conv.amount).symbol === 'STEEM';
     });
 
-    if (pendingHiveConversions.length > 0) {
-      // setHiveRowInfoContent(
+    if (pendingSteemConversions.length > 0) {
+      // seSteemRowInfoContent(
       //   chrome.i18n.getMessage('popup_html_pending_conversions', [
-      //     pendingHiveConversions.length.toString(),
+      //     pendingSteemConversions.length.toString(),
       //     'STEEM',
       //   ]),
       // );
@@ -170,7 +170,7 @@ PropsFromRedux) => {
                 '.'
           }
         />
-        {/* <div className="hive-engine-separator">
+        {/* <div className="steem-engine-separator">
           <span>
             <SVGIcon icon={SVGIcons.STEEM_ENGINE} className="no-pointer" />
           </span>
@@ -257,9 +257,9 @@ const mapStateToProps = (state: RootState) => {
     globalProperties: state.steem.globalProperties,
     delegations: state.steem.delegations,
     conversions: state.steem.conversions,
-    // userTokens: state.hive.userTokens,
-    // market: state.hive.tokenMarket,
-    // allTokens: state.hive.tokens,
+    // userTokens: state.steem.userTokens,
+    // market: state.steem.tokenMarket,
+    // allTokens: state.steem.tokens,
   };
 };
 

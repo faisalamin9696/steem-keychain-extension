@@ -45,7 +45,7 @@ const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
                 );
               })}
               <th className="table-header total-column">
-                {chrome.i18n.getMessage('portfolio_table_column_total_hive')}
+                {chrome.i18n.getMessage('portfolio_table_column_total_steem')}
               </th>
               <th className="table-header total-column">
                 {chrome.i18n.getMessage(
@@ -101,7 +101,7 @@ const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
                   </td>
                 );
               })}
-              <td className="total-column" key={`total-value-hive`}>
+              <td className="total-column" key={`total-value-steem`}>
                 {FormatUtils.formatCurrencyValue(totalSteem)}
               </td>
               <td className="total-column" key={`total-usd`}>
@@ -121,7 +121,7 @@ const PortfolioTable = ({ data, tableColumnsHeaders }: Props) => {
                   </td>
                 );
               })}
-              <td className="total-column" key={`total-value-hive`}>
+              <td className="total-column" key={`total-value-steem`}>
                 -
               </td>
               <td className="total-column" key={`total-usd`}>

@@ -1,4 +1,4 @@
-export enum OperationsHiveEngine {
+export enum OperationsSteemEngine {
   COMMENT_CURATION_REWARD = 'comments_curationReward',
   COMMENT_AUTHOR_REWARD = 'comments_authorReward',
   MINING_LOTTERY = 'mining_lottery',
@@ -10,12 +10,12 @@ export enum OperationsHiveEngine {
   TOKEN_UNSTAKE_START = 'tokens_unstakeStart',
   TOKEN_UNSTAKE_DONE = 'tokens_unstakeDone',
   TOKEN_ISSUE = 'tokens_issue',
-  HIVE_PEGGED_BUY = 'hivepegged_buy',
+  STEEM_PEGGED_BUY = 'steempegged_buy',
 }
 
 export interface TokenTransaction {
   blockNumber: number;
-  operation: OperationsHiveEngine;
+  operation: OperationsSteemEngine;
   symbol: string;
   timestamp: number;
   transactionId: string;
@@ -41,8 +41,8 @@ export interface CommentCurationTransaction extends CurationRewardTransaction {}
 export interface AuthorCurationTransaction extends CurationRewardTransaction {}
 
 export const CURATIONS_REWARDS_TYPES = [
-  OperationsHiveEngine.COMMENT_AUTHOR_REWARD,
-  OperationsHiveEngine.COMMENT_CURATION_REWARD,
+  OperationsSteemEngine.COMMENT_AUTHOR_REWARD,
+  OperationsSteemEngine.COMMENT_CURATION_REWARD,
 ];
 
 export interface DelegationTokenTransaction extends TokenTransaction {
@@ -96,7 +96,7 @@ export interface TokenMarket {
   lastDayPriceExpiration: number;
   lastPrice: string;
   lowestAsk: string;
-  priceChangeHive: string;
+  priceChangeSteem: string;
   priceChangePercent: string;
   symbol: string;
   volume: string;

@@ -174,10 +174,6 @@ See an example in this project by @howo (@steempress witness):
 
 Alternatively, you can use `requestSignTx` and verify the signature on your backend.
 
-## @hiveio/keychain
-
-This [npm module][99] makes it easy to add Keychain support within the browser. It also includes helpful functions to check whether Keychain was used before. It was developed by @therealwolf (witness).
-
 ## Operations
 
 The Steem Keychain extension will inject a "steem_keychain" JavaScript into all web pages opened in the browser while the extension is running. You can therefore check if the current user has the extension installed using the following code:
@@ -1178,13 +1174,12 @@ Type: [Function][100]
 [90]: #examples-25
 [91]: #requestcallback
 [92]: #parameters-30
-[93]: http://u.cubeupload.com/arcange/yOdI5g.png
+[93]: https://u.cubeupload.com/faisalamin/keychain.png
 [94]: https://chrome.google.com/webstore/detail/steemkeychain/jhgnbkkiafpaallpehbohjmkbjofjdmeid
 [95]: https://addons.mozilla.org/en-GB/firefox/addon/steemkeychain/
 [96]: http://localhost:1337/main.html
 [97]: https://github.com/drov0/downvote-control-tools-front/blob/c453b81d482421e5ae006c25502c491dbebdc180/src/components/Login.js#L34
 [98]: https://github.com/drov0/downvote-control-tool-back/blob/master/routes/auth.js#L159
-[99]: https://www.npmjs.com/package/@hiveio/keychain
 [100]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/function
 [101]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String
 [102]: #requestcallback

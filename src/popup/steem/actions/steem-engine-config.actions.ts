@@ -21,7 +21,7 @@ export const setHEActiveAccountHistoryApi = (api: string) => {
   };
 };
 
-export const initHiveEngineConfigFromStorage =
+export const initSteemEngineConfigFromStorage =
   (): AppThunk => async (dispatch) => {
     const config = (await LocalStorageUtils.getValueFromLocalStorage(
       LocalStorageKeyEnum.STEEM_ENGINE_ACTIVE_CONFIG,

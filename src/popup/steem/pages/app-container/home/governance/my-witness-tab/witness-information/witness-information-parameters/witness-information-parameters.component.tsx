@@ -30,7 +30,7 @@ const WitnessInformationParameters = ({
           value={witnessInfo.params.accountCreationFeeFormatted}
         />
         <WitnessInfoDataComponent
-          label={'popup_html_witness_information_hbd_interest_rate_label'}
+          label={'popup_html_witness_information_sbd_interest_rate_label'}
           value={`${witnessInfo.params.sbdInterestRate.toFixed(2)}%`}
         />
       </div>

@@ -152,21 +152,21 @@ const parse = (error: any) => {
 
 const parseSteemEngine = (error: string, payload: any) => {
   if (error.includes(SteemEngineErrorType.OVERDRAW_BALANCE)) {
-    return new KeychainError('hive_engine_overdraw_balance_error', [
+    return new KeychainError('steem_engine_overdraw_balance_error', [
       payload.symbol,
     ]);
   }
   if (error.includes(SteemEngineErrorType.TOKEN_NOT_EXISTING)) {
-    return new KeychainError('hive_engine_not_existing_token_error', [
+    return new KeychainError('steem_engine_not_existing_token_error', [
       payload.symbol,
     ]);
   }
   if (error.includes(SteemEngineErrorType.USER_NOT_EXISTING)) {
-    return new KeychainError('hive_engine_not_existing_user_error', [
+    return new KeychainError('steem_engine_not_existing_user_error', [
       payload.to,
     ]);
   }
-  return new KeychainError('bgd_ops_hive_engine_confirmation_error', [error]);
+  return new KeychainError('bgd_ops_steem_engine_confirmation_error', [error]);
 };
 
 export const ErrorUtils = { parse, parseSteemEngine };

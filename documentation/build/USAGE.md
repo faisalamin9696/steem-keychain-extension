@@ -17,7 +17,3 @@ See an example in this project by @howo (@steempress witness):
 [Backend](https://github.com/drov0/downvote-control-tool-back/blob/master/routes/auth.js#L159)
 
 Alternatively, you can use `requestSignTx` and verify the signature on your backend.
-
-## @hiveio/keychain
-
-This [npm module](https://www.npmjs.com/package/@hiveio/keychain) makes it easy to add Keychain support within the browser. It also includes helpful functions to check whether Keychain was used before. It was developed by @therealwolf (witness).

@@ -21,7 +21,7 @@ import AutomatedTasksUtils from 'src/utils/automatedTasks.utils';
 
 const DEFAULT_SELECTED_TOKEN_OPTION = {
   label: chrome.i18n.getMessage(
-    'popup_html_automated_hive_section_default_option_message',
+    'popup_html_automated_steem_section_default_option_message',
   ),
   value: '',
 };
@@ -39,7 +39,7 @@ const AutomatedTasks = ({
   const [selectedLocalAccount, setSelectedLocalAccount] = useState(
     accounts[0].name,
   );
-  const [isHiveSectionExpanded, setIsHiveSectionExpanded] = useState(true);
+  const [isSteemSectionExpanded, setIsSteemSectionExpanded] = useState(true);
   const claimSavingsErrorMessage =
     AutomatedTasksUtils.canClaimSavingsErrorMessage(activeAccount);
   const claimAccountErrorMessage =
@@ -111,24 +111,24 @@ const AutomatedTasks = ({
       <div className="section">
         <div
           className="section-expander"
-          onClick={() => setIsHiveSectionExpanded(!isHiveSectionExpanded)}>
+          onClick={() => setIsSteemSectionExpanded(!isSteemSectionExpanded)}>
           <div className="section-title-logo">
             <div className="section-title">
               {chrome.i18n.getMessage(
-                'popup_html_automated_hive_section_title',
+                'popup_html_automated_steem_section_title',
               )}
             </div>
           </div>
           <SVGIcon
             className="custom-select-handle"
             icon={
-              isHiveSectionExpanded
+              isSteemSectionExpanded
                 ? SVGIcons.SELECT_ARROW_UP
                 : SVGIcons.SELECT_ARROW_DOWN
             }
           />
         </div>
-        {isHiveSectionExpanded && (
+        {isSteemSectionExpanded && (
           <div className="tasks">
             <CheckboxPanelComponent
               dataTestId="checkbox-autoclaim-rewards"

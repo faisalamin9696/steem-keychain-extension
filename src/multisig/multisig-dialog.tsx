@@ -219,7 +219,7 @@ const MultisigDialog = () => {
             <div className="message">
               {chrome.i18n.getMessage(data.message)}
             </div>
-            <a href={`https://hivehub.dev/tx/${data.txId}`} target="__blank">
+            <a href={`https://hub.dev/tx/${data.txId}`} target="__blank">
               {data.txId}
             </a>
             <div className="fields-container">

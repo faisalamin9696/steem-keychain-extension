@@ -1275,7 +1275,7 @@
     "message": "ATTENTION : Les dépôts/retraits sont désactivés sur cet échange.",
     "description": "When wallet is disabled on exchange."
   },
-  "popup_html_buy_hive": {
+  "popup_html_buy_steem": {
     "message": "Acheter STEEM",
     "description": "When clicking on the Steem arrow menu"
   },
@@ -1295,11 +1295,11 @@
     "message": "Votre SBD prendra 3.5 jours pour être convertis pour environ 1 USD de STEEM, basé sur son prix médian de 3.5 jours.",
     "description": "When clicking on the SBD arrow menu"
   },
-  "popup_html_convert_hive_intro": {
+  "popup_html_convert_steem_intro": {
     "message": "Vous déposez un collatéral (STEEM), puis vous recevrez des SBD à l'avance d'une valeur de la moitié du montant du collatéral (moins 5% de frais). Votre paiement final officiel est dans 3.5 jours. À ce moment-là, les garanties restantes (STEEM) seront remboursées.",
     "description": "When clicking on the STEEM arrow menu"
   },
-  "popup_html_save_hive": {
+  "popup_html_save_steem": {
     "message": "Épargne STEEM",
     "description": "When clicking on the Steem arrow menu"
   },

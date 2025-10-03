@@ -1,7 +1,7 @@
 import { BaseApi } from '@api/base';
 
 const buildUrl = (url: string) => {
-  const baseURL = 'https://notifications.hivehub.dev';
+  const baseURL = 'https://notifications.hub.dev';
   return `${baseURL}/${url}`;
 };
 

@@ -5,7 +5,7 @@ import ConversionsReducer from '@popup/steem/reducers/conversion.reducer';
 import CurrencyPricesReducer from '@popup/steem/reducers/currency-prices.reducer';
 import DelegationsReducer from '@popup/steem/reducers/delegation.reducer';
 import GlobalPropertiesReducer from '@popup/steem/reducers/global-properties.reducer';
-import SteemEngineConfigReducer from '@popup/steem/reducers/hive-engine-config.reducer';
+import SteemEngineConfigReducer from '@popup/steem/reducers/steem-engine-config.reducer';
 import { PhishingReducer } from '@popup/steem/reducers/phishing.reducer';
 import { RpcSwitcherReducer } from '@popup/steem/reducers/rpc-switcher.reducer';
 import TokenHistoryReducer from '@popup/steem/reducers/token-history.reducer';

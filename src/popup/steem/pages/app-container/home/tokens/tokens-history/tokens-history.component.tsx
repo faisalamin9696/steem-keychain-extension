@@ -3,7 +3,7 @@ import {
   CURATIONS_REWARDS_TYPES,
   DelegationTokenTransaction,
   MiningLotteryTransaction,
-  OperationsHiveEngine,
+  OperationsSteemEngine,
   StakeTokenTransaction,
   TokenBalance,
   TokenTransaction,
@@ -64,22 +64,22 @@ const TokensHistory = ({
               item as CommentCurationTransaction,
               filterValue,
             )) ||
-          (item.operation === OperationsHiveEngine.TOKENS_TRANSFER &&
+          (item.operation === OperationsSteemEngine.TOKENS_TRANSFER &&
             TokenTransactionUtils.filterTransfer(
               item as TransferTokenTransaction,
               filterValue,
             )) ||
-          (item.operation === OperationsHiveEngine.TOKEN_STAKE &&
+          (item.operation === OperationsSteemEngine.TOKEN_STAKE &&
             TokenTransactionUtils.filterStake(
               item as StakeTokenTransaction,
               filterValue,
             )) ||
-          (item.operation === OperationsHiveEngine.MINING_LOTTERY &&
+          (item.operation === OperationsSteemEngine.MINING_LOTTERY &&
             TokenTransactionUtils.filterMiningLottery(
               item as MiningLotteryTransaction,
               filterValue,
             )) ||
-          (item.operation === OperationsHiveEngine.TOKENS_DELEGATE &&
+          (item.operation === OperationsSteemEngine.TOKENS_DELEGATE &&
             TokenTransactionUtils.filterDelegation(
               item as DelegationTokenTransaction,
               filterValue,

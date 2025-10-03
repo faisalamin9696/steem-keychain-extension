@@ -125,8 +125,8 @@ const WitnessTab = ({
   }, [ranking, filterValue, displayVotedOnly, votedWitnesses, hideNonActive]);
 
   const initProxyVotes = async (proxy: string) => {
-    const hiveAccounts = await AccountUtils.getAccount(proxy);
-    setVotedWitnesses(hiveAccounts[0].witness_votes);
+    const steemAccounts = await AccountUtils.getAccount(proxy);
+    setVotedWitnesses(steemAccounts[0].witness_votes);
   };
 
   const processClick = async (

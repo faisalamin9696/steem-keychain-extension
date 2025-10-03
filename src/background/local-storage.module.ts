@@ -90,7 +90,6 @@ const checkAndUpdateLocalStorage = async () => {
             'https://anyx.io',
             'https://api.pharesim.me/',
             'https://rpc.ausbit.dev',
-            'https://hived.privex.io/',
           ].includes(activeRpc.uri)
         ) {
           LocalStorageUtils.saveValueInLocalStorage(

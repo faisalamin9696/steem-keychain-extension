@@ -295,7 +295,7 @@ const TokenSwaps = ({
     }
 
     if (parseFloat(amount) > parseFloat(startToken?.value.balance)) {
-      setErrorMessage('hive_engine_overdraw_balance_error', [
+      setErrorMessage('steem_engine_overdraw_balance_error', [
         startToken?.label!,
       ]);
       return;

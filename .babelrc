@@ -16,7 +16,7 @@
         "root": ["."],
         "alias": {
           "@common-style": "./src/common-style",
-          "@hiveapp": "./src/multichain-container/steem",
+          "@steemapp": "./src/multichain-container/steem",
           "@popup": "./src/popup",
           "@background": "./src/background",
           "@interfaces": "./src/interfaces",

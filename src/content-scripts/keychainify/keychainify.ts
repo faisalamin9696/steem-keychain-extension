@@ -62,7 +62,7 @@ export default {
     switch (true) {
       /**
        * Transfer fund
-       * i.e. : https://steemlogin.com/sign/transfer?to=lecaillon&amount=1%20HIVE
+       * i.e. : https://steemlogin.com/sign/transfer?to=lecaillon&amount=1%20STEEM
        */
       case url.includes('steemlogin.com/sign/transfer'):
         defaults = {
@@ -149,7 +149,7 @@ export default {
         break;
       /**
        * Broadcast a custom-json
-       * i.e. : https://steemlogin.com/sign/custom-json?required_posting_auths=%5Bfaisalamin%5D&id=custom&json=%7B%22hive%22%3A%22keychain%22%7D
+       * i.e. : https://steemlogin.com/sign/custom-json?required_posting_auths=%5Bfaisalamin%5D&id=custom&json=%7B%22steem%22%3A%22keychain%22%7D
        */
       case url.includes('https://steemlogin.com/sign/custom-json') ||
         url.includes('https://steemlogin.com/sign/custom_json'):

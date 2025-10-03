@@ -7,7 +7,7 @@ import {
   ExtendedAccount,
 } from '@steempro/dsteem/lib/index-browser';
 import { CurrencyPrices } from '@interfaces/bittrex.interface';
-import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
+import { SteemInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
 import EncryptUtils from '@popup/steem/utils/encrypt.utils';
 import { KeysUtils } from '@popup/steem/utils/keys.utils';
 import MkUtils from '@popup/steem/utils/mk.utils';
@@ -38,13 +38,13 @@ export enum AccountErrorMessages {
 }
 
 const getKeys = async (username: string, password: string) => {
-  const hiveAccounts = await AccountUtils.getAccount(username);
-  if (hiveAccounts.length === 0) {
+  const steemAccounts = await AccountUtils.getAccount(username);
+  if (steemAccounts.length === 0) {
     throw new Error(AccountErrorMessages.INCORRECT_USER);
   }
-  const activeInfo = hiveAccounts[0].active;
-  const postingInfo = hiveAccounts[0].posting;
-  const memoKey = hiveAccounts[0].memo_key;
+  const activeInfo = steemAccounts[0].active;
+  const postingInfo = steemAccounts[0].posting;
+  const memoKey = steemAccounts[0].memo_key;
 
   if (cryptoUtils.isWif(password)) {
     const pubUnknown = KeysUtils.getPublicKeyFromPrivateKeyString(password);
@@ -69,7 +69,7 @@ const getKeys = async (username: string, password: string) => {
   const keys = KeysUtils.derivateFromMasterPassword(
     username,
     password,
-    hiveAccounts[0],
+    steemAccounts[0],
   );
 
   if (!keys) {
@@ -208,14 +208,14 @@ const addAuthorizedAccount = async (
     throw new KeychainError('popup_accounts_already_registered', []);
   }
 
-  const hiveAccounts = await AccountUtils.getAccount(username);
-  if (!hiveAccounts || hiveAccounts.length === 0) {
+  const steemAccounts = await AccountUtils.getAccount(username);
+  if (!steemAccounts || steemAccounts.length === 0) {
     throw new KeychainError('popup_accounts_incorrect_user', []);
   }
-  let hiveAccount = hiveAccounts[0];
+  let steemAccount = steemAccounts[0];
 
-  const activeKeyInfo = hiveAccount.active;
-  const postingKeyInfo = hiveAccount.posting;
+  const activeKeyInfo = steemAccount.active;
+  const postingKeyInfo = steemAccount.posting;
 
   let keys: Keys = {};
 
@@ -370,7 +370,7 @@ const getAccountValue = (
   // tokensMarket: TokenMarket[],
   accountValueType: AccountValueType,
   // tokens: Token[],
-  hiveMarketLockedOpenOrdersValues: HiveInternalMarketLockedInOrders,
+  steemMarketLockedOpenOrdersValues: SteemInternalMarketLockedInOrders,
   // hiddenTokensList: string[],
 ) => {
   if (accountValueType === AccountValueType.HIDDEN) return '⁎ ⁎ ⁎';
@@ -391,9 +391,9 @@ const getAccountValue = (
   //   0,
   // );
 
-  const totalLockedValueInHiveMarket =
-    hiveMarketLockedOpenOrdersValues.sbd * prices.steem_dollars.usd +
-    hiveMarketLockedOpenOrdersValues.steem * prices.steem.usd;
+  const totalLockedValueInSteemMarket =
+    steemMarketLockedOpenOrdersValues.sbd * prices.steem_dollars.usd +
+    steemMarketLockedOpenOrdersValues.steem * prices.steem.usd;
 
   const dollarValue =
     (parseFloat(sbd_balance as string) +
@@ -403,7 +403,7 @@ const getAccountValue = (
       parseFloat(balance as string) +
       parseFloat(savings_balance as string)) *
       prices.steem.usd +
-    totalLockedValueInHiveMarket;
+    totalLockedValueInSteemMarket;
   const value =
     accountValueType === AccountValueType.DOLLARS
       ? dollarValue

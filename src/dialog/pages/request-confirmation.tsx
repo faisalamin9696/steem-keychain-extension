@@ -45,7 +45,7 @@ type RequestMessage = {
   tab: number;
   domain: string;
   accounts?: string[];
-  hiveEngineConfig: SteemEngineConfig;
+  steemEngineConfig: SteemEngineConfig;
 };
 
 const RequestConfirmation = ({ data }: Props) => {

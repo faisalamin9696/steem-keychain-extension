@@ -68,10 +68,10 @@ const getVotingDollarsPerAccount = (
   const vp = getVP(account)! * 100;
   const rewardBalance = SteemUtils.getRewardBalance(properties);
   const recentClaims = SteemUtils.getRecentClaims(properties);
-  const hivePrice = SteemUtils.getHivePrice(properties);
+  const steemPrice = SteemUtils.getSteemPrice(properties);
   const votePowerReserveRate = SteemUtils.getVotePowerReserveRate(properties);
 
-  if (rewardBalance && recentClaims && hivePrice && votePowerReserveRate) {
+  if (rewardBalance && recentClaims && steemPrice && votePowerReserveRate) {
     const effective_vesting_shares = Math.round(
       getEffectiveVestingSharesPerAccount(account) * 1000000,
     );
@@ -86,7 +86,7 @@ const getVotingDollarsPerAccount = (
     const rshares = Math.round(
       (effective_vesting_shares * used_power) / STEEM_100_PERCENT,
     );
-    const voteValue = ((rshares * rewardBalance) / recentClaims) * hivePrice;
+    const voteValue = ((rshares * rewardBalance) / recentClaims) * steemPrice;
     return isNaN(voteValue) ? '0' : voteValue.toFixed(2);
   } else {
     return;
@@ -230,7 +230,7 @@ const SteemUtils = {
   signMessage,
   getRewardBalance,
   getRecentClaims,
-  getHivePrice: getSteemPrice,
+  getSteemPrice,
   getVotePowerReserveRate,
   getAccountPrice,
   getCurrentMedianHistoryPrice,

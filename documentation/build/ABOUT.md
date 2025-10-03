@@ -1,4 +1,4 @@
-![](http://u.cubeupload.com/arcange/yOdI5g.png)
+![](https://u.cubeupload.com/faisalamin/keychain.png)
 
 Putting private keys directly into websites is not safe or secure, even ones run by reputable community members. Yet this is currently how nearly every Steem-based site or service currently works. On top of that, most Steem users likely use their master password which is even worse.
 

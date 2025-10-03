@@ -110,7 +110,7 @@ const get = async <T>(
   params: TokenRequestParams,
   timeout: number = 10,
 ): Promise<T> => {
-  // const url = `${HiveEngineConfigUtils.getApi()}/contracts`;
+  // const url = `${SteemEngineConfigUtils.getApi()}/contracts`;
   // return new Promise((resolve, reject) => {
   //   let resolved = false;
   //   fetch(url, {

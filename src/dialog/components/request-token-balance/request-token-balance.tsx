@@ -9,7 +9,7 @@ type Props = {
   amount: number;
   currency: string;
   username: string;
-  hiveEngineConfig: SteemEngineConfig;
+  steemEngineConfig: SteemEngineConfig;
   precision?: number;
 };
 
@@ -17,12 +17,12 @@ const RequestTokenBalance = ({
   username,
   amount,
   currency,
-  hiveEngineConfig,
+  steemEngineConfig,
   precision,
 }: Props) => {
   const [balance, setBalance] = useState('');
   const [newBalance, setNewBalance] = useState('');
-  const config = hiveEngineConfig ? hiveEngineConfig : Config.steemEngine;
+  const config = steemEngineConfig ? steemEngineConfig : Config.steemEngine;
   useEffect(() => {
     new SSC(config.rpc)
       .find('tokens', 'balances', {

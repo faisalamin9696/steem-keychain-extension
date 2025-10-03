@@ -128,9 +128,9 @@ const EditMyWitness = ({
         onChange={(value) => handleFormParams('maximumBlockSize', value)}
       />
       <InputComponent
-        label="popup_html_witness_information_hbd_interest_rate_label"
+        label="popup_html_witness_information_sbd_interest_rate_label"
         type={InputType.TEXT}
-        placeholder="popup_html_witness_information_hbd_interest_rate_placeholder_text"
+        placeholder="popup_html_witness_information_sbd_interest_rate_placeholder_text"
         value={formParams.sbdInterestRate}
         onChange={(value) => handleFormParams('sbdInterestRate', value)}
       />

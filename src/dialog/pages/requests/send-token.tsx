@@ -15,11 +15,11 @@ type Props = {
   domain: string;
   tab: number;
   rpc: Rpc;
-  hiveEngineConfig: SteemEngineConfig;
+  steemEngineConfig: SteemEngineConfig;
 };
 
 const SendToken = (props: Props) => {
-  const { data, rpc, hiveEngineConfig } = props;
+  const { data, rpc, steemEngineConfig } = props;
   const { memo } = data;
   const header = useTransferCheck(data, rpc);
   const [precision, setPrecision] = useState(3);
@@ -63,7 +63,7 @@ const SendToken = (props: Props) => {
         amount={parseFloat(data.amount)}
         currency={data.currency}
         precision={precision}
-        hiveEngineConfig={hiveEngineConfig}
+        steemEngineConfig={steemEngineConfig}
       />
 
       {data.memo && data.memo.length ? (

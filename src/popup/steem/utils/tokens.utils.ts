@@ -292,7 +292,7 @@ const getSendTokenTransaction = (
   ]);
 };
 
-const getHiveEngineTokenPrice = (
+const getSteemEngineTokenPrice = (
   { symbol }: Partial<TokenBalance>,
   market: TokenMarket[],
 ) => {
@@ -362,7 +362,7 @@ const getOutgoingDelegations = async (
 
 /* istanbul ignore next */
 /**
- * SSCJS request using HiveEngineConfigUtils.getApi().find.
+ * SSCJS request using SteemEngineConfigUtils.getApi().find.
  * @param {string} contract Fixed as 'tokens'
  * @param {string} table Fixed as 'tokens
  */
@@ -428,7 +428,7 @@ const getPendingUnstakes = async (
 
 /* istanbul ignore next */
 /**
- * SSCJS request using HiveEngineConfigUtils.getApi().find.
+ * SSCJS request using SteemEngineConfigUtils.getApi().find.
  * @param {string} contract Fixed as 'market'
  * @param {string} table Fixed as 'metrics
  */
@@ -467,7 +467,7 @@ const TokensUtils = {
   getOutgoingDelegations,
   getAllTokens,
   getTokensMarket,
-  getHiveEngineTokenValue: getSteemEngineTokenValue,
+  getSteemEngineTokenValue,
   getStakeTokenOperation,
   getUnstakeTokenOperation,
   getDelegateTokenOperation,
@@ -478,7 +478,7 @@ const TokensUtils = {
   getDelegateTokenTransaction,
   getCancelDelegationTokenTransaction,
   getSendTokenTransaction,
-  getHiveEngineTokenPrice,
+  getSteemEngineTokenPrice,
   getTokenInfo,
   getTokenPrecision,
   getPendingUnstakes,

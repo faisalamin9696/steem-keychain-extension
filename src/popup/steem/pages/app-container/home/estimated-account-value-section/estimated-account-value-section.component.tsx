@@ -1,7 +1,7 @@
-import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
+import { SteemInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
 import { RootState } from '@popup/multichain/store';
 import AccountUtils from '@popup/steem/utils/account.utils';
-import { HiveInternalMarketUtils } from '@popup/steem/utils/steem-internal-market.utils';
+import { SteemInternalMarketUtils } from '@popup/steem/utils/steem-internal-market.utils';
 import { AccountValueType } from '@reference-data/account-value-type.enum';
 import { LocalStorageKeyEnum } from '@reference-data/local-storage-key.enum';
 import React, { useEffect, useState } from 'react';
@@ -25,9 +25,9 @@ const EstimatedAccountValueSection = ({
   );
   // const [hiddenTokensList, setHiddenTokensList] = useState<string[]>();
   const [
-    hiveMarketLockedOpenOrdersValues,
-    setHiveMarketLockedOpenOrdersValues,
-  ] = useState<HiveInternalMarketLockedInOrders>({ steem: 0, sbd: 0 });
+    steemMarketLockedOpenOrdersValues,
+    setSteemMarketLockedOpenOrdersValues,
+  ] = useState<SteemInternalMarketLockedInOrders>({ steem: 0, sbd: 0 });
 
   useEffect(() => {
     init();
@@ -50,8 +50,8 @@ const EstimatedAccountValueSection = ({
   };
 
   const loadSteemInternalMarketOrders = async (username: string) => {
-    setHiveMarketLockedOpenOrdersValues(
-      await HiveInternalMarketUtils.getHiveInternalMarketOrders(username),
+    setSteemMarketLockedOpenOrdersValues(
+      await SteemInternalMarketUtils.getSteemInternalMarketOrders(username),
     );
   };
 
@@ -66,7 +66,7 @@ const EstimatedAccountValueSection = ({
       activeAccount &&
       currencyPrices &&
       globalProperties?.globals &&
-      hiveMarketLockedOpenOrdersValues
+      steemMarketLockedOpenOrdersValues
     ) {
       setAccountValue(
         AccountUtils.getAccountValue(
@@ -74,7 +74,7 @@ const EstimatedAccountValueSection = ({
           currencyPrices,
           globalProperties.globals!,
           accountValueType,
-          hiveMarketLockedOpenOrdersValues,
+          steemMarketLockedOpenOrdersValues,
         ),
       );
     }
@@ -85,7 +85,7 @@ const EstimatedAccountValueSection = ({
     // tokensBalance,
     // tokensMarket,
     accountValueType,
-    hiveMarketLockedOpenOrdersValues,
+    steemMarketLockedOpenOrdersValues,
     // hiddenTokensList,
   ]);
 

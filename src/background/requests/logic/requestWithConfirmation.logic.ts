@@ -19,7 +19,7 @@ export const requestWithConfirmation = (
       domain,
       tab,
       rpc: current_rpc,
-      hiveEngineConfig: requestHandler.hiveEngineConfig,
+      steemEngineConfig: requestHandler.steemEngineConfig,
     });
   };
   createPopup(callback, requestHandler);

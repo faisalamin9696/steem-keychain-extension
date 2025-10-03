@@ -19,12 +19,12 @@ type Props = {
   domain: string;
   tab: number;
   rpc: Rpc;
-  hiveEngineConfig: SteemEngineConfig;
+  steemEngineConfig: SteemEngineConfig;
   accounts?: string[];
 };
 
 const Swap = (props: Props) => {
-  const { data, rpc, hiveEngineConfig, accounts } = props;
+  const { data, rpc, steemEngineConfig, accounts } = props;
   const anonymousProps = useAnonymousRequest(data, accounts);
   const [serverStatus, setServerStatus] = useState<SwapServerStatus>();
   const [swapConfig, setSwapConfig] = useState<SwapConfig>();
@@ -150,7 +150,7 @@ const Swap = (props: Props) => {
             username={anonymousProps.username}
             amount={data.amount}
             currency={data.startToken}
-            hiveEngineConfig={hiveEngineConfig}
+            steemEngineConfig={steemEngineConfig}
           />
         )}
         {renderOptionalPartnerParams()}

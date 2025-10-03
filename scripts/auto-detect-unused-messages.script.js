@@ -27,7 +27,7 @@ const EXCLUDED_KEYS = [
   'html_popup_coming_soon',
   'dialog_options',
   'dialog_max_payout',
-  'dialog_percentage_hbd',
+  'dialog_percentage_sbd',
   'dialog_allow_votes',
   'dialog_allow_curation',
   'dialog_beneficiaries',

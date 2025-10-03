@@ -303,7 +303,7 @@ var steem_keychain = {
    * // This example would be done much easier with requestBroadcast
    * import dsteem from '@steempro/dsteem';
    *
-   * const client = new dsteem.Client(['https://api.steemit.com', 'https://anyx.io', 'https://api.openhive.network']);
+   * const client = new dsteem.Client(['https://api.steemit.com', 'https://api.steempro.com']);
    * const keychain = window.steem_keychain;
    *
    * const props = await client.database.getDynamicGlobalProperties();

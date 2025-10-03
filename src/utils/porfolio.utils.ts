@@ -136,7 +136,7 @@ const getPortfolio = async (
       (extAcc) => extAcc.name === userPortfolio.account,
     )!;
     // const lockedInOrders =
-    //   await HiveInternalMarketUtils.getHiveInternalMarketOrders(
+    //   await SteemInternalMarketUtils.getSteemInternalMarketOrders(
     //     userPortfolio.account,
     //   );
 
@@ -171,7 +171,6 @@ const getPortfolio = async (
 
   for (const userPortfolio of portfolio) {
     let totalUSD = 0;
-    let totalHive = 0;
     for (const balance of userPortfolio.balances) {
       totalUSD += balance.usdValue;
     }
@@ -239,7 +238,7 @@ const getPortfolioHETokenData = (
   currencyPrices: CurrencyPrices,
   // tokens: Token[],
 ): PortfolioBalance => {
-  // const totalBalanceUsdValue = TokensUtils.getHiveEngineTokenValue(
+  // const totalBalanceUsdValue = TokensUtils.getSteemEngineTokenValue(
   //   tokenBalanceItem,
   //   currencyPrices!.steem!,
   //   // tokens,

@@ -218,7 +218,7 @@ const walletInfoSectionItem = ({
                 </div>
                 <div className="value">
                   $
-                  {TokensUtils.getHiveEngineTokenValue(
+                  {TokensUtils.getSteemEngineTokenValue(
                     tokenBalance,
                     // tokenMarket,
                     steem,
@@ -226,7 +226,7 @@ const walletInfoSectionItem = ({
                   ).toFixed(2)}{' '}
                   ($
                   {(
-                    TokensUtils.getHiveEngineTokenPrice(
+                    TokensUtils.getSteemEngineTokenPrice(
                       tokenBalance,
                       tokenMarket,
                     ) * steem?.usd!

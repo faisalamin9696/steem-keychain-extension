@@ -108,7 +108,7 @@ const post = Joi.object({
   //       }),
   //     ),
   //   ),
-  // }).rename('percent_hbd', 'percent_seteem_dollars'),
+  // }).rename('percent_sbd', 'percent_seteem_dollars'),
   rpc,
 });
 

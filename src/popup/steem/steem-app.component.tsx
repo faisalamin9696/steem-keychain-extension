@@ -18,7 +18,7 @@ import {
   setDisplayChangeRpcPopup,
   setSwitchToRpc,
 } from '@popup/steem/actions/rpc-switcher';
-import { initHiveEngineConfigFromStorage } from '@popup/steem/actions/steem-engine-config.actions';
+import { initSteemEngineConfigFromStorage } from '@popup/steem/actions/steem-engine-config.actions';
 import { AddAccountRouterComponent } from '@popup/steem/pages/add-account/add-account-router/add-account-router.component';
 import { AppRouterComponent } from '@popup/steem/pages/app-container/app-router.component';
 import AccountUtils from '@popup/steem/utils/account.utils';
@@ -32,10 +32,9 @@ import { SplashscreenComponent } from 'src/common-ui/splashscreen/splashscreen.c
 import Config from 'src/config';
 import { LocalAccount } from 'src/interfaces/local-account.interface';
 import { Screen } from 'src/reference-data/screen.enum';
-import { ColorsUtils } from 'src/utils/colors.utils';
 import { useWorkingRPC } from 'src/utils/rpc-switcher.utils';
 let rpc: string | undefined = '';
-const HiveApp = ({
+const SteemApp = ({
   mk,
   accounts,
   activeAccountUsername,
@@ -51,7 +50,7 @@ const HiveApp = ({
   loadActiveAccount,
   switchToRpc,
   displayChangeRpcPopup,
-  initHiveEngineConfigFromStorage,
+  initSteemEngineConfigFromStorage,
   setAccounts,
   loadGlobalProperties,
   setActiveRpc,
@@ -139,7 +138,7 @@ const HiveApp = ({
     setInitialRpc(rpc);
     await initActiveRpc(rpc);
     loadGlobalProperties();
-    initHiveEngineConfigFromStorage();
+    initSteemEngineConfigFromStorage();
 
     if (accountsFromStorage.length > 0) {
       initActiveAccount(accountsFromStorage);
@@ -283,10 +282,10 @@ const connector = connect(mapStateToProps, {
   setSwitchToRpc,
   setActiveRpc,
   setDisplayChangeRpcPopup,
-  initHiveEngineConfigFromStorage,
+  initSteemEngineConfigFromStorage,
   loadCurrencyPrices,
 });
 
 type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export const HiveAppComponent = connector(HiveApp);
+export const SteemAppComponent = connector(SteemApp);

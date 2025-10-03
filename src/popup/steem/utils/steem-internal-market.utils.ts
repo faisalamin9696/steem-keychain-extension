@@ -1,9 +1,9 @@
-import { HiveInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
+import { SteemInternalMarketLockedInOrders } from '@interfaces/steem-market.interface';
 import { SteemTxUtils } from '@popup/steem/utils/steem-tx.utils';
 import Logger from 'src/utils/logger.utils';
 
-const getHiveInternalMarketOrders = async (username: string) => {
-  let totals: HiveInternalMarketLockedInOrders = {
+const getSteemInternalMarketOrders = async (username: string) => {
+  let totals: SteemInternalMarketLockedInOrders = {
     steem: 0,
     sbd: 0,
   };
@@ -33,6 +33,6 @@ const getHiveInternalMarketOrders = async (username: string) => {
   }
 };
 
-export const HiveInternalMarketUtils = {
-  getHiveInternalMarketOrders,
+export const SteemInternalMarketUtils = {
+  getSteemInternalMarketOrders,
 };

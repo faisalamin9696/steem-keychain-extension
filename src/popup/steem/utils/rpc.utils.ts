@@ -113,7 +113,7 @@ const checkRpcStatus = async (uri: string): Promise<boolean> => {
 
     return false;
   } catch (err) {
-    console.error('RPC NOK', uri, err);
+    // console.error('RPC NOK', uri, err);
     return false;
   }
 };
@@ -123,8 +123,8 @@ const checkRpcStatus = async (uri: string): Promise<boolean> => {
 //   for (const rpc of list) {
 //     try {
 //       const start = Date.now();
-//       await HiveTxUtils.setRpc(rpc);
-//       const res = await HiveTxUtils.getData(
+//       await SteemTxUtils.setRpc(rpc);
+//       const res = await SteemTxUtils.getData(
 //         'transaction_status_api.find_transaction',
 //         { transaction_id: 'f5178d311dd17927d460e8674cabd074df8e24fe' },
 //       );

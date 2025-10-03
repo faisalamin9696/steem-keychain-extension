@@ -16,7 +16,13 @@ import MkUtils from '@popup/steem/utils/mk.utils';
 import { MultisigUtils } from '@popup/steem/utils/multisig.utils';
 import { BackgroundCommand } from '@reference-data/background-message-key.enum';
 import { DefaultRpcs } from '@reference-data/default-rpc.list';
-import { ExtendedAccount, Operation, Transaction } from '@steempro/dsteem';
+import {
+  ExtendedAccount,
+  Operation,
+  Transaction,
+  Client,
+  PrivateKey as dPrivateKey,
+} from '@steempro/dsteem';
 import { sleep } from '@steempro/dsteem/lib/utils';
 import {
   KeychainKeyTypes,
@@ -191,12 +197,22 @@ const createSignAndBroadcastTransaction = async (
   }
   let response;
   try {
+    const client = new Client(SteemTxConfig.node, { ...SteemTxConfig });
+    const privateKey = dPrivateKey.fromString(key!.toString());
+
+    const signature = client.broadcast.sign(
+      steemTransaction.transaction,
+      privateKey,
+    );
+
+    steemTransaction.addSignature(signature.signatures.toString());
+
     response = await steemTransaction.broadcast();
 
     if ((response as SteemTxBroadcastSuccessResponse).result) {
       const result = (response as SteemTxBroadcastSuccessResponse).result;
       return {
-        ...result, 
+        ...result,
       };
     }
   } catch (err) {
@@ -221,10 +237,17 @@ const confirmTransaction = async (transactionId: string) => {
 };
 
 const signTransaction = async (tx: Transaction, key: Key) => {
-  const hiveTransaction = new SteemTransaction(tx);
+  const steemTransaction = new SteemTransaction(tx);
   try {
+    const client = new Client(SteemTxConfig.node, { ...SteemTxConfig });
+    const dprivateKey = dPrivateKey.fromString(key!.toString());
+    const signature = client.broadcast.sign(
+      steemTransaction.transaction,
+      dprivateKey,
+    );
     const privateKey = PrivateKey.fromString(key!.toString());
-    return hiveTransaction.sign(privateKey);
+    steemTransaction.addSignature(signature.signatures.toString());
+    return steemTransaction.sign(privateKey);
   } catch (err) {
     Logger.error(err);
     throw new KeychainError('html_popup_error_while_signing_transaction');
@@ -236,18 +259,18 @@ const broadcastAndConfirmTransactionWithSignature = async (
   signature: string | string[],
   confirmation?: boolean,
 ): Promise<TransactionResult | undefined> => {
-  let hiveTransaction = new SteemTransaction(transaction);
+  let steemTransaction = new SteemTransaction(transaction);
   if (typeof signature === 'string') {
-    hiveTransaction.addSignature(signature);
+    steemTransaction.addSignature(signature);
   } else {
     for (const si of signature) {
-      hiveTransaction.addSignature(si);
+      steemTransaction.addSignature(si);
     }
   }
   let response;
   try {
-    Logger.log(hiveTransaction);
-    response = await hiveTransaction.broadcast();
+    Logger.log(steemTransaction);
+    response = await steemTransaction.broadcast();
     if ((response as SteemTxBroadcastSuccessResponse).result) {
       const transactionResult: SteemTxBroadcastResult = (
         response as SteemTxBroadcastSuccessResponse
